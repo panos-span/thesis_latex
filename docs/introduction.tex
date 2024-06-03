@@ -1,25 +1,130 @@
 \chapter{Introduction}
 \label{ch:intro}
 
-In this chapter cover the following elements.
-\begin{description}
-\item[Context:]
-Set the scope for the subject of the thesis
-and state why it is important to study
+\section{Background and Motivation}
+In the realm of academic research, evaluating the impact and contribution of scholars is pivotal for numerous purposes,
+ including tenure decisions, grant allocations, and academic promotions. 
+ One of the most widely used metrics for this evaluation is the H-Index, which aims to measure both the productivity 
+ and citation impact of a scholar’s publications. Despite its widespread adoption, the H-Index has been critiqued for several limitations,
+  particularly its susceptibility to inflation through the inclusion of lower-quality publications \cite{costas2007h, tonta2020monetary}.
 
-\item[Problem statement and proposed solution:]
-State what the problem is State the proposed solution
+According to Hirsch,
+A scientist has an index \( h \) if \( h \) of his or her \( N_p \) papers have at least \( h \) citations each, and the other \( (N_p - h) \) papers have \(\leq h \) citations each.
 
-\item[Contributions:]
-State the contributions made by the thesis in terms e.g. of
-methods, findings, tools, data sets.
+\[
+\text{H-Index} = \max \left( h : \text{there are at least } h \text{ papers with } h \text{ or more citations each} \right)
+\]
 
-\item[Research methods:]
-Briefly outline the used research methods.
+Formally, for a given researcher with \( N_p \) papers, the H-Index \( h \) is defined as:
 
-\item[Limits of the research scope:]
-State the limits of the research scope.
+\[
+h = \max \left\{ h \, \Bigg| \, \sum_{i=1}^{N_p} \mathbf{1} (c_i \geq h) \geq h \right\}
+\]
 
-\item[Thesis outline:]
-Introduce the chapters of the thesis
-\end{description}
+where:
+\begin{itemize}
+    \item \( N_p \) is the total number of papers,
+    \item \( c_i \) is the number of citations for the \( i \)-th paper,
+    \item \( \mathbf{1}(\cdot) \) is the indicator function, which is 1 if the condition inside is true and 0 otherwise.
+\end{itemize} In simpler terms, the H-Index is defined as the maximum value of h 
+such that the given author has published h papers that have each been cited at least h times \cite{hirsch2005index}.
+While straightforward, this metric does not account for the quality of the journals where 
+these papers are published. Consequently, an author could achieve a high H-Index
+ by publishing numerous papers in lower-impact journals, potentially inflating their perceived impact \cite{tonta2020monetary}.
+
+This inflation problem becomes particularly problematic in interdisciplinary fields where the impact factor and journal quality
+ can vary significantly across different subjects \cite{hirsch2005index,waltman2012inconsistency}. Therefore, there is a pressing need to refine the H-Index by incorporating metrics that reflect journal quality and subject specificity.
+ Addressing these limitations could enhance the accuracy and fairness of academic evaluations,
+ ensuring that the metric truly reflects the scholarly impact of researchers.
+
+\section{Problem Statement}
+The traditional H-Index has significant limitations affecting its reliability and accuracy as a measure of scholarly impact.
+Primarily, it fails to differentiate between the quality of journals where papers are published, allowing authors
+to achieve high H-Indexes through publications in lower-quality journals, thereby inflating their perceived impact \cite{costas2007h,tonta2020monetary}. 
+This issue is exacerbated in interdisciplinary research, where measured journal quality can vary widely across different subjects,
+due to variations in citation practices \cite{costas2007h,norris2010h}.
+
+Specifically, H-Index inflation occurs when researchers achieve higher H-Index values not necessarily 
+through impactful research but through strategic publication practices. These practices may include 
+targeting journals with lower standards, which can increase the number of published papers and citations 
+without corresponding increases in the quality of research. This inflation can distort the assessment of academic 
+influence and undermine the credibility of bibliometric evaluations \cite{tonta2020monetary}.
+
+Another critical limitation of the traditional H-Index is its susceptibility to self-citations and collaborative publications. 
+Researchers may engage in self-citation practices to boost their citation counts, 
+which directly impacts their H-Index \cite{hirsch2005index,schreiber2008share,costas2007h,waltman2012inconsistency,norris2010h,bartneck2011detecting,zhivotovsky2008self}. 
+Similarly, in fields with high levels of collaboration, the H-Index may be inflated as it does not account for the fractional contribution 
+of each author in multi-authored papers \cite{schreiber2008share,costas2007h,waltman2012inconsistency,norris2010h,zhivotovsky2008self}. 
+These factors can lead to significant disparities in H-Index values 
+that do not accurately reflect individual researchers' contributions and impact.
+
+To address these issues, this thesis proposes developing and evaluating H-Index calculations that incorporate subject-specific 
+journal rankings based on H5-Index and impact factor. By focusing on the top 20\% of journals within each subject area, 
+the goal is to create a more accurate and meaningful metric that reflects both the productivity and the quality of an author's research contributions.
+
+\section{Objectives of the Thesis}
+The primary objective of this thesis is to develop and validate H-Index calculations that incorporate journal quality through subject-specific rankings. The specific objectives are as follows:
+\begin{enumerate}
+    \item \textbf{Develop H-Index Metrics:} Create two H-Index metrics that incorporate journal quality
+     by using subject-specific rankings based on H5-Index and impact factor.
+      This involves selecting the top 20\% of journals within each subject area and calculating the H-Index based on publications
+      in these high-quality journals.
+    \item \textbf{Evaluate the Impact of Journal Quality:} Analyze how incorporating journal quality affects the H-Index calculation.
+    This includes comparing the traditional H-Index with the proposed H-Indexes to determine the extent to which the latter
+    provide a more accurate representation of a scholar’s impact.
+    \item \textbf{Assess Correlation Between Traditional H-Index and Proposed H-Indexes:} Assess the correlation between the traditional H-Index
+    and the proposed H-Indexes. This involves statistical analysis, including rank order correlation
+    and rank-biased overlap, to evaluate the consistency and divergence in author rankings when different criteria for journal quality are applied.
+    \item \textbf{Conduct Network Analysis of Citation Patterns:} Perform network analysis of citation patterns,
+    examining the citation graphs of highly ranked authors based on their publications in lower-ranked versus
+    higher-ranked journals within specific subjects. The analysis will focus on network characteristics such as
+    clustering coefficients and citation patterns at a distance of two degrees.
+    \item \textbf{Compare Citation Behaviors Across Journal Quality:} Compare citation behaviors and network characteristics
+    of authors publishing in the bottom 25\% of journals with those publishing in higher-ranked journals.
+    This comparison aims to understand the differences in citation patterns and the implications for using
+    citation network analysis in evaluating research impact.
+    \item \textbf{Provide Practical Recommendations:} Offer practical recommendations for academic institutions,
+    funding agencies, and researchers. These recommendations will focus on the use of H-Indexes and the importance of
+    considering journal quality in research evaluations, aiming to promote more equitable and accurate assessments of scholarly impact.
+\end{enumerate}
+
+\section{Structure of the Thesis}
+This thesis is organized into six main chapters, each addressing specific aspects of the research and providing a comprehensive framework for understanding and evaluating the proposed H-Index calculations.
+\begin{itemize}
+    \item \textbf{Chapter 1: Introduction} \\
+    The Introduction chapter sets the stage for the thesis by providing the background and motivation for the study, outlining the problem statement, and defining the objectives of the research. This chapter also includes the structure of the thesis to guide the reader through the subsequent sections.
+    
+    \item \textbf{Chapter 2: Literature Review} \\
+    The Literature Review chapter provides an extensive overview of the H-Index and its various popular variants, such as the H-Frac Index, Hp-Index, Hp-Frac Index, G-Index, O-Index, and J-Index. This chapter includes a comparative analysis of these metrics, highlighting their strengths, limitations, and applications in different disciplines.
+    
+    \item \textbf{Chapter 3: Problem Definition and Main Idea} \\
+    The Problem Definition and Main Idea chapter clearly defines the problem of H-Index inflation, emphasizing the impact of journal quality on H-Index calculations. This chapter introduces the main idea of using subject-specific journal rankings to develop H-Indexes. The research questions and hypotheses are outlined, providing a focused framework for the study.
+    
+    \item \textbf{Chapter 4: Detailed Description of the Proposed Solution} \\
+    This chapter presents a comprehensive description of the proposed solution. 
+    It begins with an overview of the methodology and proceeds to detailed subsections
+    on data collection and preparation using Alexandria3k, ROLAP analysis with Simple-ROLAP,
+    and SQL unit testing with RDBUnit. The chapter elaborates on the implementation of H-Indexes,
+    including the use of the top 20\% of journals by H5-Index and impact factor within specific subjects.
+    It also covers the statistical analysis methods used for rank order correlation and rank-biased overlap,
+    the graphical representation of table interactions, and the network analysis of citation graphs.
+    
+    \item \textbf{Chapter 5: Experiments} \\
+    The Experiments chapter details the experimental setup,
+     including the datasets and tools used. It describes the methodology for comparing the traditional H-Index with the proposed H-Indexes,
+     presenting the results, and discussing their implications. This chapter also includes the network analysis of citation patterns,
+     addressing the research questions related to the effectiveness of H-Index implementations, the correlation between them and the
+     original index, and the differences in citation networks.
+    
+    \item \textbf{Chapter 6: Summary and Future Work} \\
+    The final chapter summarizes the key findings of the research and discusses
+    the contributions to the field. It addresses the limitations of the study and provides
+    suggestions for future research. This chapter aims to offer practical recommendations
+    for academic institutions, funding agencies, and researchers on the use of H-Indexes and the
+    importance of considering journal quality in research evaluations.
+\end{itemize}
+
+By following this structured approach, the thesis aims to provide a thorough examination
+of the proposed H-Index implementations and their implications for research evaluation,
+ultimately contributing to more accurate and equitable academic assessments.
+
