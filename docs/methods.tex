@@ -1,15 +1,67 @@
-\chapter{Methods}
+\chapter{Methodology}
 \label{ch:methods}
 
-Methodology involves the design of research developed to test hypotheses
-or answer questions developed from the background section.
-Include details about data collection methods, analysis techniques,
-and tools, and technologies used.
-In systems-building research in this chapter you might also include
-your system's design and architecture.
+\section{Overview of the Proposed Method}
+
+The proposed method aims to address the problem of h-index inflation by
+developing two novel metrics that adjusts for the subject area and the quality
+of the journal in which the publication is published. The first metric, the
+\textit{Adjusted h-index} ($h_{\text{adj}}$), adjusts the h-index by the
+average h-index of the subject area in which the publication is published and
+only considers publications from the top 20\% of journals in the subject area.
+The second metric, the \textit{JIF-adjusted h-index} ($h_{\text{JIF}}$),
+adjusts the h-index by the average Journal Impact Factor (JIF) of the journal
+in which the publication is published and, similarly, only considers
+publications from the top 20\% of journals in the subject area. The proposed
+method is implemented in SQL and the data is stored in a Sqlite database.
+
+\section{Data Collection and Preprocessing}
+
+For the purpose of this study, the Alexandria3k \cite{Spi23g} tool was used to
+collect publication data from the Crossref Dataset \cite{Crossref2020} and
+prepare the data for processing. Alexandria3k supplies a library and a
+command-line tool providing efficient relational query access to diverse
+publication open data sets. Specifically, the dataset that was used is a subset
+of the Crossref-2024 and Crossref-2023 datasets, which contain publication
+metadata from about 156 million publications from all major international
+publishers with full citation data for around 60 million of them. In addition
+to that, for the subject of the publications, the Scopus ASJC (All Science
+Journal Classification) subject codes were used.
+
+To be more specific, the ASJC codes were used to categorize the publications
+into more general subject areas than the original subject areas provided by the
+Crossref-2023 dataset. The ASJC codes are a standard classification system used
+to categorize publications into subject areas and are widely used in the
+scientific community. The ASJC codes are hierarchical and are organized into
+four levels, with the first level being the broadest and the fourth level being
+the most specific. For the purpose of this study, the first level of the ASJC
+codes was used to categorize the publications into subject areas. Crucial to
+note is that the ASJC codes are not available for all publications in the
+Crossref-2024 dataset \cite{crossrefSubjectCodes2024}, so only journals with
+subjects from the Crossref-2023 dataset were considered for this study, since
+for those journals the ASJC codes were able to be retrieved.
+
+
+\section{Implementation of the Proposed Method}
+
+The proposed method was implemented in SQL using the Sqlite database management
+system. The implementation consists of two main parts: the calculation of the
+Adjusted h-index and the calculation of the JIF-adjusted h-index. The
+implementation of the Adjusted h-index is done in these steps: (1)
+calculating the average h-index of the subject area for each publication, (2)
+
+
+
+---
+Methodology involves the design of research developed to test hypotheses or
+answer questions developed from the background section. Include details about
+data collection methods, analysis techniques, and tools, and technologies used.
+In systems-building research in this chapter you might also include your
+system's design and architecture.
 
 Be careful regarding terminology: You describe \emph{methods} (not
-methodology).  This description is termed \emph{methodology}.
+methodology). This description is termed \emph{methodology}.
 
-Base your methodological presentation using the terms
-introduced in reference \cite{SF18}.
+Base your methodological presentation using the terms introduced in reference
+\cite{SF18}.
+
