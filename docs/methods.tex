@@ -70,9 +70,13 @@ system. The implementation consists of two main parts: the calculation of the
 Adjusted h-index and the calculation of the JIF-adjusted h-index based on the
 last 5 years, specifically the last 3 for the Impact Factor calculation. Both
 methods share the same structure and preparation steps, with the main
-difference being the metrics used to adjust the h-index. The preparation of the
-database involves creating tables to store and index works and authors, as well
-as a common table for journals by ISSN and subject.
+difference being the metrics (H5 and IF3) used to rank the journals. In order
+to use the subject codes from the Scopus ASJC classification, since they are
+not available in the Crossref-2024 dataset, the journals (ISSN) along with
+their subject codes were extracted from the Crossref-2023 dataset and stored in
+a separate table. After that, the preparation of the database involves creating
+tables to store and index works and authors, as well as a common table for
+journals by ISSN and subject.
 
 \subsection{Calculation of the Adjusted h-index}
 
@@ -87,46 +91,46 @@ as a common table for journals by ISSN and subject.
 %          \end{enumerate}
 %\end{itemize}
 \begin{enumerate}
-    \item \textbf{Count Citations for Each Work}: Calculate the number of citations for each work to determine its impact.
+      \item \textbf{Count Citations for Each Work}: Calculate the number of citations for each work to determine its impact.
 
-    \item \textbf{Calculate the h3 Index of Journals}: Derive the h5 index for journals, which is a
-          measure of their citation impact over the past three years.
+      \item \textbf{Calculate the h5 Index of Journals}: Derive the h5 index for journals, which is a
+            measure of their citation impact over the past three years.
 
-    \item \textbf{Identify the Top 20\% of Journals by Subject Based on h3 Index}: Determine the top 20\% of journals within
-          each subject area based on their h3 index.
+      \item \textbf{Identify the Top 20\% of Journals by Subject Based on h5 Index}: Determine the top 20\% of journals within
+            each subject area based on their h5 index.
 
-    \item \textbf{Create Filtered Works Tables from the Top Journals by Subject}: Generate tables that include works from the
-          top journals for each subject area, ensuring that only high-impact works are considered.
+      \item \textbf{Create Filtered Works Tables from the Top Journals by Subject}: Generate tables that include works from the
+            top journals for each subject area, ensuring that only high-impact works are considered.
 
-          %\item \textbf{Calculate the Average h5 Index for Each Subject Area}: Compute the average h3 index for each subject area
-          %      to provide a benchmark for comparison.
+            %\item \textbf{Calculate the Average h5 Index for Each Subject Area}: Compute the average h3 index for each subject area
+            %      to provide a benchmark for comparison.
 
-    \item \textbf{Calculate the Adjusted h-index for Each Author}: Determine the adjusted h-index for each author,
-          taking into account the average h5 index of the subject area.
+      \item \textbf{Calculate the Adjusted h-index for Each Author}: Determine the adjusted h-index for each author,
+            taking into account the subject area of the author.
 \end{enumerate}
 
 \subsection{Calculation of the JIF-adjusted h-index}
 \begin{enumerate}
-    \item \textbf{Calculate Work Citations}: Compute the number of citations for each work to assess their impact.
+      \item \textbf{Calculate Work Citations}: Compute the number of citations for each work to assess their impact.
 
-    \item \textbf{Filter Citable Works}: Identify works that are longer than two pages to exclude non-research articles such as news or book reviews.
+      \item \textbf{Filter Citable Works}: Identify works that are longer than two pages to exclude non-research articles such as news or book reviews.
 
-    \item \textbf{Calculate Number of Publications in the Impact Factor (IF) Period}: Count the number of publications
-          for each journal within the IF period.
+      \item \textbf{Calculate Number of Publications in the Impact Factor (IF) Period}: Count the number of publications
+            for each journal within the IF period (last 3 years).
 
-    \item \textbf{Calculate the Journal Impact Factor (JIF)}: Derive the JIF by dividing the number of citations by
-          the number of publications for each journal.
+      \item \textbf{Calculate the Journal Impact Factor (JIF)}: Derive the JIF by dividing the number of citations by
+            the number of publications for each journal.
 
-    \item \textbf{Identify the Top 20\% of Journals by Subject Based on JIF}: Select the top 20\% of journals within
-          each subject area based on their JIF\@.
+      \item \textbf{Identify the Top 20\% of Journals by Subject Based on JIF}: Select the top 20\% of journals within
+            each subject area based on their JIF\@.
 
-    \item \textbf{Create Filtered Works Tables from the Top Journals by Subject}: Generate tables that include works from
-          the top journals for each subject area, ensuring that only high-impact works are considered.
+      \item \textbf{Create Filtered Works Tables from the Top Journals by Subject}: Generate tables that include works from
+            the top journals for each subject area, ensuring that only high-impact works are considered.
 
-          %\item \textbf{Calculate the Average h-index for Each Subject Area}: Compute the average h-index for each subject area to
-          %      provide a benchmark for comparison.
+            %\item \textbf{Calculate the Average h-index for Each Subject Area}: Compute the average h-index for each subject area to
+            %      provide a benchmark for comparison.
 
-    \item \textbf{Calculate the Adjusted h-index for Each Author}: Determine the adjusted h-index for each author.
+      \item \textbf{Calculate the Adjusted h-index for Each Author}: Determine the adjusted h-index for each author.
 \end{enumerate}
 
 \section{ROLAP Analysis}
@@ -156,8 +160,9 @@ used to create and execute unit tests for the SQL queries. RDBUnit is a
 database unit testing framework that allows for the creation of test cases for
 SQL queries and stored procedures. The tool provides a simple and efficient way
 to express the setup prior to a query, the query itself, and the expected
-results. This framework can test \texttt{SELECT} queries as well as queries used for
-creating tables and views, offering flexibility in how tests are structured.
+results. This framework can test \texttt{SELECT} queries as well as queries
+used for creating tables and views, offering flexibility in how tests are
+structured.
 
 RDBUnit enables the embedding of all types of queries directly into the test
 script or the inclusion of queries from external files. It streamlines the
@@ -167,6 +172,7 @@ with setting up test environments. This makes RDBUnit an ideal choice for
 ensuring the accuracy and reliability of SQL queries used in the proposed
 methods, enhancing the overall robustness of the data analysis process.
 
+\section{Detailed calculation of the Adjusted h-indexes}
 
 
 
