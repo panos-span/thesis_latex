@@ -172,10 +172,113 @@ with setting up test environments. This makes RDBUnit an ideal choice for
 ensuring the accuracy and reliability of SQL queries used in the proposed
 methods, enhancing the overall robustness of the data analysis process.
 
-\section{Detailed calculation of the Adjusted h-indexes}
+\section{Detailed Calculation of the Adjusted h-indexes}
 
+In detail, for the calculation of the Adjusted h-indexes, the SQL tables are as
+follows:
 
+\subsection{Data from Crossref-2024 Dataset}
+\begin{itemize}
+      \item \textbf{Works}: Contains the works with their respective DOIs and the number of citations.
+      \item \textbf{Authors}: Contains the authors with their respective ORCID identifiers.
+      \item \textbf{Journals}: Contains the journals with their respective ISSNs and subject areas.
+      \item \textbf{ASJC}: Contains the ASJC codes for the subject areas.
+      \item \textbf{Work References}: Contains the references of the works.
+\end{itemize}
 
+\subsection{ROLAP Analysis Tables}
+
+\noindent\textbf{1: Data Preparation}
+\begin{itemize}
+      \item \textbf{works\_orcid}: Contains the works with their respective authors.
+      \item \textbf{works\_issn\_subject}: Contains the journals with their respective subject areas.
+      \item \textbf{work\_citations}: Contains the works with their respective citations.
+\end{itemize}
+
+\vspace{1em} % Add space to separate the comment
+\noindent\emph{For Impact Factor calculation only:}
+\begin{itemize}
+      \item \textbf{Citations}: Contains the works that were published in the last year and cited from works published in the last two years.
+      \item \textbf{Citable\_Works}: Contains the works that are longer than two pages.
+      \item \textbf{Publications}: Contains the number of publications for each journal within the IF period.
+\end{itemize}
+
+\noindent\textbf{2: Calculation of Journal h5 Index}
+\begin{itemize}
+      \item \textbf{issn\_subject\_h5}: Calculates the h5 index of the journals.
+\end{itemize}
+
+\noindent\textbf{3: Calculation of Journal Impact Factor (JIF)}
+\begin{itemize}
+      \item \textbf{impact\_factor}: Calculates the Journal Impact Factor (JIF) for each journal.
+\end{itemize}
+
+\noindent\textbf{4: Getting Top and Bottom Percentile of Journals}
+\begin{itemize}
+      \item \textbf{top\_issn\_by\_subject}: Contains the top 20\% of journals by subject based on the h5 index or JIF.
+      \item \textbf{bottom\_issn\_by\_subject}: Contains the bottom 60\% of journals by subject based on the h5 index or JIF.
+\end{itemize}
+
+\noindent\textbf{5: Filtered Works Tables}
+\begin{itemize}
+      \item \textbf{filtered\_works\_orcid}: Contains the works from the top journals by subject.
+      \item \textbf{bottom\_filtered\_works\_orcid}: Contains the works from the bottom journals by subject.
+\end{itemize}
+
+\noindent\textbf{6: Calculation of the Adjusted h-index}
+\begin{itemize}
+      \item \textbf{orcid\_h5\_filtered}: Calculates the h5 index for each author.
+      \item \textbf{orcid\_h5\_bottom}: Calculates the h5 index for each author from the 'lower quality' journals.
+\end{itemize}
+
+Figure \ref{fig:tables} shows the dependencies of each table for the
+implementation of the Adjusted h-index by filtering the top 20\% of journals by
+subject based on the h5 index.
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{../figs/h5.pdf}
+      \caption{Dependencies of the tables used in the implementation of the Adjusted h-index by filtering the top 20\% of journals by subject based on the h5 index.}
+      \label{fig:tables}
+\end{figure}
+
+Figure \ref{fig:tables2} shows the dependencies of each table for the
+implementation of the JIF-adjusted h-index by filtering the top 20\% of
+journals by subject based on the Journal Impact Factor (JIF).
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{../figs/impact.pdf}
+      \caption{Dependencies of the tables used in the implementation of the JIF-adjusted h-index by filtering the top 20\% of journals by subject based on the Journal Impact Factor (JIF).}
+      \label{fig:tables2}
+\end{figure}
+%Figure \ref{fig:tables} shows the dependencies of each table.
+%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{figures/tables.png}
+%    \caption{Dependencies of the tables used in the calculation of the Adjusted h-indexes.}
+%    \label{fig:tables}
+%\end{figure}
+
+%Figure \ref{fig:tables} shows the dependencies of each table.
+%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{figures/tables.png}
+%    \caption{Dependencies of the tables used in the calculation of the Adjusted h-indexes.}
+%    \label{fig:tables}
+%\end{figure}
+
+%Here we can see the dependencies of each table, see Figure \ref{fig:tables}.
+%
+%\begin{figure}[H]
+%      \centering
+%      \includegraphics[width=0.8\textwidth]{figures/tables.png}
+%      \caption{Dependencies of the tables used in the calculation of the Adjusted h-indexes.}
+%      \label{fig:tables}
+%\end{figure}
+%
 
 --- Methodology involves the design of research developed to test
 hypotheses or answer questions developed from the background section. Include
