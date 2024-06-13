@@ -38,27 +38,31 @@ received most of the data in zipped parquet files that were from November 2022
 to March 2024, which were then extracted and processed for further analysis.
 The data collection process was crucial for ensuring that we had the necessary
 information to build accurate predictive models for coil quality, and it laid
-the foundation for the subsequent data preprocessing and analysis steps.
+the foundation for the subsequent data preprocessing and analysis steps. For
+this task, we used Python libraries such as \emph{Pandas} and \emph{Dask} to
+handle the data and extract the necessary information for the analysis, where
+my colleague was primarily responsible for the data collection process.
 
 \subsection{Exploratory Data Analysis (EDA)}
 
 The exploratory data analysis (EDA) phase was crucial for understanding the
 given data and identifying patterns, trends, and anomalies that could provide
-insights into the quality of the cable splices. During the EDA phase, we
-firstly discovered that the data had many missing values along with duplicate
-or missing CoilNums of cable productions. We also observed that the quality
-distribution was highly imbalanced, with a majority of coils having a quality
-of label \emph{0.2} out of a possible range of \emph{0.2, 0.4, 1, $>1$, ΑΠΟΡ}.
-Specifically, the quality distribution was as follows: \emph{0.2} - 5761 coils,
-\emph{0.4} - 1102 coils, \emph{1} - 864 coils, `\emph{$>1$}` - 542 coils, and
-\emph{ΑΠΟΡ} - 42 coils. The best quality was \emph{0.2} and the quality
-decreased as the label increased, with \emph{ΑΠΟΡ} being the worst quality,
-which meant that the cable was to be scrapped. The quality labels represented
-the thickness of the cable splices, with \emph{0.2} being the lowest thickness
-and \emph{ΑΠΟΡ} being the highest thickness. Additionally, the production data
-had approximately 2 million rows and 245 columns, meaning that the quality of
-the cable splices was influenced by a large number of factors, which needed to
-be identified and analyzed to build accurate predictive models.
+insights into the quality of the cable splices, which was a task that I had
+been assigned to do. During the EDA phase, we firstly discovered that the data
+had many missing values along with duplicate or missing CoilNums of cable
+productions. We also observed that the quality distribution was highly
+imbalanced, with a majority of coils having a quality of label \emph{0.2} out
+of a possible range of \emph{0.2, 0.4, 1, $>1$, ΑΠΟΡ}. Specifically, the
+quality distribution was as follows: \emph{0.2} - 5761 coils, \emph{0.4} - 1102
+coils, \emph{1} - 864 coils, `\emph{$>1$}` - 542 coils, and \emph{ΑΠΟΡ} - 42
+coils. The best quality was \emph{0.2} and the quality decreased as the label
+increased, with \emph{ΑΠΟΡ} being the worst quality, which meant that the cable
+was to be scrapped. The quality labels represented the thickness of the cable
+splices, with \emph{0.2} being the lowest thickness and \emph{ΑΠΟΡ} being the
+highest thickness. Additionally, the production data had approximately 2
+million rows and 245 columns, meaning that the quality of the cable splices was
+influenced by a large number of factors, which needed to be identified and
+analyzed to build accurate predictive models.
 
 During the EDA phase, we also visualized the data using various techniques such
 as histograms, ridge and box plots, and correlation matrices to identify
@@ -113,6 +117,11 @@ engineering process was essential for transforming the raw data into a suitable
 format for machine learning algorithms and improving the predictive performance
 of the models.
 
+For this phase, me and me collegue decided to split the work, where I was
+responsible for the data cleaning and feature engineering process, while my
+colleague was responsible for the data preprocessing and the creation of the
+categorical labels for the quality of the coils.
+
 \subsection{Initial Experiments}
 
 Time series analysis in industrial settings often involves large amounts of
@@ -121,15 +130,37 @@ project focused on transforming a time series problem into a classification
 problem using \emph{tsfresh} for feature extraction. This approach differs from
 traditional forecasting.
 
-In our initial experiments, we tested various approaches to predicting coil
+In my initial experiments, I tested various approaches to predicting coil
 quality and tracked them using \emph{MLflow} to monitor the performance of the
-models. We experimented with different classification algorithms, including
-Random Forest, Gradient Boosting, and Neural Networks, to determine the most
-effective approach for predicting coil quality. We also used cross-validation
-techniques to evaluate the performance of the models and optimize their
-hyperparameters. The initial experiments provided valuable insights into the
-predictive performance of the models and guided the development of more
-sophisticated models in subsequent experiments.
+models. In order to perform the tracking of the experiments and gain access to
+the AzureML platform, I used \emph{Bash} and \emph{SSH} keys to connect to the
+platform and run the experiments, which I was not familiar with, but I managed
+to learn quickly and adapt to the new environment, thanks to the guidance of my
+colleague and the supervisor.
+
+I experimented with different classification algorithms, including
+Random Forest, Gradient Boosting, and Neural Networks by utilizing the Python
+libraries \emph{sklearn}, \emph{imbalanced-learn} and \emph{tensorflow}, to
+determine the most effective approach for predicting coil quality. I also used
+cross-validation techniques to evaluate the performance of the models and
+optimize their hyperparameters. The initial experiments provided valuable
+insights into the predictive performance of the models and guided the
+development of more sophisticated models in subsequent experiments.
+
+Important to also note is that the first two initial experiments were conducted
+with the intention of checking the feasibility to predict the quality of the
+cable coils from firstly predicting the value of 13 different features using
+Regression techniques by using different metrics, such as \emph{RMSE, MAE, and
+    R2}, and different models such as Linear Regression, Random Forest Regressor,
+and Gradient Boosting, along with Multi-Layer Perceptron Neural Networks.
+However, the initial experiments were not at all successful, as the features
+were too imbalanced, thus the predictions were not accurate.
+
+After discussions about this issue with the production team and the IT
+department, we decided to focus on predicting the quality of the cable coils,
+which was the main goal of the project and discard the initial two experiments,
+which only tested the feasibility of predicting the value of the some desired
+features.
 
 \textbf{Experiment 1: Predicting Value ΟΞΕΙΔΙΑ}
 \begin{itemize}
@@ -164,12 +195,12 @@ sophisticated models in subsequent experiments.
 
 \subsection{Grid Search and Cross-Validation}
 
-After the initial experiments, we focused on binary classification to predict
-the quality of the produced cable splices, where this time, after communicating
-with the production team and the IT department, we included the \emph{0.4}
-quality, so no coils would be left out. We implemented grid search and
-cross-validation to optimize model performance. Several classification
-algorithms were used, including \emph{XGBClassifier},
+After the initial experiments, me and my collegue focused together on binary
+classification to predict the quality of the produced cable splices, where this
+time, after communicating with the production team and the IT department, we
+included the \emph{0.4} quality, so no coils would be left out. We implemented
+grid search and cross-validation to optimize model performance. Several
+classification algorithms were used, including \emph{XGBClassifier},
 \emph{HistGradientBoostingClassifier}, \emph{LGBMClassifier}, and
 \emph{CatBoostClassifier}, by utilizing the \emph{sklearn} and
 \emph{imbalanced-learn} libraries for the models. We employed
@@ -198,12 +229,14 @@ model's predictions and make informed decisions based on the insights provided
 and that is the reason why more complex techniques such as Neural Networks were
 not used, as they are not as interpretable as the other models used. Below, we
 can see the Experiments that were conducted, in the Grid Search and
-Cross-Validation phase.
+Cross-Validation phase. 
 
 \textbf{Experiment 5: Multiclass Classification}
 \begin{itemize}
     \item Tried predicting all qualities present in the validation dataset.
-    \item Despite oversampling with SMOTE, the imbalanced dataset presented challenges.
+    \item Despite oversampling with SMOTE, the imbalanced dataset presented challenges in
+          predicting minority classes, leading to poor performance, thus we decided to
+          focus on binary classification.
 \end{itemize}
 
 \textbf{Experiment 6: Binary Classification with Grid Search and Time Series Cross-Validation}

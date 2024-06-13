@@ -8,18 +8,18 @@
 \end{titlepage}
 
 % Copyright
-%\clearpage
-%\vspace*{\fill}
-%\begin{minipage}{.9\textwidth}
-%\centerline{Department of Management Science and Technology}
-%\centerline{Athens University of Economics and Business}
-%\centerline{Email: {\tt t8200158@aueb.gr}}
-%\vspace{1cm}
-%\centerline{Copyright 2024 Author's Name}
-%\centerline{This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.}
-%\end{minipage}
-%\vfill % equivalent to \vspace{\fill}
-%\clearpage
+\clearpage
+\vspace*{\fill}
+\begin{minipage}{.9\textwidth}
+\centerline{Department of Management Science and Technology}
+\centerline{Athens University of Economics and Business}
+\centerline{Email: {\tt t8200158@aueb.gr}}
+\vspace{1cm}
+\centerline{Copyright 2024 Panagiotis-Alexios Spanakis}
+\centerline{This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.}
+\end{minipage}
+\vfill % equivalent to \vspace{\fill}
+\clearpage
 
 % Supervisor
 %\clearpage
@@ -50,11 +50,11 @@
 \fancyhead[L]{\thepage\ / \pageref{LastPage}}
 \fancyhead[R]{\it \rightmark}
 
-\pagenumbering{arabic}
 
 % Enter part 1
 \part{Thesis}
 
+\pagenumbering{arabic}
 
 \include{introduction}
 
@@ -72,8 +72,14 @@
 
 \include{conclusion}
 
+
 % Part 2
 \part{Internship Report}
+
+\pagenumbering{arabic}
+
+% Restart chapter numbering
+\setcounter{chapter}{0}
 
 \include{internship-intro}
 
