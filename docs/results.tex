@@ -17,7 +17,7 @@ Python using Python 3.11. The results are shown in Table
         \hline
         \textbf{Correlation}                            & \textbf{Pearson} & \textbf{Spearman} & \textbf{Kendall tau} \\ \hline
         \textbf{h-index vs. Adjusted h-index using H5}  & 0.686            & 0.69              & 0.637                \\ \hline
-        \textbf{h-index vs. Adjusted h-index using JIF} & 0.65             & 0.66              & 0.6                  \\ \hline
+        \textbf{h-index vs. Adjusted h-index using JIF} & 0.665            & 0.677             & 0.617                \\ \hline
     \end{tabular}
     \caption{Correlation between h-index and adjusted h-indexes}
     \label{tab:correlations}
@@ -29,7 +29,7 @@ Python using Python 3.11. The results are shown in Table
 
 From these results, we can see that the adjusted H-Indexes are significantly
 correlated with the traditional H-Index, with correlation coefficients in the
-range of 0.7 to 0.8. This indicates a strong positive relationship between the
+range of 0.6 to 0.7. This indicates a strong positive relationship between the
 traditional H-Index and the adjusted H-Indexes, suggesting that researchers who
 rank highly according to the traditional H-Index also tend to rank highly
 according to the adjusted H-Indexes.
@@ -46,8 +46,37 @@ traditional H-Index.
 
 \section{Citation Analysis of the Authors}
 
+H5 Subject: 3, Median Top: 0.12061895242569778, Median Other:
+0.03435056372755381, U-Statistic: 1911.0, P-Value: 2.4399118929522988e-08 The
+difference is statistically significant with P < 0.001 Subject: 4, Median Top:
+0.04135815236587267, Median Other: 0.03080501469488737, U-Statistic: 1247.0,
+P-Value: 0.03294797849590558 The difference is not statistically significant
+with P < 0.001
+
+JIF
+
+Subject: 3, Median Top: 0.12061895242569778, Median Other: 0.03435056372755381,
+U-Statistic: 1911.0, P-Value: 2.4399118929522988e-08 The difference is
+statistically significant with P < 0.001 Subject: 4, Median Top:
+0.04403025180614608, Median Other: 0.030680022578244537, U-Statistic: 1284.0,
+P-Value: 0.007434428081407975 The difference is not statistically significant
+with P < 0.001 Subject: 1, Median Top: 0.042738225640539806, Median Other:
+0.02961714248703334, U-Statistic: 974.0, P-Value: 0.09906714242171515 The
+difference is not statistically significant with P < 0.001 Subject: 2, Median
+Top: 0.0467306025773903, Median Other: 0.028553639048781703, U-Statistic:
+1078.0, P-Value: 0.01879255565716322 The difference is not statistically
+significant with P < 0.001 Subject: 3, Median Top: 0.04176583304883666, Median
+Other: 0.016453395082778308, U-Statistic: 148.0, P-Value: 0.005020543250527591
+The difference is not statistically significant with P < 0.001 Subject: 4,
+Median Top: 0.05819054773147987, Median Other: 0.03061241611503757,
+U-Statistic: 1129.0, P-Value: 0.000592212174513784 The difference is
+statistically significant with P < 0.001 Subject: 5, Median Top:
+0.05671566176295718, Median Other: 0.021164565486374284, U-Statistic: 1123.0,
+P-Value: 0.0007340212603217489 The difference is statistically significant with
+P < 0.001
+
 A noteworthy observation was the number of authors with a high metric: the
-top-ranked author has an h5-index of 76, x authors have an h5-index larger than
+top-ranked author has an h5-index of 89, x authors have an h5-index larger than
 60, and x larger than 38. These achievements appear to be even more difficult
 to explain than earlier observations of hyperprolific authors. It was found in
 2022 that works by authors with a high h5-index (greater than 50) are more
@@ -63,9 +92,49 @@ We explored as well the phenomenal productivity and impact exhibited by the
 authors at the top of the distribution (for the publications that were included
 in the top 20\% of the journals by rank) for the adjusted h-indexes by
 examining the clustering coefficient of the graph induced by incoming and
-outgoing citations of distance 2 for a given work. For the h-index calculated
-from the filtering of journals by rank using the H5-Index, the median
-clustering coefficient of the first group is 0.05, \dots
+outgoing citations of distance 2 for a given work. This was done for all five
+subject areas, and the results are shown in Table \ref{tab:clustering}.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Subject} & \textbf{Median Top} & \textbf{Median Other} & \textbf{P-Value} \\ \hline
+        1                & 0.0427              & 0.0296                & 0.0990           \\ \hline
+        2                & 0.0467              & 0.0286                & 0.0188           \\ \hline
+        3                & 0.0418              & 0.0165                & 0.0050           \\ \hline
+        4                & 0.0582              & 0.0306                & 0.0006           \\ \hline
+        5                & 0.0567              & 0.0212                & 0.0007           \\ \hline
+    \end{tabular}
+    \caption{Median clustering coefficients of the top authors and random top authors by filtering using H5}
+    \label{tab:clustering}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{Subject} & \textbf{Median Top} & \textbf{Median Other} & \textbf{P-Value}      \\ \hline
+    1                & 0.1206              & 0.0344                & $2.44 \times 10^{-8}$ \\ \hline
+    2                & 0.0414              & 0.0308                & 0.0329                \\ \hline
+    3                & 0.0440              & 0.0307                & 0.0074                \\ \hline
+    4                & 0.0467              & 0.0286                & 0.0188                \\ \hline
+    5                & 0.0567              & 0.0212                & 0.0007                \\ \hline
+\end{tabular}
+\caption{Median clustering coefficients of the top authors and random top authors by filtering using JIF}
+\label{tab:clustering}
+
+The results suggest that the clustering coefficients of the two groups are
+significantly different, indicating that the journal ranking has a significant
+impact on the formation of citation clusters. As we can see from the results,
+
+
+
+
+
+
+For the h-index calculated from the filtering of journals by rank using the
+H5-Index, the median clustering coefficient of the first group is 0.05, \dots
 
 For the h-index calculated from the filtering of journals by rank using the
 JIF, the median clustering coefficient of the first group is 0.05, \dots
