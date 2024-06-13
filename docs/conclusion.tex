@@ -1,7 +1,53 @@
 \chapter{Conclusion}
 \label{ch:conclusion}
 
-Summarize the main contributions of the research and how
-they address the research questions or hypotheses.
-Reflect on the implications of the findings, the limitations of the study,
-and suggests areas for future research.
+Summarize the main contributions of the research and how they address the
+research questions or hypotheses. Reflect on the implications of the findings,
+the limitations of the study, and suggests areas for future research.
+
+\section{Summary of Contributions}
+
+\section{Implications for Researchers and Practitioners}
+
+\section{Limitations of the Study}
+
+This study, while providing valuable insights into the effectiveness of
+adjusted H-Indexes, has several limitations that must be acknowledged.
+
+One significant limitation is the reliance on Crossref-2024 data, which did not
+include subject classifications for the journals. To address this, we used the
+subject classifications from the previous year’s data for the journals. This
+approach assumes that the subject classifications of journals do not change
+significantly from year to year, which may not always be the case.
+Additionally, we supplemented missing subject data using the Scopus API, which
+introduces another layer of dependency and potential inconsistencies. The
+reliance on historical data and external APIs for subject classification could
+lead to inaccuracies in the analysis, as some journals might have updated their
+scope or focus areas, and new journals may not have been appropriately
+classified.
+
+Moreover, our study filtered the publications to include only those in the top
+20\% of journals by subject rank. While this method ensures a focus on
+high-quality publications, it may exclude significant contributions from
+journals that do not rank in the top 20\% but are still reputable and impactful
+within their respective fields. This filtering criterion might bias the results
+towards researchers who publish predominantly in highly ranked journals,
+potentially overlooking the contributions of those whose work is more niche or
+interdisciplinary and published in lower-ranked but still respected journals.
+
+Another limitation is the scope of H-Index variants considered. While we
+developed and evaluated adjusted H-Indexes incorporating journal quality
+metrics, more advanced H-Index variants could further address issues such as
+self-citation and hyperauthorship, which are known to cause H-Index inflation.
+Variants like the fractional H-Index, which distributes citation credit more
+equitably among co-authors, or metrics that specifically account for
+self-citations, could provide a more refined measure of scholarly impact. Our
+study did not implement these more sophisticated variants, which might offer
+even better adjustments for the limitations of the traditional H-Index.
+
+In summary, while our study makes significant strides in refining the H-Index
+to account for journal quality and subject specificity, it is constrained by
+data limitations, the selection of H-Index variants, and the methods used for
+evaluation. Addressing these limitations in future research could further
+enhance the accuracy and fairness of bibliometric evaluations, providing a more
+robust tool for assessing scholarly impact.

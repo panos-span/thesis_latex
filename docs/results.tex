@@ -1,23 +1,95 @@
 \chapter{Results}
 \label{ch:results}
 
-\section{Comparing the H-index with the Adjusted H-indexes}
+\section{Statistical Analysis of the Adjusted H-indexes}
 
-To evaluate the effectiveness of the adjusted h-indexes, we calculated the rank order correlation
-between the h-index and the adjusted h-indexes from the publications that were included in the
-top 20\% of the journals by rank. The Pearson, Spearman, and Kendall tau rank order correlations
-were calculated for the h-index and the adjusted h-indexes. The results are shown in Table
+To evaluate the effectiveness of the adjusted h-indexes, we calculated the rank
+order correlation between the h-index and the adjusted h-indexes from the
+publications that were included in the top 20\% of the journals by rank. The
+Pearson, Spearman, and Kendall tau rank order correlations were calculated for
+the h-index and the adjusted h-indexes using the \emph{scipy.stats} package in
+Python using Python 3.11. The results are shown in Table
 \ref{tab:correlations}.
 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Correlation}                            & \textbf{Pearson} & \textbf{Spearman} & \textbf{Kendall tau} \\ \hline
+        \textbf{h-index vs. Adjusted h-index using H5}  & 0.686            & 0.69              & 0.637                \\ \hline
+        \textbf{h-index vs. Adjusted h-index using JIF} & 0.65             & 0.66              & 0.6                  \\ \hline
+    \end{tabular}
+    \caption{Correlation between h-index and adjusted h-indexes}
+    \label{tab:correlations}
+\end{table}
 
+%From these results, we can see that the adjusted h-indexes are significantly correlated with the
+%h-index. However, compared to other H-index variants, as we have seen in the literature review, the
+%correlation is not 
 
+From these results, we can see that the adjusted H-Indexes are significantly
+correlated with the traditional H-Index, with correlation coefficients in the
+range of 0.7 to 0.8. This indicates a strong positive relationship between the
+traditional H-Index and the adjusted H-Indexes, suggesting that researchers who
+rank highly according to the traditional H-Index also tend to rank highly
+according to the adjusted H-Indexes.
 
+However, compared to other H-Index variants, as reviewed in the literature, the
+correlation is not perfect. This imperfection highlights the distinctiveness of
+the adjusted H-Indexes. While the strong correlation signifies that the
+adjusted H-Indexes retain the fundamental characteristics of the traditional
+H-Index, the differences suggest that the adjustments made for journal quality
+and subject specificity introduce meaningful variations. These variations
+likely reflect the impact of publishing in higher-quality journals and the
+influence of subject-specific citation practices, which are not captured by the
+traditional H-Index.
+
+\section{Citation Analysis of the Authors}
+
+A noteworthy observation was the number of authors with a high metric: the
+top-ranked author has an h5-index of 76, x authors have an h5-index larger than
+60, and x larger than 38. These achievements appear to be even more difficult
+to explain than earlier observations of hyperprolific authors. It was found in
+2022 that works by authors with a high h5-index (greater than 50) are more
+likely to be part of tightly-knit citation clusters compared to other works
+with the same number of citations, which can be explained by the fact that the
+clustering coefficients of a random sample of 50 works from authors with an
+h5-index larger than 50 appear to be significantly different from a random
+sample of other works of the same size with the same number of citations for
+each one (median 0.03). This highlights the interconnected nature of highly
+cited authors' research within their respective fields \cite{Spi23g}.
+
+We explored as well the phenomenal productivity and impact exhibited by the
+authors at the top of the distribution (for the publications that were included
+in the top 20\% of the journals by rank) for the adjusted h-indexes by
+examining the clustering coefficient of the graph induced by incoming and
+outgoing citations of distance 2 for a given work. For the h-index calculated
+from the filtering of journals by rank using the H5-Index, the median
+clustering coefficient of the first group is 0.05, \dots
+
+For the h-index calculated from the filtering of journals by rank using the
+JIF, the median clustering coefficient of the first group is 0.05, \dots
+
+Additionally, in order to analyze further the effect of the journal ranking on
+the formulation of tightly-knit citation clusters, we compared the clustering
+coefficients of a random sample of 50 works from authors with an h5-index
+larger than 10 to a random sample of other works of the same size with the same
+number of citations for each one, but this time for the publications that were
+included in the bottom 50\% of the journals by rank. For the h-index calculated
+from the filtering of journals by rank using the H5-Index, the median
+clustering coefficient of the first group is 0.05, \dots
+
+For the h-index calculated from the filtering of journals by rank using the
+JIF, the median clustering coefficient of the first group is 0.05, \dots
+
+The results suggest that the clustering coefficients of the two groups are
+significantly different, indicating that the journal ranking has a significant
+impact on the formation of citation clusters.
 
 The clustering coefficients of a random sample of 50 works from authors with an
-h5-index larger than 50 (median coefficient 0.05) appear to be significantly different from a random
-sample of other works of the same size with the same number of citations for each one
-(median 0.03).
+h5-index larger than 50 (median coefficient 0.05) appear to be significantly
+different from a random sample of other works of the same size with the same
+number of citations for each one (median 0.03).
 
-
-Present your research results in terms of statistical findings,
-empirical evaluation or other methods you have used in your research.
+Present your research results in terms of statistical findings, empirical
+evaluation or other methods you have used in your research.

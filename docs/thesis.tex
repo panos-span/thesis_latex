@@ -52,6 +52,9 @@
 
 \pagenumbering{arabic}
 
+% Enter part 1
+\part{Thesis}
+
 
 \include{introduction}
 
@@ -69,6 +72,23 @@
 
 \include{conclusion}
 
+% Part 2
+\part{Internship Report}
+
+\include{internship-intro}
+
+\include{description}
+
+\include{project}
+
+\include{results-int}
+
+\include{timetable}
+
+\include{skills}
+
+\include{comments}
+
 % Your appendix
 % \appendix
 % \chapter*{Appendix I} \label{appendix}
@@ -79,11 +99,9 @@
 \bibliographystyle{plain}
 \bibliography{thesis-bib}
 
-\chapter*{List of Publications}
-\input{publications}
-
 \appendix
 
 \include{appendix}
+
 
 \end{document}

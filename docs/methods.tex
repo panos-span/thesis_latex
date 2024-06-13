@@ -6,14 +6,14 @@
 The proposed method aims to address the problem of h-index inflation by
 developing two novel metrics that adjusts for the subject area and the quality
 of the journal in which the publication is published. The first metric, the
-\textit{Adjusted h-index} ($h_{\text{adj}}$), adjusts the h-index by the
-average h-index of the subject area in which the publication is published and
-only considers publications from the top 20\% of journals in the subject area.
-The second metric, the \textit{JIF-adjusted h-index} ($h_{\text{JIF}}$),
-adjusts the h-index by the average Journal Impact Factor (JIF) of the journal
-in which the publication is published and, similarly, only considers
-publications from the top 20\% of journals in the subject area. The proposed
-method is implemented in SQL and the data is stored in a Sqlite database.
+\textit{Adjusted h-index} ($h_{\text{adj}}$), adjusts the h-index by only
+considering publications from the top 20\% of journals in it's corresponding
+subject area, based on the h5 index of the journal. The second metric, the
+\textit{JIF-adjusted h-index} ($h_{\text{JIF}}$), adjusts the h-index
+similarly, but the ranking of the journals is determined by the Journal Impact
+Factor (JIF) of the journal in which the publication is published. The proposed
+method is implemented in \emph{SQL} and the data is stored in a Sqlite
+database.
 
 \section{Data Collection and Preprocessing}
 
@@ -74,9 +74,11 @@ difference being the metrics (H5 and IF3) used to rank the journals. In order
 to use the subject codes from the Scopus ASJC classification, since they are
 not available in the Crossref-2024 dataset, the journals (ISSN) along with
 their subject codes were extracted from the Crossref-2023 dataset and stored in
-a separate table. After that, the preparation of the database involves creating
-tables to store and index works and authors, as well as a common table for
-journals by ISSN and subject.
+a separate table. Additionally, if the ASJC codes were not available for a
+journal, even from the Crossref-2023 dataset, the Scopus API was used to
+retrieve the subject codes, if possible. After that, the preparation of the
+database involves creating tables to store and index works and authors, as well
+as a common table for journals by ISSN and subject.
 
 \subsection{Calculation of the Adjusted h-index}
 
