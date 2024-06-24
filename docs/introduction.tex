@@ -47,9 +47,9 @@ ensuring that the metric truly reflects the scholarly impact of researchers.
 
 \section{Problem Statement}
 The traditional H-Index has significant limitations affecting its reliability
-and accuracy as a measure of scholarly impact. Primarily, it fails to
-differentiate between the quality of journals where papers are published,
-allowing authors to achieve high H-Indexes through publications in
+and accuracy as a measure of scholarly impact. Primarily, as mentioned, it
+fails to differentiate between the quality of journals where papers are
+published, allowing authors to achieve high H-Indexes through publications in
 lower-quality journals, thereby inflating their perceived impact
 \cite{costas2007h,tonta2020monetary}. This issue is exacerbated in
 interdisciplinary research, where measured journal quality can vary widely
@@ -89,23 +89,23 @@ calculations that incorporate journal quality through subject-specific
 rankings. The specific objectives are as follows:
 \begin{enumerate}
       \item \textbf{Develop H-Index Metrics:} Create two H-Index metrics that incorporate journal quality
-            by using subject-specific rankings based on H5-Index and impact factor.
+            by using subject-specific rankings based on H5-Index and journal impact factor (JIF).
             This involves selecting the top 20\% of journals within each subject area and calculating the H-Index based on publications
             in these high-quality journals.
             %\item \textbf{Evaluate the Impact of Journal Quality:} Analyze how incorporating journal quality affects the H-Index calculation.
             %      This includes comparing the traditional H-Index with the proposed H-Indexes to determine the extent to which the latter
             %      provide a more accurate representation of a scholar’s impact.
       \item \textbf{Assess Correlation Between Traditional H-Index and Proposed H-Indexes:} Assess the correlation between the traditional H-Index
-            and the proposed H-Indexes. This involves statistical analysis, including rank order correlation
-            and rank-biased overlap, to evaluate the consistency and divergence in author rankings when different criteria for journal quality are applied.
-      \item \textbf{Conduct Network Analysis of Citation Patterns:} Perform network analysis of citation patterns,
-            examining the citation graphs of highly ranked authors based on their publications in lower-ranked versus
-            higher-ranked journals within specific subjects. The analysis will focus on network characteristics such as
-            clustering coefficients and citation patterns at a distance of two degrees.
-      \item \textbf{Compare Citation Behaviors Across Journal Quality:} Compare citation behaviors and network characteristics
-            of authors publishing in the bottom 25\% of journals with those publishing in higher-ranked journals.
-            This comparison aims to understand the differences in citation patterns and the implications for using
-            citation network analysis in evaluating research impact.
+            and the proposed H-Indexes. This involves statistical analysis by rank order correlation
+            to evaluate the consistency and divergence in author rankings when different criteria for journal quality are applied.
+      \item \textbf{Analyze Citation Practices and conduct Network Analysis of Citation Patterns:} Analyze citation practices of authors publishing in high- and low-ranked journals
+            and examine the citation graphs of highly ranked authors based on their publications in lower-ranked versus
+            higher-ranked journals within their specific subjects. The analysis will focus on network characteristics such as
+            clustering coefficients and citation patterns. % TODO: CHANGE AFTER BEING DONE
+            %\item \textbf{Compare Citation Behaviors Across Journal Quality:} Compare citation behaviors and network characteristics
+            %      of authors publishing in the bottom 50\% of journals with those publishing in higher-ranked journals.
+            %      This comparison aims to understand the differences in citation patterns and the implications for using
+            %      citation network analysis in evaluating research impact.
       \item \textbf{Provide Practical Recommendations:} Offer practical recommendations for academic institutions,
             funding agencies, and researchers. These recommendations will focus on the use of H-Indexes and the importance of
             considering journal quality in research evaluations, aiming to promote more equitable and accurate assessments of scholarly impact.
@@ -136,10 +136,9 @@ understanding and evaluating the proposed H-Index calculations.
             The Results chapter presents the findings of the research.
             It includes a detailed analysis of the effectiveness of the adjusted H-Indexes,
             examining the correlation between traditional and proposed H-Indexes.
-            This chapter also includes a network
+            This chapter also includes a citation practices analysis and a network
             analysis of citation patterns, highlighting the differences in citation networks between
-            top and random authors based on their publications in high- and low-ranked journals,
-            by subject.
+            top and random authors by subject. % TODO: CHANGE AFTER BEING DONE!!
 
       \item \textbf{Chapter 6: Discussion and Implications} \\
             The Discussion and Implications chapter interprets the findings of the study,
