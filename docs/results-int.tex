@@ -1,16 +1,17 @@
 \chapter{Detailed Description and Results}
 \label{sec:results-int}
 
-\section{Fulgor AI Project}
+\section{Cable Coil Prediction AI Project}
 
-The Fulgor AI project aimed to develop an AI-powered solution for predicting
-the quality of produced cable splices using IoT time series data from cable
-production processes. This project was essential in helping the client optimize
-their production process, reduce costs, and improve overall product quality.
+The Cable Coil Prediction AI Project aimed to develop an AI-powered solution
+for predicting the quality of produced cable coils using IoT time series data
+from cable production processes. This project was essential in helping the
+client optimize their production process, reduce costs, and improve overall
+product quality.
 
-The primary goal of the Fulgor AI project was to provide an end-to-end (E2E) AI
-solution that could predict coil quality and identify the factors affecting it.
-The business value of this project included reducing production costs by
+The primary goal of the project was to provide an end-to-end (E2E) AI solution
+that could predict coil quality and identify the factors affecting it. The
+business value of this project included reducing production costs by
 identifying early signals of low-quality coils, reducing manual effort by
 automating the identification of factors affecting quality, and reducing
 downtime by alerting production teams to potential issues in real-time.
@@ -22,16 +23,16 @@ to forecast coil quality, and providing actionable insights to the production
 team, by working closely with the production team and the IT department, with
 the assistance and guidance of our supervisor.
 
-\subsection{Data Collection}
+\section{Data Collection}
 
 The data collection process involved gathering various datasets from multiple
 sources provided by the client after many discussions and meetings about what
 is needed and how to collect it. We received historian data on 2 April 2024,
 which was later supplemented with additional data containing missing tags on 15
-April 2024. We also collected Factory Talk data on 8 April 2024, flipchart data
-on 8 April 2024, and Excel `ΠΑΡΑΓΩΓΗ` data on 15 April 2024. The historian data
-contained information on the production process, while the Factory Talk data
-provided details on the duration of the process. The flipchart and Excel data
+April 2024. We also collected Factory data on 8 April 2024, flipchart data on 8
+April 2024, and prdouction data on 15 April 2024. The historian data contained
+information on the production process, while the Factory Talk data provided
+details on the duration of the process. The flipchart and production data
 contained labels for the quality of the produced coils. The data was collected
 in a structured format to facilitate further analysis and modeling tasks. We
 received most of the data in zipped parquet files that were from November 2022
@@ -41,28 +42,30 @@ information to build accurate predictive models for coil quality, and it laid
 the foundation for the subsequent data preprocessing and analysis steps. For
 this task, we used Python libraries such as \emph{Pandas} and \emph{Dask} to
 handle the data and extract the necessary information for the analysis, where
-my colleague was primarily responsible for the data collection process.
+my colleague was primarily responsible for the streamlining of the data
+collection and normalization process.
 
-\subsection{Exploratory Data Analysis (EDA)}
+\section{Exploratory Data Analysis (EDA)}
 
 The exploratory data analysis (EDA) phase was crucial for understanding the
 given data and identifying patterns, trends, and anomalies that could provide
-insights into the quality of the cable splices, which was a task that I had
-been assigned to do. During the EDA phase, we firstly discovered that the data
-had many missing values along with duplicate or missing CoilNums of cable
-productions. We also observed that the quality distribution was highly
-imbalanced, with a majority of coils having a quality of label \emph{0.2} out
-of a possible range of \emph{0.2, 0.4, 1, $>1$, ΑΠΟΡ}. Specifically, the
-quality distribution was as follows: \emph{0.2} - 5761 coils, \emph{0.4} - 1102
-coils, \emph{1} - 864 coils, `\emph{$>1$}` - 542 coils, and \emph{ΑΠΟΡ} - 42
-coils. The best quality was \emph{0.2} and the quality decreased as the label
-increased, with \emph{ΑΠΟΡ} being the worst quality, which meant that the cable
-was to be scrapped. The quality labels represented the thickness of the cable
-splices, with \emph{0.2} being the lowest thickness and \emph{ΑΠΟΡ} being the
-highest thickness. Additionally, the production data had approximately 2
-million rows and 245 columns, meaning that the quality of the cable splices was
-influenced by a large number of factors, which needed to be identified and
-analyzed to build accurate predictive models.
+insights into the quality of the cable coils, which was a task that I had been
+assigned to do. The qualities were 5 labels, with the first one being the best
+quality and the last one being the worst quality, with the quality decreasing
+as we moved from the first to the last label, where the last label meant that
+the cable was to be scrapped. The quality labels represented the thickness of
+the cable coils, the best being the lowest thickness and the worst being the
+highest thickness.
+
+During the EDA phase, we firstly discovered that the data had many missing
+values along with duplicate or missing CoilNums of cable productions. We also
+observed that the quality distribution was highly imbalanced. Specifically, the
+quality distribution was as follows: \emph{1st} - 5761 coils, \emph{2nd} - 1102
+coils, \emph{3rd} - 864 coils, `\emph{4th}` - 542 coils, and \emph{5th} - 42
+coils. Additionally, the production data had approximately 2 million rows and
+245 columns, meaning that the quality of the cable coils was influenced by a
+large number of factors, which needed to be identified and analyzed to build
+accurate predictive models.
 
 During the EDA phase, we also visualized the data using various techniques such
 as histograms, ridge and box plots, and correlation matrices to identify
@@ -84,27 +87,27 @@ such as the Augmented Dickey-Fuller (ADF) test were conducted to check for
 stationarity in the time series data.
 
 We also identified several key features that could potentially impact the
-quality of the cable splices, such as production time, temperature, pressure,
-and other process variables, by summarizing the dataset to understand its
-structure and basic statistics, including mean, median, standard deviation,
-minimum, and maximum values for each feature, where we noticed that the
-variance of the features could be a key factor affecting the quality of the
-cable splices. The EDA phase provided valuable insights into the structure and
-quality of the data, which guided the subsequent data preprocessing and feature
-engineering steps.
+quality of the cable coils, such as production time, temperature, pressure, and
+other process variables, by summarizing the dataset to understand its structure
+and basic statistics, including mean, median, standard deviation, minimum, and
+maximum values for each feature, where we noticed that the variance of the
+features could be a key factor affecting the quality of the cable coils. The
+EDA phase provided valuable insights into the structure and quality of the
+data, which guided the subsequent data preprocessing and feature engineering
+steps.
 
-\subsection{Data Preprocessing}
+\section{Data Preprocessing}
 
 The data preparation and preprocessing steps included joining the historian
 data, filtering Factory Talk data by duration (12-18 minutes), removing
 duplicate CoilNums from Factory Talk, retrieving CoilNums based on historian
-data timestamps, joining flipchart and Excel `Παραγωγή` to obtain labels, and
-merging historian data with quality and labels. We also removed \emph{ΑΠΟΡ}
-labels, filtered out outlier values, and excluded columns with high occurrences
-of missing values and zeros. Additionally, we cleaned invalid values and
-created categorical labels for the quality of the coils. After, again
-communicating with the production team and the IT department, we kept only the
-columns that were known to impact quality.
+data timestamps, joining flipchart and production data to obtain labels, and
+merging historian data with quality and labels. We also removed the last label,
+filtered out outlier values, and excluded columns with high occurrences of
+missing values and zeros. Additionally, we cleaned invalid values and created
+categorical labels for the quality of the coils. After, again communicating
+with the production team and the IT department, we kept only the columns that
+were known to impact quality.
 
 The data preprocessing phase also included the feature engineering process,
 where we extracted relevant features from the raw data to improve the accuracy
@@ -117,12 +120,12 @@ engineering process was essential for transforming the raw data into a suitable
 format for machine learning algorithms and improving the predictive performance
 of the models.
 
-For this phase, me and me collegue decided to split the work, where I was
+For this phase, me and my collegue decided to split the work, where I was
 responsible for the data cleaning and feature engineering process, while my
 colleague was responsible for the data preprocessing and the creation of the
 categorical labels for the quality of the coils.
 
-\subsection{Initial Experiments}
+\section{Initial Experiments}
 
 Time series analysis in industrial settings often involves large amounts of
 data that need to be processed, analyzed, and used for predictive tasks. The
@@ -130,7 +133,7 @@ project focused on transforming a time series problem into a classification
 problem using \emph{tsfresh} for feature extraction. This approach differs from
 traditional forecasting.
 
-In my initial experiments, I tested various approaches to predicting coil
+In my initial experiments, I tested various approaches for predicting coil
 quality and tracked them using \emph{MLflow} to monitor the performance of the
 models. In order to perform the tracking of the experiments and gain access to
 the AzureML platform, I used \emph{Bash} and \emph{SSH} keys to connect to the
@@ -148,7 +151,7 @@ insights into the predictive performance of the models and guided the
 development of more sophisticated models in subsequent experiments.
 
 Important to also note is that the first two initial experiments were conducted
-with the intention of checking the feasibility to predict the quality of the
+with the intention of checking the feasibility of predicting the quality of the
 cable coils from firstly predicting the value of 13 different features using
 Regression techniques by using different metrics, such as \emph{RMSE, MAE, and
     R2}, and different models such as Linear Regression, Random Forest Regressor,
@@ -169,38 +172,38 @@ features.
     \item Outcome: Low accuracy led to further exploration.
 \end{itemize}
 
-\textbf{Experiment 2: Predicting Categorical Label (ΜΕΤΡΗΣΗ 4)}
+\textbf{Experiment 2: Predicting a Categorical Label}
 \begin{itemize}
-    \item Goal: Predict the categorical label ΜΕΤΡΗΣΗ 4.
+    \item Goal: Predict a categorical label suggested by the clients.
     \item Limitations: Class imbalance.
     \item Results: Insufficient data to determine the significance of features for
           prediction.
 \end{itemize}
 
-\textbf{Experiment 3: Predicting Quality Sum}
+\textbf{Experiment 3: Predicting Quality}
 \begin{itemize}
-    \item Goal: Predict Quality Sum: \emph{0.2, 0.4, 1, $>1$, ΑΠΟΡ}.
+    \item Goal: Predict Quality of Cable Coils.
     \item Limitations: Class imbalance.
     \item Results: No evident differences in class prediction.
 \end{itemize}
 
 \textbf{Experiment 4: Binary Classification}
 \begin{itemize}
-    \item Approach: Classify as `Good` \emph{(0.2)} and `Not Good` \emph{(1, `$>1$`,
-              ΑΠΟΡ)} and drop \emph{0.4} coils due to ambiguity with `Good`, as they were
-          barely distinguishable.
+    \item Approach: Classify as `Good` \emph{(1st)} label and `Not Good` \emph{(all
+              labels excet the 1st and 2nd)} and drop the \emph{2nd} label quality coils due
+          to ambiguity with `Good`, as they were barely distinguishable.
     \item Limitations: Class imbalance.
     \item Rationale: Refined previous experiments based on insights gained.
 \end{itemize}
 
-\subsection{Grid Search and Cross-Validation}
+\section{Grid Search and Cross-Validation}
 
 After the initial experiments, me and my collegue focused together on binary
-classification to predict the quality of the produced cable splices, where this
+classification to predict the quality of the produced cable coils, where this
 time, after communicating with the production team and the IT department, we
-included the \emph{0.4} quality, so no coils would be left out. We implemented
-grid search and cross-validation to optimize model performance. Several
-classification algorithms were used, including \emph{XGBClassifier},
+included the \emph{2nd} label of quality, so no coils would be left out. We
+implemented grid search and cross-validation to optimize model performance.
+Several classification algorithms were used, including \emph{XGBClassifier},
 \emph{HistGradientBoostingClassifier}, \emph{LGBMClassifier}, and
 \emph{CatBoostClassifier}, by utilizing the \emph{sklearn} and
 \emph{imbalanced-learn} libraries for the models. We employed
@@ -220,7 +223,7 @@ comprehensive evaluation of the model's performance across different
 thresholds, which also accounted for the class imbalance in the dataset, since
 the AUC score is not affected by class imbalance like accuracy is. After
 developing the models, we used \emph{SHAP} to explain the model predictions and
-identify the key features that influenced the quality of the cable splices. For
+identify the key features that influenced the quality of the cable coils. For
 the evaluation of the results, the interpretability of the model was crucial,
 as it provided valuable insights into the factors affecting coil quality which
 could be used to improve the production process. Hence, the interpretability of
@@ -245,9 +248,9 @@ Cross-Validation phase.
     \item Used SHAP to explain model predictions.
 \end{itemize}
 
-\textbf{Experiment 7: Including Quality 0.4 in Binary Classification}
+\textbf{Experiment 7: Including Quality of \emph{2nd} label in Binary Classification}
 \begin{itemize}
-    \item Included coils with a quality sum of 0.4 in the `good` category.
+    \item Included coils with the \emph{2nd} label quality in the `good` category.
     \item Improved model performance.
 \end{itemize}
 
@@ -258,45 +261,44 @@ Cross-Validation phase.
     \item Improved predictive performance even further.
 \end{itemize}
 
-\subsection{Validation}
+\section{Validation}
 
 For the validation phase, we applied the same preprocessing steps used for the
 training dataset. However, we only retained the selected features chosen during
 the training dataset preprocessing. Invalid values were removed to ensure the
-quality of the validation dataset. Moreover, the validation dataset was where
-the coils produced in April 2024, which were not used for training the models.
-The validation dataset had a shape of 53.226 rows and 205 columns, with 559
-unique CoilNums. The value counts for binary classification were 423 `Good` and
-91 `Bad` coils. The validation dataset was necessary to not include data that
-the models had seen before, in order to effectively validate the models to
-ensure their accuracy and reliability in predicting the quality of the produced
-cable splices.
+quality of the validation dataset. Moreover, the validation dataset contained
+coils produced in April 2024, which were not used for training the models. The
+validation dataset had a shape of 53.226 rows and 205 columns, with 559 unique
+CoilNums. The value counts for binary classification were 423 `Good` and 91
+`Bad` coils. The validation dataset was necessary to not include data that the
+models had seen before, in order to effectively validate the models to ensure
+their accuracy and reliability in predicting the quality of the produced cable
+coils.
 
 After all the previous experiments, we conducted the final experiment, which
 was the most successful one, where we included the quality of the previous two
 coils as additional features, which significantly improved model performance,
-achieving an AUC score of 76\%. This approach leveraged the temporal nature of
-the data and captured the sequential relationship between coils, which was
-crucial for predicting coil quality accurately. The final model was able to
-predict the quality of the produced cable splices with high accuracy,
-considering the imbalanced nature of the dataset and the temporal dependencies
-between coils. The model was able to identify some key indicators of coil
-quality such as the variance as we had previously observed during the EDA
-phase, which was crucial for improving the production process and reducing
-costs.
+achieving an AUC score of 76\%, with the best-performing model being the
+\emph{CatBoostClassifier}. This approach leveraged the temporal nature of the
+data and captured the sequential relationship between coils, which was crucial
+for predicting coil quality accurately. The final model was able to predict the
+quality of the produced cable coils with high accuracy, considering the
+imbalanced nature of the dataset and the temporal dependencies between coils.
+The model was able to identify some key indicators of coil quality such as the
+variance as we had previously observed during the EDA phase, which was crucial
+for improving the production process and reducing costs.
 
-\subsection{Conclusion}
+\section{Conclusion}
 
-The Fulgor AI project successfully developed and delivered predictive models
-that accurately forecasted the quality of produced cable splices. Key
-achievements included implementing advanced data preprocessing and feature
-engineering techniques, creating comprehensive data visualizations and reports,
-and using model explainability techniques to derive meaningful insights.
-Incorporating the quality of previous coils as additional features
-significantly improved model performance at the end, leaving the client with a
-highly accurate and reliable AI-powered solution for predicting coil quality,
-that was later also presented at an energy conference in Athens, Greece in May
-2024.
+The project successfully developed and delivered predictive models that
+accurately forecasted the quality of produced cable coils. Key achievements
+included implementing advanced data preprocessing and feature engineering
+techniques, creating comprehensive data visualizations and reports, and using
+model explainability techniques to derive meaningful insights. Incorporating
+the quality of previous coils as additional features significantly improved
+model performance at the end, leaving the client with a highly accurate and
+reliable AI-powered solution for predicting coil quality, that was later also
+presented at an energy conference in Athens, Greece in May 2024.
 
 Overall, the project provided valuable experience in applying data science and
 machine learning techniques to solve real-world problems, contributing to both

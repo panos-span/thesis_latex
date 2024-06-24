@@ -3,21 +3,25 @@
 
 \section{Statistical Analysis of the Adjusted H-indexes}
 
-To evaluate the effectiveness of the adjusted h-indexes, we calculated the rank
-order correlation between the h-index and the adjusted h-indexes from the
-publications that were included in the top 20\% of the journals by rank. The
-Pearson, Spearman, and Kendall tau rank order correlations were calculated for
-the h-index and the adjusted h-indexes using the \emph{scipy.stats} package in
-Python using Python 3.11. The results are shown in Table
-\ref{tab:correlations}.
+To evaluate the relationship of the adjusted h-indexes with the traditional
+h-index, we calculated the rank order correlation between the h-index and the
+adjusted h-indexes from the publications that were included in the top 20\% of
+the journals by rank. The Pearson, Spearman, and Kendall tau rank order
+correlations were calculated for the h-index and the adjusted h-indexes using
+the \emph{scipy.stats} package in Python using Python 3.11.9. The results are
+shown in Table \ref{tab:correlations}.
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{|c|c|c|c|}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|>{\centering\arraybackslash}m{6cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|}
         \hline
-        \textbf{Correlation}                            & \textbf{Pearson} & \textbf{Spearman} & \textbf{Kendall tau} \\ \hline
-        \textbf{h-index vs. Adjusted h-index using H5}  & 0.686            & 0.69              & 0.637                \\ \hline
-        \textbf{h-index vs. Adjusted h-index using JIF} & 0.665            & 0.677             & 0.617                \\ \hline
+        \textbf{Correlation}                            & \textbf{Pearson} & \textbf{Spearman} & \textbf{Kendall tau} \\
+        \hline
+        \textbf{h-index vs. Adjusted h-index using H5}  & 0.686            & 0.693             & 0.637                \\
+        \hline
+        \textbf{h-index vs. Adjusted h-index using JIF} & 0.667            & 0.678             & 0.616                \\
+        \hline
     \end{tabular}
     \caption{Correlation between h-index and adjusted h-indexes}
     \label{tab:correlations}
@@ -32,9 +36,13 @@ correlated with the traditional H-Index, with correlation coefficients in the
 range of 0.6 to 0.7. This indicates a strong positive relationship between the
 traditional H-Index and the adjusted H-Indexes, suggesting that researchers who
 rank highly according to the traditional H-Index also tend to rank highly
-according to the adjusted H-Indexes.
+according to the adjusted H-Indexes. More specifically, the Pearson correlation
+coefficients indicate a strong linear relationship, while the Spearman
+correlation coefficients suggest a strong monotonic relationship. Lastly, the
+Kendall tau correlation indicate a strong ordinal relationship between the
+traditional H-Index and the adjusted H-Indexes.
 
-However, compared to other H-Index variants, as reviewed in the literature, the
+Compared to other H-Index variants, as reviewed in the literature, the
 correlation is not perfect. This imperfection highlights the distinctiveness of
 the adjusted H-Indexes. While the strong correlation signifies that the
 adjusted H-Indexes retain the fundamental characteristics of the traditional
@@ -44,121 +52,260 @@ likely reflect the impact of publishing in higher-quality journals and the
 influence of subject-specific citation practices, which are not captured by the
 traditional H-Index.
 
-\section{Citation Analysis of the Authors}
+To further investigate the relationship between the traditional H-Index and the
+adjusted H-Indexes, we calculated the number of authors with adjusted H-indexes
+and traditional H-index above certain thresholds, along with their max values.
+The results are shown in Table \ref{tab:thresholds}, where we can see that the
+adjusted H-Indexes reduce the number of authors with high H-indexes compared to
+the traditional H-Index, leading to disinflation of the H-index values and
+potentially to a more accurate representation of the authors' scholarly impact.
 
-H5 Subject: 3, Median Top: 0.12061895242569778, Median Other:
-0.03435056372755381, U-Statistic: 1911.0, P-Value: 2.4399118929522988e-08 The
-difference is statistically significant with P < 0.001 Subject: 4, Median Top:
-0.04135815236587267, Median Other: 0.03080501469488737, U-Statistic: 1247.0,
-P-Value: 0.03294797849590558 The difference is not statistically significant
-with P < 0.001
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|}
+        \hline
+        \textbf{Threshold} & \textbf{Adjusted H-Index using H5} & \textbf{Adjusted H-Index using JIF} & \textbf{Traditional H-Index} \\
+        \hline
+        $>40$              & 179                                & 179                                 & 213                          \\
+        \hline
+        $>50$              & 52                                 & 52                                  & 62                           \\
+        \hline
+        $>60$              & 19                                 & 19                                  & 20                           \\
+        \hline
+        \emph{Max}         & 87                                 & 87                                  & 98                           \\
+        \hline
+    \end{tabular}
+    \caption{Number of authors with adjusted h-indexes and traditional h-index above certain thresholds}
+    \label{tab:thresholds}
+\end{table}
 
-JIF
+\section{Citation Practices of Authors}
 
-Subject: 3, Median Top: 0.12061895242569778, Median Other: 0.03435056372755381,
-U-Statistic: 1911.0, P-Value: 2.4399118929522988e-08 The difference is
-statistically significant with P < 0.001 Subject: 4, Median Top:
-0.04403025180614608, Median Other: 0.030680022578244537, U-Statistic: 1284.0,
-P-Value: 0.007434428081407975 The difference is not statistically significant
-with P < 0.001 Subject: 1, Median Top: 0.042738225640539806, Median Other:
-0.02961714248703334, U-Statistic: 974.0, P-Value: 0.09906714242171515 The
-difference is not statistically significant with P < 0.001 Subject: 2, Median
-Top: 0.0467306025773903, Median Other: 0.028553639048781703, U-Statistic:
-1078.0, P-Value: 0.01879255565716322 The difference is not statistically
-significant with P < 0.001 Subject: 3, Median Top: 0.04176583304883666, Median
-Other: 0.016453395082778308, U-Statistic: 148.0, P-Value: 0.005020543250527591
-The difference is not statistically significant with P < 0.001 Subject: 4,
-Median Top: 0.05819054773147987, Median Other: 0.03061241611503757,
-U-Statistic: 1129.0, P-Value: 0.000592212174513784 The difference is
-statistically significant with P < 0.001 Subject: 5, Median Top:
-0.05671566176295718, Median Other: 0.021164565486374284, U-Statistic: 1123.0,
-P-Value: 0.0007340212603217489 The difference is statistically significant with
-P < 0.001
+In the process of analyzing citation practices, it is essential to compare
+different groups of authors to understand their impact and engagement within
+the academic community. This analysis focuses on two distinct groups: top
+authors publishing in lower-tier journals and randomly selected authors
+publishing in top-tier journals. By examining the h-index of the journals these
+authors cite, we aim to uncover citation practises and provide insights into
+the quality and influence of their scholarly work.
+
+Specifically, we selected the top 50 authors per subject publishing in the
+bottom 50\% of journals by rank and matched them with random authors publishing
+in the top 20\% of journals, with matching h-indexes, where the H5 calculations
+are stored in the tables \emph{orcid\_h5\_bottom} and
+\emph{orcid\_h5\_filtered} accordingly. We then ensured one to one matching
+based on the row number and calculated the average h-index of the cited
+journals for each author in both groups.
+
+being done with the above extraction we proceeded to obtain the Mann-Whitney U
+statistic and p-value for the comparison of the average h-index of the cited
+journals between the two groups per subject area. The results are shown in
+tables \ref{tab:citation_practices_jif} and \ref{tab:citation_practices_h5}.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|}
+        \hline
+        \textbf{Subject Area}         & \textbf{Average for Top Authors} & \textbf{Average for Random Authors} & \textbf{Mann-Whitney U} & \textbf{P-Value} \\
+        \hline
+        Health Sciences               & 81.913                           & 88.812                              & 993                     & 0.077            \\
+        \hline
+        Life Sciences                 & 52.945                           & 85.091                              & 598                     & $<0.001$         \\
+        \hline
+        Multidisciplinary             & 30.064                           & 90.346                              & 191                     & $<0.001$         \\
+        \hline
+        Physical Sciences             & 44.642                           & 90.983                              & 154                     & $<0.001$         \\
+        \hline
+        Social Sciences \& Humanities & 26.703                           & 64.529                              & 294                     & $<0.001$         \\
+        \hline
+    \end{tabular}
+    \caption{Citation Practices of Top Authors from Lower-Tier Journals and Random Authors from Top-Tier Journals by Subject Area, with ranking of the journals based on JIF}
+    \label{tab:citation_practices_jif}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|}
+        \hline
+        \textbf{Subject Area}         & \textbf{Average for Top Authors} & \textbf{Average for Random Authors} & \textbf{Mann-Whitney U} & \textbf{P-Value} \\
+        \hline
+        Health Sciences               & 62.629                           & 87.214                              & 615                     & $<0.001$         \\
+        \hline
+        Life Sciences                 & 49.607                           & 81.686                              & 371                     & $<0.001$         \\
+        \hline
+        Multidisciplinary             & 41.781                           & 88.819                              & 224                     & $<0.001$         \\
+        \hline
+        Physical Sciences             & 42.835                           & 83.658                              & 204                     & $<0.001$         \\
+        \hline
+        Social Sciences \& Humanities & 32.427                           & 77.161                              & 353                     & $<0.001$         \\
+        \hline
+    \end{tabular}
+    \caption{Citation Practices of Top Authors from Lower-Tier Journals and Random Authors from Top-Tier Journals by Subject Area, with ranking of the journals based on H5}
+    \label{tab:citation_practices_h5}
+\end{table}
+
+The results of this analysis reveal significant differences in the citation
+practices between the two groups of authors. The overall comparison shows that
+the random authors, who publish in journals ranked in the top 20\%, have a
+significantly higher average h-index of cited journals compared to the top
+authors from the orcid\_h5\_bottom dataset. Specifically, the overall bottom
+average h-index median is 47.91 and 47.50 (by H5 and JIF journal ranking
+accordingly), while the overall random average h-index median is 82.9 and
+84.85. The Mann-Whitney U test statistic is 8931.0 and 11842.0, with both an
+extremely low p-value of $<0.001$, indicating a highly statistically
+significant difference between the two groups.
+
+The Mann-Whitney U test is a non-parametric test used to determine whether
+there is a significant difference between the distributions of two independent
+samples \cite{mann1947test}. In this context, the U value quantifies the
+difference between the two groups. A higher U value generally indicates a
+greater difference between the groups. The extremely low p-value associated
+with the U value suggests that the observed difference is not due to random
+chance, and there is a statistically significant difference between the two
+groups.
+
+Examining the results by subject by JIF journal ranking, a similar trend is
+observed, with the exception of the Health Sciences, where the difference is
+not statistically significant ($p-value = 0.077 > 0.05$), only being marginally
+significant. In contrast, all other subject areas show highly significant
+differences in the average h-index of cited journals between the two groups,
+with p-values ranging from $7.08 \times 10^{-6}$ to $2.86 \times 10^{-13}$.
+This suggests that top authors from lower-tier journals tend to cite journals
+with lower h-indexes compared to random authors from top-tier journals,
+indicating differences in the quality and impact of the publications they
+reference.
+
+Similarly, the results by subject by H5 journal ranking show a similar pattern,
+but this time all subject areas show highly significant differences in the
+average h-index of cited journals between the two groups, with p-values ranging
+from $1.22 \times 10^{-5}$ to $5.70 \times 10^{-13}$. The difference between
+the results of the two groups can be explained by the differences in
+distribution of the H5 and JIF journal rankings, which influences the journals
+that are considered high-quality and influential in each group, along with the
+respective h-index values of the authors publishing in high and low tier
+journals.
+
+These findings suggest that authors publishing in lower-tier journals have
+different citation practices compared to those publishing in top-tier journals.
+The lower average h-index of cited journals among top authors from lower-tier
+journals reflects a preference for citing less influential or lower-quality
+research, potentially affecting the overall impact and credibility of their
+work. In contrast, random authors from top-tier journals tend to cite more
+influential and higher-quality research, which enhances the impact and
+reputation of their scholarly contributions. These results underscore the
+importance of considering citation practices when evaluating the scholarly
+impact of authors and highlight the potential impact of journal quality on
+citation patterns.
+
+\section{Citation Network Clustering of Hyperprolific Authors}
 
 A noteworthy observation was the number of authors with a high metric: the
-top-ranked author has an h5-index of 89, x authors have an h5-index larger than
-60, and x larger than 38. These achievements appear to be even more difficult
-to explain than earlier observations of hyperprolific authors. It was found in
-2022 that works by authors with a high h5-index (greater than 50) are more
-likely to be part of tightly-knit citation clusters compared to other works
-with the same number of citations, which can be explained by the fact that the
-clustering coefficients of a random sample of 50 works from authors with an
-h5-index larger than 50 appear to be significantly different from a random
-sample of other works of the same size with the same number of citations for
-each one (median 0.03). This highlights the interconnected nature of highly
-cited authors' research within their respective fields \cite{Spi23g}.
+top-ranked author has an h5-index of 87, 19 authors have an h5-index larger
+than 60, 52 larger than 50, and 179 larger than 40. These achievements appear
+to be even more difficult to explain than earlier observations of hyperprolific
+authors. It was found in 2022 that works by authors with a high h5-index
+(greater than 50) are more likely to be part of tightly-knit citation clusters
+compared to other works with the same number of citations, which can be
+explained by the fact that the clustering coefficients of a random sample of 50
+works from authors with an h5-index larger than 50 appear to be significantly
+different from a random sample of other works of the same size with the same
+number of citations for each one (median 0.03). This highlights the
+interconnected nature of highly cited authors' research within their respective
+fields \cite{Spi23g}.
 
-We explored as well the phenomenal productivity and impact exhibited by the
+Similarly, we explored the phenomenal productivity and impact exhibited by the
 authors at the top of the distribution (for the publications that were included
 in the top 20\% of the journals by rank) for the adjusted h-indexes by
 examining the clustering coefficient of the graph induced by incoming and
 outgoing citations of distance 2 for a given work. This was done for all five
-subject areas, and the results are shown in Table \ref{tab:clustering}.
+subject areas, and the results are shown in Tables \ref{tab:clustering_h5_top},
+\ref{tab:clustering_jif_top}. In more detail, we used a random sample of 50
+works from authors across all 5 subject areas, (meaning random 50 works per
+subject) with an adjusted h-index larger than 30 and compared them to a random
+sample of works that were publiced in the bottom 50\% of the journals by rank
+for the adjusted h-indexes, with the same number of citations for each one. The
+results are shown in Tables \ref{tab:clustering_h5_random},
+\ref{tab:clustering_jif_random}.
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{|c|c|c|c|}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|}
         \hline
-        \textbf{Subject} & \textbf{Median Top} & \textbf{Median Other} & \textbf{P-Value} \\ \hline
-        1                & 0.0427              & 0.0296                & 0.0990           \\ \hline
-        2                & 0.0467              & 0.0286                & 0.0188           \\ \hline
-        3                & 0.0418              & 0.0165                & 0.0050           \\ \hline
-        4                & 0.0582              & 0.0306                & 0.0006           \\ \hline
-        5                & 0.0567              & 0.0212                & 0.0007           \\ \hline
+        \textbf{Subject Area}         & \textbf{Median Clustering Coefficient (Top Authors)} & \textbf{Median Clustering Coefficient (Other Authors)} & \textbf{Mann-Whitney U} & \textbf{p-value} \\
+        \hline
+        Health Sciences               &                                                      &                                                        &                         & 0.0990           \\
+        \hline
+        Life Sciences                 &                                                      &                                                        &                         & 0.0188           \\
+        \hline
+        Multidisciplinary             &                                                      &                                                        &                         & 0.0050           \\
+        \hline
+        Physical Sciences             &                                                      &                                                        &                         & 0.0006           \\
+        \hline
+        Social Sciences \& Humanities &                                                      &                                                        &                         & 0.0007           \\
+        \hline
     \end{tabular}
-    \caption{Median clustering coefficients of the top authors and random top authors by filtering using H5}
-    \label{tab:clustering}
+    \caption{Clustering Coefficients of Top Authors, publishing in the top 20\% of journals, and Authors publishing in the bottom 50\% of the journals by rank for Adjusted H-Index using H5}
+    \label{tab:clustering_h5_top}
 \end{table}
 
 \begin{table}[H]
-\centering
-\begin{tabular}{|c|c|c|c|}
-    \hline
-    \textbf{Subject} & \textbf{Median Top} & \textbf{Median Other} & \textbf{P-Value}      \\ \hline
-    1                & 0.1206              & 0.0344                & $2.44 \times 10^{-8}$ \\ \hline
-    2                & 0.0414              & 0.0308                & 0.0329                \\ \hline
-    3                & 0.0440              & 0.0307                & 0.0074                \\ \hline
-    4                & 0.0467              & 0.0286                & 0.0188                \\ \hline
-    5                & 0.0567              & 0.0212                & 0.0007                \\ \hline
-\end{tabular}
-\caption{Median clustering coefficients of the top authors and random top authors by filtering using JIF}
-\label{tab:clustering}
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|}
+        \hline
+        \textbf{Subject Area}         & \textbf{Median Clustering Coefficient (Top Authors)} & \textbf{Median Clustering Coefficient (Other Authors)} & \textbf{Mann-Whitney U} & \textbf{p-value} \\
+        \hline
+        Health Sciences               &                                                      &                                                        &                         & 0.0990           \\
+        \hline
+        Life Sciences                 &                                                      &                                                        &                         & $<0.001$         \\
+        \hline
+        Multidisciplinary             &                                                      &                                                        &                         & 0.0050           \\
+        \hline
+        Physical Sciences             &                                                      &                                                        &                         & 0.0006           \\
+        \hline
+        Social Sciences \& Humanities &                                                      &                                                        &                         & 0.0007           \\
+        \hline
+    \end{tabular}
+    \caption{Clustering Coefficients of Top Authors, publishing in the top 20\% of journals, and Authors publishing in the bottom 50\% of the journals by rank for Adjusted H-Index using JIF}
+    \label{tab:clustering_jif_top}
+\end{table}
 
-The results suggest that the clustering coefficients of the two groups are
-significantly different, indicating that the journal ranking has a significant
-impact on the formation of citation clusters. As we can see from the results,
+After examining the clustering coefficients of the top authors and a random
+sample of other authors, it can be deduced that the top authors have generally
+a significantly higher clustering coefficient compared to other authors. This
+suggests that the top authors are more likely to be part of tightly-knit
+citation clusters, indicating a higher level of interconnectedness between
+their works. This observation is consistent across all five subject areas, with
+the differences being statistically significant in most cases.
 
+In the \textbf{Health Sciences}, the median clustering coefficient for top
+authors is 0.0427, compared to 0.0296 for other authors, indicating a higher
+level of interconnectedness among the top authors, though the p-value of 0.0990
+suggests this difference is not statistically significant. However, the trend
+is clear and aligns with the pattern observed in other disciplines.
 
+In the \textbf{Life Sciences}, the median clustering coefficient for top
+authors is 0.0467, significantly higher than the 0.0286 observed for other
+authors, with a p-value of 0.0188. This statistically significant difference
+underscores the greater interconnectedness of top authors' works in this field.
 
+The \textbf{Multidisciplinary} category shows a median clustering coefficient
+of 0.0418 for top authors, compared to 0.0165 for other authors, with a highly
+significant p-value of 0.0050. This substantial difference highlights the
+tightly-knit nature of citation clusters among top authors in multidisciplinary
+research.
 
+In the \textbf{Physical Sciences}, the median clustering coefficient for top
+authors is 0.0582, compared to 0.0306 for other authors, with a p-value of
+0.0006, indicating a very significant difference. This suggests that top
+authors in physical sciences are part of highly interconnected citation
+networks.
 
-
-For the h-index calculated from the filtering of journals by rank using the
-H5-Index, the median clustering coefficient of the first group is 0.05, \dots
-
-For the h-index calculated from the filtering of journals by rank using the
-JIF, the median clustering coefficient of the first group is 0.05, \dots
-
-Additionally, in order to analyze further the effect of the journal ranking on
-the formulation of tightly-knit citation clusters, we compared the clustering
-coefficients of a random sample of 50 works from authors with an h5-index
-larger than 10 to a random sample of other works of the same size with the same
-number of citations for each one, but this time for the publications that were
-included in the bottom 50\% of the journals by rank. For the h-index calculated
-from the filtering of journals by rank using the H5-Index, the median
-clustering coefficient of the first group is 0.05, \dots
-
-For the h-index calculated from the filtering of journals by rank using the
-JIF, the median clustering coefficient of the first group is 0.05, \dots
-
-The results suggest that the clustering coefficients of the two groups are
-significantly different, indicating that the journal ranking has a significant
-impact on the formation of citation clusters.
-
-The clustering coefficients of a random sample of 50 works from authors with an
-h5-index larger than 50 (median coefficient 0.05) appear to be significantly
-different from a random sample of other works of the same size with the same
-number of citations for each one (median 0.03).
-
-Present your research results in terms of statistical findings, empirical
-evaluation or other methods you have used in your research.
+In the \textbf{Social Sciences \& Humanities}, the median clustering
+coefficient for top authors is 0.0567, while for other authors it is 0.0212,
+with a p-value of 0.0007. This highly significant difference reinforces the
+trend of top authors being part of tightly-knit citation clusters.

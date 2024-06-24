@@ -12,21 +12,30 @@ subject area, based on the h5 index of the journal. The second metric, the
 \textit{JIF-adjusted h-index} ($h_{\text{JIF}}$), adjusts the h-index
 similarly, but the ranking of the journals is determined by the Journal Impact
 Factor (JIF) of the journal in which the publication is published. The proposed
-method is implemented in \emph{SQL} and the data is stored in a Sqlite
+methods are implemented in \emph{SQL} and the data is stored in a Sqlite
 database.
 
 \section{Data Collection and Preprocessing}
 
 For the purpose of this study, the Alexandria3k \cite{Spi23g} tool was used to
 collect publication data from the Crossref Dataset \cite{Crossref2020} and
-prepare the data for processing. Alexandria3k supplies a library and a
-command-line tool providing efficient relational query access to diverse
-publication open data sets. Specifically, the dataset that was used is a subset
-of the Crossref-2024 and Crossref-2023 datasets, which contain publication
-metadata from about 156 million publications from all major international
-publishers with full citation data for around 60 million of them. In addition
-to that, for the subject of the publications, the Scopus ASJC (All Science
-Journal Classification) subject codes were used.
+prepare the data for processing. The Crossref dataset is known for its
+comprehensive and standardized approach to indexing scholarly publications
+across a wide range of disciplines, which is helpful for reducing discrepancies
+that might arise from varying data formats used by different databases (Scopus,
+Web of Science, etc.). Crossref collaborates with a large number of publishers
+to ensure that a wide range of academic content is covered, including journal
+articles, conference proceedings, and other scholarly works.
+
+Alexandria3k supplies a library and a command-line tool providing efficient
+relational query access to diverse publication open data sets. Specifically,
+the dataset that was used is a subset of the Crossref-2024 and Crossref-2023
+datasets, where the whole Crossref-2024 contain publication metadata from about
+156 million publications from all major international publishers with full
+citation data for around 60 million of them. Using our subsets we are checking
+around 1.5 million publications. In addition to that, for the subject of the
+publications, the Scopus ASJC (All Science Journal Classification) subject
+codes were used.
 
 To be more specific, the ASJC codes were used to categorize the publications
 into more general subject areas than the original subject areas provided by the
@@ -38,8 +47,9 @@ the most specific. For the purpose of this study, the first level of the ASJC
 codes was used to categorize the publications into subject areas. Crucial to
 note is that the ASJC codes are not available for all publications in the
 Crossref-2024 dataset \cite{crossrefSubjectCodes2024}, so only journals with
-subjects from the Crossref-2023 dataset were considered for this study, since
-for those journals the ASJC codes were able to be retrieved.
+subjects from the Crossref-2023 dataset or with subjects retrievable using the
+Scopus API were considered for this study, since for those journals the ASJC
+codes were able to be retrieved.
 
 \section{Implementation of the Proposed Methods}
 %
@@ -96,7 +106,7 @@ as a common table for journals by ISSN and subject.
       \item \textbf{Count Citations for Each Work}: Calculate the number of citations for each work to determine its impact.
 
       \item \textbf{Calculate the h5 Index of Journals}: Derive the h5 index for journals, which is a
-            measure of their citation impact over the past three years.
+            measure of their citation impact over the past five years.
 
       \item \textbf{Identify the Top 20\% of Journals by Subject Based on h5 Index}: Determine the top 20\% of journals within
             each subject area based on their h5 index.
@@ -184,7 +194,7 @@ follows:
       \item \textbf{Works}: Contains the works with their respective DOIs and the number of citations.
       \item \textbf{Authors}: Contains the authors with their respective ORCID identifiers.
       \item \textbf{Journals}: Contains the journals with their respective ISSNs and subject areas.
-      \item \textbf{ASJC}: Contains the ASJC codes for the subject areas.
+      \item \textbf{ASJC}: Contains the ASJC codes for the subject areas that were extracted from the Crossref-2023 dataset.
       \item \textbf{Work References}: Contains the references of the works.
 \end{itemize}
 
@@ -205,12 +215,12 @@ follows:
       \item \textbf{Publications}: Contains the number of publications for each journal within the IF period.
 \end{itemize}
 
-\noindent\textbf{2: Calculation of Journal h5 Index}
+\noindent\textbf{2i: Calculation of Journal h5 Index}
 \begin{itemize}
       \item \textbf{issn\_subject\_h5}: Calculates the h5 index of the journals.
 \end{itemize}
 
-\noindent\textbf{3: Calculation of Journal Impact Factor (JIF)}
+\noindent\textbf{2ii: Calculation of Journal Impact Factor (JIF)}
 \begin{itemize}
       \item \textbf{impact\_factor}: Calculates the Journal Impact Factor (JIF) for each journal.
 \end{itemize}
@@ -218,7 +228,7 @@ follows:
 \noindent\textbf{4: Getting Top and Bottom Percentile of Journals}
 \begin{itemize}
       \item \textbf{top\_issn\_by\_subject}: Contains the top 20\% of journals by subject based on the h5 index or JIF.
-      \item \textbf{bottom\_issn\_by\_subject}: Contains the bottom 60\% of journals by subject based on the h5 index or JIF.
+      \item \textbf{bottom\_issn\_by\_subject}: Contains the bottom 50\% of journals by subject based on the h5 index or JIF.
 \end{itemize}
 
 \noindent\textbf{5: Filtered Works Tables}
@@ -240,7 +250,7 @@ subject based on the h5 index.
 \begin{figure}[H]
       \centering
       \includegraphics[width=0.8\textwidth]{../figs/h5.pdf}
-      \caption{Dependencies of the tables used in the implementation of the Adjusted h-index by filtering the top 20\% of journals by subject based on the h5 index.}
+      \caption{Dependencies of the tables used in the implementation of the Adjusted h-index by filtering the top 20\% and bottom 50\% of journals by subject based on the h5 index.}
       \label{fig:tables}
 \end{figure}
 
@@ -251,7 +261,7 @@ journals by subject based on the Journal Impact Factor (JIF).
 \begin{figure}[H]
       \centering
       \includegraphics[width=0.8\textwidth]{../figs/impact.pdf}
-      \caption{Dependencies of the tables used in the implementation of the JIF-adjusted h-index by filtering the top 20\% of journals by subject based on the Journal Impact Factor (JIF).}
+      \caption{Dependencies of the tables used in the implementation of the JIF-adjusted h-index by filtering the top 20\% and bottom 50\% of journals by subject based on the Journal Impact Factor (JIF).}
       \label{fig:tables2}
 \end{figure}
 %Figure \ref{fig:tables} shows the dependencies of each table.
