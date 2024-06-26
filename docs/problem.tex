@@ -69,13 +69,34 @@ journal with a low h-index may have published fewer highly cited papers,
 suggesting that the research is less influential or less well-received by the
 scientific community.
 
+More recently, the Eigenfactor metric has emerged as an alternative measure of
+journal quality, which evaluates the influence of a journal based on the number
+of incoming citations, with citations from highly influential journals weighted
+more heavily than those from less influential journals. It was designed to
+adress the limitations of traditional citation metrics like the Impact Factor
+(JiF), which can be skewed by a few highly cited papers, by leveraging the
+structure of citation networks.
+
+In detail, the Eigenfactor is calculated by analyzing the network of academic
+citations among journals. It employs an algorithm similar to Google's PageRank
+to measure the importance of journals based on their citations and the process
+involves creating a matrix that records how often each journal cites every
+other journal. Using this matrix, the algorithm simulates a random walk through
+the citation network, where a hypothetical researcher selects articles and
+follows their citations to other journals repeatedly. This random walk model
+helps determine the frequency with which a researcher would visit each journal,
+reflecting its overall influence. Finally, the Eigenfactor Score is derived
+from these visitation frequencies, giving more weight to citations from
+prestigious journals, and adjusting for differences in citation practices
+across various fields \cite{Bergstrom11433, Alan2009}.
+
 Having the above in mind, when evaluating an author's h-index, it could be
 beneficial to focus on their publications in reputable journals with high
-impact factors or h-index values, which helps to exclude publications of
-questionable quality and provides a more accurate and nuanced estimation of the
-author's true impact. Thus, by prioritizing high-quality journals, the h-index
-calculation better reflects the significance and recognition of the author's
-contributions to their field.
+impact factors, eigenfactors or h-index values, which helps to exclude
+publications of questionable quality and provides a more accurate and nuanced
+estimation of the author's true impact. Thus, by prioritizing high-quality
+journals, the h-index calculation better reflects the significance and
+recognition of the author's contributions to their field.
 
 \section{Research Questions and Hypotheses}
 This thesis, by introducing a new metric that incorporates journal quality into
@@ -87,9 +108,9 @@ the correlation between traditional H-Index values and the proposed H-Index
 metrics that account for journal quality? Second, how do citation practices
 differ between top authors publishing in low-quality journals and authors
 publishing in high-quality journals. Third, how do citation patterns differ
-between prolific researchers with high traditional H-Indexes and regular
-researchers? By addressing these research questions, this thesis seeks not only
-to develop and validate improved H-Index calculations that incorporate journal
-quality, but to also provide insights into the citation practices and patterns
-of researchers across different subjects, thus contributing to a more nuanced
-understanding of scholarly impact.
+between hyperprolific researchers and regular researchers across different
+subject areas? By addressing these research questions, this thesis seeks not
+only to develop and validate improved H-Index calculations that incorporate
+journal quality, but to also provide insights into the citation practices and
+patterns of researchers across different subjects, thus contributing to a more
+complete understanding of scholarly impact.

@@ -1,0 +1,38 @@
+name: Build and Upload PDF
+
+on:
+  push:
+    branches:
+      - main
+      - '**/*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up LaTeX environment
+        run: sudo apt-get update && sudo apt-get install -y texlive-full
+
+      - name: Build PDF
+        run: make all
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: thesis-pdf
+          path: thesis.pdf
+
+  clean:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Clean build files
+        run: make clean

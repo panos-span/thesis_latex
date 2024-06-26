@@ -13,11 +13,12 @@ evaluation of adjusted H-Indexes that incorporate journal quality and subject
 specificity. The primary contributions of this study are summarized as follows:
 
 Firstly, the study introduced two new variants of the H-Index: the H5-adjusted
-H-Index and the JIF-adjusted H-Index. These metrics incorporate the quality of
-journals in which a researcher's works are published, using the H5-Index and
-Journal Impact Factor (JIF) to select the top 20\% of journals by rank within
-specific subjects. By doing so, the adjusted H-Indexes provide a more accurate
-and meaningful measure of a researcher's scholarly impact.
+H-Index, the EigenFactor adjusted H-Index and the JIF-adjusted H-Index. These
+metrics incorporate the quality of journals in which a researcher's works are
+published, using the H5-Index, EigenFactor and Journal Impact Factor (JIF) to
+select the top 20\% of journals by rank within specific subjects. By doing so,
+the adjusted H-Indexes provide a more accurate and meaningful measure of a
+researcher's scholarly impact.
 
 Secondly, the study showcases a robust methodological approach to bibliometric
 analysis, leveraging the Alexandria3k tool to extract and analyze publication
@@ -36,20 +37,34 @@ to the adjusted H-Indexes. However, the distinctiveness of the adjusted
 H-Indexes, indicated by the imperfect correlation, highlights the meaningful
 variations introduced by incorporating journal quality and subject specificity.
 
-Fourthly, the study compared the citation patterns of researchers with high
-traditional H-Indexes and those with high adjusted H-Indexes. The analysis
-revealed differences in the distribution of citations across journals, with
-researchers with high adjusted H-Indexes receiving more citations from journals
-with higher impact factors and H5-Indexes. This was particularly evident in
-researchers with high H-Indexes from the bottom 50\% of journals by rank, who
-exhibited a more pronounced shift in citation patterns, but was also observed
-in researchers with high H-Indexes from the top 20\% of journals. This finding
-underscores the importance of considering journal quality along with subject
-specificity in evaluating scholarly impact and suggests that the adjusted
-H-Indexes capture the influence of publishing in higher and lower-quality
-journals more effectively than the traditional H-Index.
+Fourthly, the study compared the citation practices of top authors publishing
+in low-quality journals with those publishing in high-quality journals. The
+analysis revealed significant differences in citation patterns, with top
+authors from low-quality journals citing lower-impact journals, while those
+from high-quality journals cited higher-impact journals.
 
-Fifthly, the findings have important implications for researchers,
+Fifthly, the study compared the citation patterns of hyperprolific researchers
+and regular researchers across different subject areas. The analysis showed
+marked differences in citation patterns, with hyperprolific researchers
+exhibiting more interconnected citation networks, highlighting the fact that
+the top researchers in terms of publication volume tend to cite each other more
+frequently, creating a more tightly knit citation network, thus influencing
+their h-index values.
+
+% the study compared the citation patterns of researchers with high
+% traditional H-Indexes and those with high adjusted H-Indexes. The analysis
+% revealed differences in the distribution of citations across journals, with
+% researchers with high adjusted H-Indexes receiving more citations from journals
+% with higher impact factors and H5-Indexes. This was particularly evident in
+% researchers with high H-Indexes from the bottom 50\% of journals by rank, who
+% exhibited a more pronounced shift in citation patterns, but was also observed
+% in researchers with high H-Indexes from the top 20\% of journals. This finding
+% underscores the importance of considering journal quality along with subject
+% specificity in evaluating scholarly impact and suggests that the adjusted
+% H-Indexes capture the influence of publishing in higher and lower-quality
+% journals more effectively than the traditional H-Index.
+
+Sixthly, the findings have important implications for researchers,
 practitioners, and policymakers involved in research evaluation and funding
 decisions. By incorporating journal quality metrics into evaluation criteria,
 the adjusted H-Indexes provide a more comprehensive and fair assessment of a
@@ -66,12 +81,28 @@ usability, enhancing the precision and fairness of bibliometric evaluations,
 along with subject-specific citation patterns and their implications for
 scholarly impact.
 
-In summary, this research advances the understanding and application of
-bibliometric metrics by demonstrating the value of incorporating journal
-quality and subject specificity into the calculation of H-Indexes. The adjusted
-H-Indexes developed in this study offer a more accurate and meaningful measure
-of scholarly impact, providing valuable insights and practical recommendations
-for improving research evaluation practices.
+In summary, the study answers all the research questions and hypotheses. The
+results show that, firstly, the correlation between traditional H-Index values
+and the proposed H-Index metrics that account for journal quality is strong,
+indicating a positive relationship between the traditional H-Index and the
+adjusted H-Indexes. Secondly, the citation practices differ significantly
+between top authors publishing in low-quality journals and those publishing in
+high-quality journals. Top authors (meaning those that have a high h-index)
+from low-quality journals tend to cite lower-impact journals, while those from
+high-quality journals cite higher-impact journals, reflecting differences in
+the quality and influence of their work. Finally, the citation patterns differ
+markedly between hyperprolific researchers and regular researchers across
+different subject areas, with hyperprolific researchers showing more
+interconnected citation networks. This highlights the influence of journal
+quality and subject specificity on scholarly impact metrics and provides a more
+nuanced understanding of citation behaviors in the academic community. %TODO: CHANGE According to the latest research questions!!
+
+% In summary, this research advances the understanding and application of
+% bibliometric metrics by demonstrating the value of incorporating journal
+% quality and subject specificity into the calculation of H-Indexes. The adjusted
+% H-Indexes developed in this study offer a more accurate and meaningful measure
+% of scholarly impact, providing valuable insights and practical recommendations
+% for improving research evaluation practices.
 
 \section{Limitations of the Study}
 
@@ -111,6 +142,12 @@ within their respective fields. This filtering criterion might bias the results
 towards researchers who publish predominantly in highly ranked journals,
 potentially overlooking the contributions of those whose work is more niche or
 interdisciplinary and published in lower-ranked but still respected journals.
+Similarly, the consideration of the bottom 50\% of journals by rank as of
+lesser quality, where we ranked the journals based on the H5-Index and Impact
+Factor, while for the ranking being made based on the Eigenfactor, we
+considered those at the bottom 5\% of journals as of lesser rank, might not be
+entirely accurate, since these thresholds were chosen based on the distribution
+of the data and not on a specific quality criterion. % TODO: CHECK THIS AGAIN!!
 
 Another limitation is the scope of H-Index variants considered. While we
 developed and evaluated adjusted H-Indexes incorporating journal quality
@@ -125,7 +162,7 @@ limitations of the traditional H-Index.
 
 To sum up, while our study makes significant strides in refining the H-Index to
 account for journal quality and subject specificity, it is constrained by data
-limitations, the selection of H-Index variants. Addressing these limitations in
-future research could further enhance the accuracy and fairness of bibliometric
-evaluations, providing a more robust tool for assessing scholarly impact
-overall.
+limitations, the selection of H-Index variants considered, and the filtering
+criteria applied for what is considered high and low-quality journals. These
+limitations should be taken into account when interpreting the results and
+considering the implications for research evaluation and funding decisions.
