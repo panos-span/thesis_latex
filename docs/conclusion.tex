@@ -1,10 +1,6 @@
 \chapter{Conclusion}
 \label{ch:conclusion}
 
-Summarize the main contributions of the research and how they address the
-research questions or hypotheses. Reflect on the implications of the findings,
-the limitations of the study, and suggests areas for future research.
-
 \section{Summary of Contributions}
 
 This research contributes to the field of bibliometrics by addressing
@@ -12,90 +8,69 @@ significant limitations in the traditional H-Index through the development and
 evaluation of adjusted H-Indexes that incorporate journal quality and subject
 specificity. The primary contributions of this study are summarized as follows:
 
-Firstly, the study introduced two new variants of the H-Index: the H5-adjusted
-H-Index, the EigenFactor adjusted H-Index and the JIF-adjusted H-Index. These
-metrics incorporate the quality of journals in which a researcher's works are
-published, using the H5-Index, EigenFactor and Journal Impact Factor (JIF) to
-select the top 20\% of journals by rank within specific subjects. By doing so,
-the adjusted H-Indexes provide a more accurate and meaningful measure of a
-researcher's scholarly impact.
+The study introduces three new variants of the H-Index: the H5-adjusted
+H-Index, the EigenFactor adjusted H-Index, and the JIF-adjusted H-Index. These
+metrics incorporate the quality of journals in which a researcher’s works are
+published, using the H5-Index, EigenFactor, and Journal Impact Factor (JIF) to
+select the top 20% of journals by rank within specific subjects. By doing so, the adjusted H-Indexes provide a more accurate and meaningful measure of a researcher’s scholarly impact.
 
-Secondly, the study showcases a robust methodological approach to bibliometric
-analysis, leveraging the Alexandria3k tool to extract and analyze publication
-data from the Crossref-2024 dataset. The use of ROLAP (Relational Online
-Analytical Processing) analysis and rigorous SQL unit testing ensured the
-reliability and accuracy of the adjusted H-Index calculations. This methodology
-can serve as a framework for future research in bibliometrics and research
-evaluation.
+To achieve this, the study showcases a robust methodological approach to
+bibliometric analysis, leveraging the Alexandria3k tool to extract and analyze
+publication data from the Crossref-2024 dataset. The use of ROLAP (Relational
+Online Analytical Processing) analysis and rigorous SQL unit testing ensured
+the reliability and accuracy of the adjusted H-Index calculations. This
+methodology can serve as a framework for future research in bibliometrics and
+research evaluation.
 
-Thirdly, through comprehensive statistical analysis, including Pearson,
-Spearman, and Kendall tau rank order correlations, the study demonstrated that
-the adjusted H-Indexes are significantly correlated with the traditional
-H-Index. This strong positive relationship suggests that researchers who rank
-highly according to the traditional H-Index also tend to rank highly according
-to the adjusted H-Indexes. However, the distinctiveness of the adjusted
-H-Indexes, indicated by the imperfect correlation, highlights the meaningful
-variations introduced by incorporating journal quality and subject specificity.
+Through comprehensive statistical analysis, including Pearson, Spearman, and
+Kendall tau rank order correlations, the study demonstrates that the adjusted
+H-Indexes are significantly correlated with the traditional H-Index. This
+strong positive relationship suggests that researchers who rank highly
+according to the traditional H-Index also tend to rank highly according to the
+adjusted H-Indexes. However, the distinctiveness of the adjusted H-Indexes,
+indicated by the imperfect correlation, highlights the meaningful variations
+introduced by incorporating journal quality and subject specificity.
 
-Fourthly, the study compared the citation practices of top authors publishing
-in low-quality journals with those publishing in high-quality journals. The
-analysis revealed significant differences in citation patterns, with top
-authors from low-quality journals citing lower-impact journals, while those
-from high-quality journals cited higher-impact journals.
+The study also compares the citation practices of top authors publishing in
+low-quality journals with those publishing in high-quality journals. The
+analysis reveals significant differences in citation patterns, with top authors
+from low-quality journals citing lower-impact journals, while those from
+high-quality journals cite higher-impact journals.
 
-Fifthly, the study compared the citation patterns of hyperprolific researchers
-and regular researchers across different subject areas. The analysis showed
-marked differences in citation patterns, with hyperprolific researchers
-exhibiting more interconnected citation networks, highlighting the fact that
-the top researchers in terms of publication volume tend to cite each other more
-frequently, creating a more tightly knit citation network, thus influencing
-their h-index values.
+Furthermore, the research examines the citation patterns of hyperprolific
+researchers compared to regular researchers across different subject areas. The
+analysis shows marked differences, with hyperprolific researchers exhibiting
+more interconnected citation networks. This indicates that top researchers in
+terms of publication volume tend to cite each other more frequently, creating a
+more tightly knit citation network, thus influencing their h-index values.
 
-% the study compared the citation patterns of researchers with high
-% traditional H-Indexes and those with high adjusted H-Indexes. The analysis
-% revealed differences in the distribution of citations across journals, with
-% researchers with high adjusted H-Indexes receiving more citations from journals
-% with higher impact factors and H5-Indexes. This was particularly evident in
-% researchers with high H-Indexes from the bottom 50\% of journals by rank, who
-% exhibited a more pronounced shift in citation patterns, but was also observed
-% in researchers with high H-Indexes from the top 20\% of journals. This finding
-% underscores the importance of considering journal quality along with subject
-% specificity in evaluating scholarly impact and suggests that the adjusted
-% H-Indexes capture the influence of publishing in higher and lower-quality
-% journals more effectively than the traditional H-Index.
-
-Sixthly, the findings have important implications for researchers,
+The findings of this study have important implications for researchers,
 practitioners, and policymakers involved in research evaluation and funding
 decisions. By incorporating journal quality metrics into evaluation criteria,
 the adjusted H-Indexes provide a more comprehensive and fair assessment of a
-researcher's impact. This study advocates for the adoption of refined
+researcher’s impact. This study advocates for the adoption of refined
 bibliometric tools that address the limitations of traditional metrics,
 ultimately contributing to more accurate and equitable academic evaluations.
 
-Lastly, the study highlights not only the need for further research into
-advanced H-Index variants that address issues such as self-citation and
-hyperauthorship, but the need for subject-specific analysis of authors, through
-their citation patterns and networks. Future work could explore the development
-of even more sophisticated H-Index metrics that balance complexity with
-usability, enhancing the precision and fairness of bibliometric evaluations,
-along with subject-specific citation patterns and their implications for
-scholarly impact.
+Lastly, the study highlights the need for further research into advanced
+H-Index variants that address issues such as self-citation and hyperauthorship,
+as well as the need for subject-specific analysis of authors through their
+citation patterns and networks. Future work could explore the development of
+even more sophisticated H-Index metrics that balance complexity with usability,
+enhancing the precision and fairness of bibliometric evaluations, along with
+subject-specific citation patterns and their implications for scholarly impact.
 
-In summary, the study answers all the research questions and hypotheses. The
-results show that, firstly, the correlation between traditional H-Index values
-and the proposed H-Index metrics that account for journal quality is strong,
-indicating a positive relationship between the traditional H-Index and the
-adjusted H-Indexes. Secondly, the citation practices differ significantly
+In summary, the study addresses all the research questions and hypotheses. The
+results show a strong correlation between traditional H-Index values and the
+proposed H-Index metrics that account for journal quality, indicating a
+positive relationship. Additionally, citation practices differ significantly
 between top authors publishing in low-quality journals and those publishing in
-high-quality journals. Top authors (meaning those that have a high h-index)
-from low-quality journals tend to cite lower-impact journals, while those from
-high-quality journals cite higher-impact journals, reflecting differences in
-the quality and influence of their work. Finally, the citation patterns differ
-markedly between hyperprolific researchers and regular researchers across
-different subject areas, with hyperprolific researchers showing more
-interconnected citation networks. This highlights the influence of journal
-quality and subject specificity on scholarly impact metrics and provides a more
-nuanced understanding of citation behaviors in the academic community. %TODO: CHANGE According to the latest research questions!!
+high-quality journals, reflecting differences in the quality and influence of
+their work. Finally, the citation patterns of hyperprolific researchers differ
+markedly from those of regular researchers across different subject areas,
+highlighting the influence of journal quality and subject specificity on
+scholarly impact metrics and providing a more nuanced understanding of citation
+behaviors in the academic community.
 
 % In summary, this research advances the understanding and application of
 % bibliometric metrics by demonstrating the value of incorporating journal
