@@ -22,7 +22,7 @@ shown in Table \ref{tab:correlations}.
         \hline
         \textbf{h-index vs. Adjusted h-index using JIF}         & 0.667            & 0.678             & 0.616                \\
         \hline
-        \textbf{h-index vs. Adjusted h-index using EigenFactor} & 0.699            & 0.702             & 0.647                \\
+        \textbf{h-index vs. Adjusted h-index using EigenFactor} & 0.680            & 0.688             & 0.629                \\
         \hline
     \end{tabular}
     \caption{Correlation between h-index and adjusted h-indexes}
@@ -96,7 +96,7 @@ the quality and influence of their scholarly work.
 Specifically, we selected the top 50 authors per subject publishing in the
 bottom 50\% of journals by rank for the H5 and JIF journal rankings, where as
 for the EigenFactor journal ranking we selected the top 50 authors per subject
-publishing in the bottom 5\% of journals by rank, and matched them with random
+publishing in the bottom 20\% of journals by rank, and matched them with random
 authors publishing in the top 20\% of journals, with matching h-indexes, where
 the H5 calculations are stored in the tables \emph{orcid\_h5\_bottom} and
 \emph{orcid\_h5\_filtered} accordingly. We then ensured one to one matching
@@ -106,7 +106,24 @@ journals for each author in both groups.
 Being done with the above extraction we proceeded to obtain the Mann-Whitney U
 statistic and p-value for the comparison of the average h-index of the cited
 journals between the two groups per subject area. The results are shown in
-tables \ref{tab:citation_practices_jif} and \ref{tab:citation_practices_h5}.
+tables \ref{tab:citation_practices_jif}, \ref{tab:citation_practices_h5} and
+\ref{tab:citation_practices_eigenfactor}.
+
+Important to keep in mind is that the strictness of the journal filetring based
+on the ranking method (H5, JIF, EF) is different, with the authors h-index
+calculated based on the bottom 50\% of journals by rank for the H5 and JIF
+journal rankings being of similar distribution (with 10 and 17 maximum h-index
+values respectively), while the authors h-index calculated based on the bottom
+20\% of journals by rank for the EigenFactor journal ranking has a different
+distribution (with a maximum h-index value of 26), thus seemingly being less
+strict in the journal filtering process compared to the H5 and JIF journal
+rankings. This difference is particularly evident when comparing the number of
+authors with $h5 >= 10$, which is 3502 for the EigenFactor journal ranking, 7 for
+the JIF journal ranking, and 3 for the H5 journal ranking.
+
+% TODO: Explain why this can also be seen be the number of authors with h5 >=10
+%% EF: 3502 , JIF: 7 , H5: 3
+
 
 \begin{table}[H]
     \centering
@@ -152,16 +169,38 @@ tables \ref{tab:citation_practices_jif} and \ref{tab:citation_practices_h5}.
     \label{tab:citation_practices_h5}
 \end{table}
 
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|>{\centering\arraybackslash}m{3.8cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2.5cm}|}
+        \hline
+        \textbf{Subject Area}         & \textbf{Average for Top Authors} & \textbf{Average for Random Authors} & \textbf{Mann-Whitney U} & \textbf{P-Value} \\
+        \hline
+        Health Sciences               & 80.666                           & 71.348                              & 984                     & 0.077            \\
+        \hline
+        Life Sciences                 & 68.964                           & 70.534                              & 918                     & 0.258            \\
+        \hline
+        Multidisciplinary             & 57.497                           & 127.508                             & 191                     & $<0.001$         \\
+        \hline
+        Physical Sciences             & 73.885                           & 97.710                              & 387                     & $<0.001$         \\
+        \hline
+        Social Sciences \& Humanities & 43.236                           & 66.422                              & 318                     & $<0.001$         \\
+        \hline
+    \end{tabular}
+    \caption{Citation Practices of Top Authors from Lower-Tier Journals and Random Authors from Top-Tier Journals by Subject Area, with ranking of the journals based on EigenFactor}
+    \label{tab:citation_practices_eigenfactor}
+\end{table}
+
 The results of this analysis reveal significant differences in the citation
 practices between the two groups of authors. The overall comparison shows that
 the random authors, who publish in journals ranked in the top 20\%, have a
 significantly higher average h-index of cited journals compared to the top
 authors from the orcid\_h5\_bottom dataset. Specifically, the overall bottom
-average h-index median is 47.91 and 47.50 (by H5 and JIF journal ranking
-accordingly), while the overall random average h-index median is 82.9 and
-84.85. The Mann-Whitney U test statistic is 8931.0 and 11842.0, with both an
-extremely low p-value of $<0.001$, indicating a highly statistically
-significant difference between the two groups.
+average h-index median is 47.91, 47.50 and 69.02 (by H5 and JIF journal ranking
+accordingly), while the overall random average h-index median is 82.9, 84.85
+and 76.4. The Mann-Whitney U test statistic is 8931.0, 11842.0 and 14999.5,
+with both an extremely low p-value of $<0.001$, indicating a highly
+statistically significant difference between the two groups.
 
 The Mann-Whitney U test is a non-parametric test used to determine whether
 there is a significant difference between the distributions of two independent
@@ -193,6 +232,15 @@ that are considered high-quality and influential in each group, along with the
 respective h-index values of the authors publishing in high and low tier
 journals.
 
+Lastly, the results from the EigenFactor journal ranking reveal additional
+insights. For Health Sciences, the difference in median h-index is not
+statistically significant with a $p-value > 0.05$, as well as for Life
+Sciences. However, for the rest of the subjects, the differences are highly
+significant with p-values ranging from $4.76 \times 10^{-9}$ to $3.60 \times
+    10^{-6}$, further highlighting the significant differences in citation
+practices between top authors from lower-tier and top-tier journals, confirmed
+also from the H5 and JIF journal rankings.
+
 These findings suggest that authors publishing in lower-tier journals have
 different citation practices compared to those publishing in top-tier journals.
 The lower average h-index of cited journals among top authors from lower-tier
@@ -204,6 +252,18 @@ reputation of their scholarly contributions. These results underscore the
 importance of considering citation practices when evaluating the scholarly
 impact of authors and highlight the potential impact of journal quality on
 citation patterns.
+
+The observed differences in the stringency of the journal ranking methods also
+play a crucial role in our analysis. The EigenFactor ranking method appears to
+be less strict compared to the H5 and JIF rankings. This means that the
+EigenFactor allows a broader range of journals to be considered lower-tier,
+which could explain why some subjects showed non-significant differences in
+citation practices. The H5 ranking, being the strictest, ensures that only the
+highest-quality journals are included in the top 20\%, as well as for the lower
+quality journals in the bottom 50\% of journals, thus showing more pronounced
+differences in citation practices. Understanding these nuances is essential for
+accurately interpreting the results and their implications for bibliometric
+evaluations.
 
 \section{Citation Network Clustering of Hyperprolific Authors}
 
@@ -238,9 +298,9 @@ each one. % TODO: CHANGE!!
         \hline
         \textbf{Subject Area}         & \textbf{Median Clustering Coefficient (Top Authors)} & \textbf{Median Clustering Coefficient (Other Authors)} & \textbf{Mann-Whitney U} & \textbf{P-value} \\
         \hline
-        Health Sciences               & 0.036                                                & 0.031                                                  & 1218.0                  & $<0.05$            \\
+        Health Sciences               & 0.036                                                & 0.031                                                  & 1218.0                  & $<0.05$          \\
         \hline
-        Life Sciences                 & 0.045                                                & 0.027                                                  & 1390.0                  & $<0.005$            \\
+        Life Sciences                 & 0.045                                                & 0.027                                                  & 1390.0                  & $<0.005$         \\
         \hline
         Multidisciplinary             & 0.062                                                & 0.031                                                  & 1393.0                  & $<0.001$         \\
         \hline

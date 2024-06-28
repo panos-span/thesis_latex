@@ -13,10 +13,10 @@ subject area, based on the h5 index of the journal. The second metric, the
 similarly, but the ranking of the journals is determined by the Journal Impact
 Factor (JIF) of the journal in which the publication is published. Lastly, the
 third metric, the \textit{Eigenfactor-adjusted h-index} ($h_{\text{EF}}$),
-adjusts the h-index by considering the Normalized Eigenfactor of the journal in
-which the publication is published. The proposed methods are implemented in
-\emph{SQL} and the data is stored in a Sqlite database, with only the
-EigenFactor calculation being done in Python.
+adjusts the h-index by considering the Eigenfactor of the journal in which the
+publication is published. The proposed methods are implemented in \emph{SQL}
+and the data is stored in a Sqlite database, with only the EigenFactor
+calculation being done in Python.
 
 \section{Data Collection and Preprocessing}
 
@@ -96,14 +96,16 @@ works and authors, as well as a common table for journals by ISSN and subject.
 Important to note is that, for the consideration of the 'lower quality'
 journals for the Adjusted h-index and the JIF-adjusted h-index, the bottom 50\%
 of journals were considered 'lower quality' for the H5 and JIF adjusted
-h-indexes, while the bottom 5\% of journals were considered 'lower quality' for
-the EigenFactor adjusted h-index, due to the different distribution of the
+h-indexes, while the bottom 20\% of journals were considered 'lower quality'
+for the EigenFactor adjusted h-index, due to the different distribution of the
 EigenFactor scores compared to the H5 and JIF indexes. Specifically, the
-normalized EigenFactor scores had a very skewed distribution, compared to the
-H5 and JIF indexes, with a few journals having very high EigenFactor scores,
-while most journals had very low scores. This led to the decision to consider
-only the bottom 5\% of journals as of lesser quality, in order to capture the
-most significant differences in journal quality. % TODO: CHECK!
+EigenFactor allows a broader range of journals to be considered lower-tier,
+being potentially more sensitive and able to capture differences in journal
+quality more effectively than previous indexes, which led to the decision to
+consider only the bottom 20\% for the EigenFactor adjusted h-index, in order to
+be comparable with our criteria for the H5 and JIF adjusted h-indexes for
+what we consider as 'lower quality' journals.
+% TODO: CHECK!
 
 \subsection{Calculation of the Adjusted h-index}
 
@@ -164,8 +166,12 @@ most significant differences in journal quality. % TODO: CHECK!
 \begin{enumerate}
       \item \textbf{Derive the Citation Network of Journals}: Create a citation network of journals based on the
             incoming citations to each journal from the past 5 years.
-      \item \textbf{Calculate the Normalized EigenFactor of Journals}: Calculate the EigenFactor of each journal based on the
-            citation network, which reflects the journal's influence in the academic community.
+      \item \textbf{Calculate the EigenFactor of Journals}: Calculate the EigenFactor of each journal based on the
+            citation network, which reflects the journal's influence in the academic community, based on the steps
+            described from the EigenFactor pseudo-code \cite{west2008pseudocode}. The calculations were done  in Python
+            3.11.9, using the libraries \emph{NumPy} for the matrix operations and the
+            calculation of the leading eigenvector, along with the \emph{Pandas} library
+            for data manipulation.
       \item \textbf{Identify the Top 20\% of Journals by Subject Based on EigenFactor}: Select the top 20\% of journals within
             each subject area based on their EigenFactor score\@.
 
@@ -176,49 +182,6 @@ most significant differences in journal quality. % TODO: CHECK!
             %      provide a benchmark for comparison.
 
       \item \textbf{Calculate the Adjusted h-index for Each Author}: Determine the adjusted h-index for each author.
-\end{enumerate}
-
-Analytically, for the calculation of the Normalized EigenFactor in Python
-3.11.9, using the libraries \emph{NumPy} for the matrix operations and the
-calculation of the leading eigenvector, along with the \emph{Pandas} library
-for data manipulation, the following steps were taken:
-
-\begin{enumerate}
-      \item \textbf{Derive the Citation Network of Journals}:
-            \begin{enumerate}
-                  \item \textbf{Data Collection}: Collect citation data from the past 5 years. Each citation from one journal to another forms a directed edge in the citation network.
-                  \item \textbf{Matrix Formation}: Construct a citation matrix \( Z \), where each entry \( Z_{ij} \) represents the number of citations from journal \( j \) to journal \( i \).
-            \end{enumerate}
-
-      \item \textbf{Calculate the EigenFactor Score}:
-            \begin{enumerate}
-                  \item \textbf{Remove Self-Citations}: Set all diagonal elements of the citation matrix \( Z \) to zero to exclude self-citations.
-                  \item \textbf{Normalize the Citation Matrix}: Create a column-stochastic matrix \( H \) by normalizing each column of \( Z \) by the total number of outgoing citations from each journal.
-                        \[
-                              H_{ij} = \frac{Z_{ij}}{\sum_k Z_{kj}}
-                        \]
-                  \item \textbf{Handle Dangling Nodes}: Replace columns of \( H \) that correspond to journals with no outgoing citations (dangling nodes) with the article vector \( a \), where \( a_i \) represents the proportion of articles published by journal \( i \) over the total number of articles.
-                  \item \textbf{Teleportation Matrix}: Define the stochastic matrix \( P \) to ensure the Markov process is irreducible and aperiodic.
-                        \[
-                              P = \alpha H' + (1 - \alpha) a e^T
-                        \]
-                        where \( \alpha \) is the damping factor (typically 0.85, which is the value we
-                        used), \( H' \) is the modified \( H \) with dangling nodes handled, \( a \) is
-                        the article vector, and \( e^T \) is a row vector of ones.
-                  \item \textbf{Compute the Leading Eigenvector}: Calculate the leading eigenvector \( \pi^* \) of the matrix \( P \), which represents the steady-state distribution of the random walk on the citation network.
-                  \item \textbf{EigenFactor Score}: Calculate the EigenFactor score \( EF_i \) for each journal \( i \) as the percentage of the total weighted citations received.
-                        \[
-                              EF_i = 100 \times \frac{(H \pi^*)_i}{\sum_k (H \pi^*)_k}
-                        \]
-            \end{enumerate}
-
-      \item \textbf{Normalize the EigenFactor Score}:
-            \begin{enumerate}
-                  \item \textbf{Normalize by Mean}: Normalize the EigenFactor scores so that the average journal has a score of 1. This involves dividing each EigenFactor score by the mean EigenFactor score across all journals.
-                        \[
-                              \text{Normalized EigenFactor}_i = \frac{EF_i}{\text{mean}(EF)}
-                        \]
-            \end{enumerate}
 \end{enumerate}
 
 \section{ROLAP Analysis}
@@ -315,7 +278,7 @@ follows:
 \noindent\textbf{3: Getting Top and Bottom Percentile of Journals}
 \begin{itemize}
       \item \textbf{top\_issn\_by\_subject}: Contains the top 20\% of journals by subject based on the h5 index or JIF.
-      \item \textbf{bottom\_issn\_by\_subject}: Contains the bottom 50\% of journals by subject based on the h5 index or JIF and the bottom 5\% of journals by subject based on the EigenFactor.
+      \item \textbf{bottom\_issn\_by\_subject}: Contains the bottom 50\% of journals by subject based on the h5 index or JIF and the bottom 20\% of journals by subject based on the EigenFactor.
 \end{itemize}
 
 \noindent\textbf{4: Filtered Works Tables}
@@ -359,8 +322,7 @@ journals by subject based on the EigenFactor.
 \begin{figure}[H]
       \centering
       \includegraphics[width=0.8\textwidth]{../figs/eigenfactor.pdf}
-      \caption{Dependencies of the tables used in the implementation of the EigenFactor-adjusted h-index by filtering the top 20\% and bottom 5\% of journals by subject based on the EigenFactor.}
+      \caption{Dependencies of the tables used in the implementation of the EigenFactor-adjusted h-index by filtering the top 20\% and bottom 20\% of journals by subject based on the EigenFactor.}
       \label{fig:tables3}
 \end{figure}
-
 
