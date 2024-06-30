@@ -38,7 +38,7 @@ these papers are published. Consequently, an author could achieve a high H-Index
 by publishing numerous papers in lower-impact journals, potentially inflating their perceived impact \cite{tonta2020monetary}.
 
 This inflation problem becomes particularly problematic in interdisciplinary
-fields where the impact factor and journal quality can vary significantly
+fields where the impact and quality of journals can vary significantly
 across different subjects \cite{hirsch2005index,waltman2012inconsistency}.
 Therefore, there is a pressing need to refine the H-Index by incorporating
 metrics that reflect journal quality and subject specificity. Addressing these
@@ -46,7 +46,7 @@ limitations could enhance the accuracy and fairness of academic evaluations,
 ensuring that the metric truly reflects the scholarly impact of researchers.
 
 \section{Problem Statement}
-The traditional H-Index has significant limitations affecting its reliability
+The traditional H-Index has notable limitations affecting its reliability
 and accuracy as a measure of scholarly impact. Primarily, as mentioned, it
 fails to differentiate between the quality of journals where papers are
 published, allowing authors to achieve high H-Indexes through publications in
@@ -60,8 +60,8 @@ Specifically, H-Index inflation occurs when researchers achieve higher H-Index
 values not necessarily through impactful research but through strategic
 publication practices. These practices may include targeting journals with
 lower standards, which can increase the number of published papers and
-citations without corresponding increases in the quality of research. This
-inflation can distort the assessment of academic influence and undermine the
+citations without corresponding increases in the quality of research, practice that distorts
+the assessment of academic influence and undermines the
 credibility of bibliometric evaluations \cite{tonta2020monetary}.
 
 Another critical limitation of the traditional H-Index is its susceptibility to
@@ -76,7 +76,7 @@ in multi-authored papers along with the citation practices of the authors
 These factors can lead to significant disparities in H-Index values that do not
 accurately reflect individual researchers' contributions and impact.
 
-To address these issues, this thesis proposes developing and evaluating H-Index
+To address such issues, this thesis proposes developing and evaluating H-Index
 calculations that incorporate subject-specific journal rankings based on
 H5-Index and impact factor. By focusing on the top 20\% of journals within each
 subject area, the goal is to create a more accurate and meaningful metric that
@@ -88,8 +88,8 @@ The primary objective of this thesis is to develop and validate H-Index
 calculations that incorporate journal quality through subject-specific
 rankings. The specific objectives are as follows:
 \begin{enumerate}
-      \item \textbf{Develop H-Index Metrics:} Create two H-Index metrics that incorporate journal quality
-            by using subject-specific rankings based on H5-Index and journal impact factor (JIF).
+      \item \textbf{Develop H-Index Metrics:} Create three H-Index metrics that incorporate journal quality
+            by using subject-specific rankings based on H5-Index, Journal Impact Factor (JIF) and Eigenfactor (EF).
             This involves selecting the top 20\% of journals within each subject area and calculating the H-Index based on publications
             in these high-quality journals.
             %\item \textbf{Evaluate the Impact of Journal Quality:} Analyze how incorporating journal quality affects the H-Index calculation.
@@ -99,8 +99,9 @@ rankings. The specific objectives are as follows:
             and the proposed H-Indexes. This involves statistical analysis by rank order correlation
             to evaluate the consistency and divergence in author rankings when different criteria for journal quality are applied.
       \item \textbf{Analyze Citation Practices and conduct Network Analysis of Citation Patterns:} Analyze citation practices of authors publishing in high and low-ranked journals
-            and examine the citation graphs of highly ranked authors versus regular authors based on their publications within their specific subjects. The analysis will focus on network characteristics such as
-            clustering coefficients and citation patterns. % TODO: CHANGE AFTER BEING DONE
+            and examine the citation graphs of highly ranked authors versus regular authors based on their publications within their specific subjects,
+            for each ranking method (H5, JIF, EF), focusing on network characteristics such as
+            clustering coefficients.
             %\item \textbf{Compare Citation Behaviors Across Journal Quality:} Compare citation behaviors and network characteristics
             %      of authors publishing in the bottom 50\% of journals with those publishing in higher-ranked journals.
             %      This comparison aims to understand the differences in citation patterns and the implications for using
@@ -116,28 +117,36 @@ aspects of the research and providing a comprehensive framework for
 understanding and evaluating the proposed H-Index calculations.
 \begin{itemize}
       \item \textbf{Chapter 1: Introduction} \\
-            The Introduction chapter sets the stage for the thesis by providing the background and motivation for the study, outlining the problem statement, and defining the objectives of the research. This chapter also includes the structure of the thesis to guide the reader through the subsequent sections.
+            The Introduction chapter sets the stage for the thesis by providing the background and motivation for the study,
+            outlining the problem statement, and defining the objectives of the research. 
+            This chapter also includes the structure of the thesis to guide the reader through the subsequent sections.
 
-      \item \textbf{Chapter 2: Literature Review} \\
-            The Literature Review chapter provides an extensive overview of the H-Index and its various popular variants, such as the H-Frac Index, Hp-Index, Hp-Frac Index, G-Index, O-Index, and J-Index. This chapter includes a comparative analysis of these metrics, highlighting their strengths, limitations, and applications in different disciplines.
+      \item \textbf{Chapter 2: Existing work on the H-Index} \\
+            This chapter provides an extensive overview of the H-Index and its 
+            various popular variants, such as the H-Frac Index, Hp-Index, Hp-Frac Index, 
+            G-Index, O-Index, and J-Index including also a comparative analysis of these metrics, 
+            highlighting their strengths, limitations and applications in different disciplines.
 
       \item \textbf{Chapter 3: Problem Definition and Main Idea} \\
-            The Problem Definition and Main Idea chapter clearly defines the problem of H-Index inflation, emphasizing the impact of journal quality on H-Index calculations. This chapter introduces the main idea of using subject-specific journal rankings to develop H-Indexes. The research questions and hypotheses are outlined, providing a focused framework for the study.
+            The Problem Definition and Main Idea chapter clearly defines the problem of H-Index inflation, 
+            emphasizing the impact of journal quality on H-Index calculations. This chapter introduces the main idea of 
+            using subject-specific journal rankings to develop H-Indexes. The research questions and hypotheses 
+            are outlined, providing a focused framework for the study.
 
       \item \textbf{Chapter 4: Detailed Description of the Proposed Solution} \\
             This chapter presents a comprehensive description of the proposed solution.
             It begins with an overview of the methodology and proceeds to detailed subsections
             on data collection and preparation using Alexandria3k, ROLAP analysis with Simple-ROLAP,
             and SQL unit testing with RDBUnit. The chapter elaborates on the implementation of H-Indexes,
-            including the use of the top 20\% of journals by H5-Index and impact factor within specific subjects.
+            including the use of the top 20\% of journals by H5-Index, impact factor and Eigenfactor within specific subjects.
 
       \item \textbf{Chapter 5: Results} \\
             The Results chapter presents the findings of the research.
-            It includes a detailed analysis of the effectiveness of the adjusted H-Indexes,
+            It includes a detailed analysis of the adjusted H-Indexes,
             examining the correlation between traditional and proposed H-Indexes.
-            This chapter also includes a citation practices analysis and a network
-            analysis of citation patterns, highlighting the differences in citation networks between
-            top and random authors by subject. % TODO: CHANGE AFTER BEING DONE!!
+            This chapter also includes a citation practices analysis by comparing authors publishing in high and low quality journals
+            and a network analysis of citation patterns which highlights the differences in citation networks between
+            top and random authors by subject.
 
       \item \textbf{Chapter 6: Discussion and Implications} \\
             The Discussion and Implications chapter interprets the findings of the study,

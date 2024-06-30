@@ -18,18 +18,17 @@ H-Index, the differences suggest that the adjustments made for journal quality
 and subject specificity introduce meaningful variations. These variations
 likely reflect the impact of publishing in higher-quality journals and the
 influence of subject-specific citation practices, which are not captured by the
-traditional H-Index. % TODO: Check again
-
-The adjusted H-Indexes reduce the number of authors with high H-Indexes
+traditional H-Index. In addition to that, the adjusted H-Indexes reduce the number
+of authors with high H-Indexes
 compared to the traditional H-Index, leading to disinflation of H-Index values
 and potentially providing a more accurate representation of the authors'
-scholarly impact. This is evident from the reduction in the number of authors
+scholarly impact, which is evident from the reduction in the number of authors
 with H-Indexes above certain thresholds, as shown in Table
-\ref{tab:thresholds}.
+\ref{tab:thresholds}.  % TODO: Check again
 
-The analysis of citation practices reveals significant differences between
-authors publishing in lower-tier journals and those in top-tier journals.
-Authors from lower-tier journals have a significantly lower average h-index of
+The analysis of citation practices reveals substantial differences between
+authors publishing in lower-tier journals and those publishing in top-tier ones.
+Authors from lower-tier journals have a lower average h-index of
 cited journals compared to random authors from top-tier journals, suggesting
 that they cite less influential or lower-quality research. This pattern is
 consistent across almost all subject areas, emphasizing the importance of
@@ -38,11 +37,11 @@ contribution of authors.
 
 Furthermore, the citation network clustering analysis highlights that top
 authors are more likely to be part of tightly-knit citation clusters. This
-interconnectedness is particularly pronounced in fields like Life Sciences and
+interconnectedness is particularly pronounced in fields like Physical Sciences and
 Multidisciplinary research, where collaboration is more prevalent. The higher
-clustering coefficients for top authors suggest that the authors are more
-engaged in collaborative research and are part of a more cohesive research
-community, which may contribute to their higher scholarly impact.
+clustering coefficients for top authors suggest that these authors are more
+engaged in collaborative research and are part of a more cohesive
+community, which may contribute to their higher h-index values.
 
 These findings emphasize the need for incorporating journal quality and the
 need for considering subject-specific citation network structures into
@@ -59,37 +58,36 @@ the field of research.
 The findings of this study have several implications for researchers and
 practitioners in the field of bibliometrics and research evaluation. First,
 researchers should be aware of the limitations of traditional H-Index metrics
-and consider the impact of journal quality on their scholarly impact. By
-publishing in reputable journals with high impact factors and h-index values,
+and consider the impact of journal quality on such metrics. By focusing on
+publishing in reputable journals with high impact factor, eigenfactor and h-index values,
 researchers can enhance the visibility and recognition of their work, leading
-to a more accurate assessment of their scholarly impact. Researchers could also
-modify the threshold of the journal quality metrics, such as the top 10\% or
-top 30\% of journals, to further refine the adjusted H-Indexes and tailor them
-to their specific research field, based on how strict they want to be in
-considering the journal quality.
+to a more accurate assessment of their scholarly impact. 
 
 Practitioners involved in research evaluation and funding decisions should also
 take into account the quality of the journals in which researchers publish when
-assessing their impact. By incorporating journal quality metrics into
+assessing their impact. Researchers could
+modify the threshold of the journal quality metrics, such as the top 10\% or
+top 30\% of journals, to further refine the adjusted H-Indexes and tailor them
+to their specific research field, based on how strict they want to be in
+considering the journal quality. By incorporating metrics that consider the journal quality of publications into
 evaluation criteria, practitioners can ensure a more comprehensive and
 meaningful evaluation of researchers' contributions to their field.
 
 Furthermore, the study highlights the need for further research into more
-nuanced H-Index variants that address issues such as self-citation and
-hyperauthorship. By developing more sophisticated, but not complex to
+advanced H-Index variants that address issues such as self-citation and
+hyperauthorship. By developing more sophisticated, but not too complex to
 calculate, H-Index metrics that provide a more refined measure of scholarly
-impact, researchers and practitioners can improve the accuracy and fairness of
+impact, practitioners can improve the accuracy and fairness of
 bibliometric evaluations.
 
-Lastly, the study showcases a methodological approach to evaluating scholarly
+Lastly, the study showcases a methodological approach for evaluating scholarly
 impact metrics that incorporate journal quality and subject specificity into
 the calculation of H-Indexes. Specifically, by using the Alexandria3k tool to
 extract and analyze publication data from Crossref-2024, along with the
-effective use of ROLAP analysis and testing, the study demonstrates a robust
-and reliable method for calculating efficiently and accurately adjusted
-H-Indexes. By adopting similar methodologies, researchers and practitioners can
-enhance the reliability and validity of bibliometric evaluations along with the
-assessment of scholarly impact and much more.
+effective use of ROLAP analysis and unit testing, the study demonstrates a robust
+and reliable method for calculating and analysing efficiently and accurately adjusted
+H-Indexes. By adopting similar methodologies, researchers can
+enhance the reliability and validity of bibliometric evaluations.
 
 Overall, the study contributes to the ongoing discussion on the limitations of
 traditional H-Index metrics and provides a more nuanced and accurate assessment

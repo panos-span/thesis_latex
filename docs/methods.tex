@@ -4,17 +4,17 @@
 \section{Overview of the Proposed Method}
 
 The proposed method aims to address the problem of h-index inflation by
-developing two novel metrics that adjusts for the subject area and the quality
+developing three novel metrics that adjusts for the subject area and the quality
 of the journal in which the publication is published. The first metric, the
 \textit{Adjusted h-index} ($h_{\text{adj}}$), adjusts the h-index by only
 considering publications from the top 20\% of journals in it's corresponding
 subject area, based on the h5 index of the journal. The second metric, the
 \textit{JIF-adjusted h-index} ($h_{\text{JIF}}$), adjusts the h-index
 similarly, but the ranking of the journals is determined by the Journal Impact
-Factor (JIF) of the journal in which the publication is published. Lastly, the
-third metric, the \textit{Eigenfactor-adjusted h-index} ($h_{\text{EF}}$),
-adjusts the h-index by considering the Eigenfactor of the journal in which the
-publication is published. The proposed methods are implemented in \emph{SQL}
+Factor (JIF) of the journal in which the publication is published. Lastly, 
+the \textit{Eigenfactor-adjusted h-index} ($h_{\text{EF}}$),
+adjusts the h-index by considering the EigenFactor of the journal.
+The proposed methods are implemented in \emph{SQL}
 and the data is stored in a Sqlite database, with only the EigenFactor
 calculation being done in Python.
 
@@ -32,8 +32,9 @@ articles, conference proceedings, and other scholarly works.
 
 Alexandria3k supplies a library and a command-line tool providing efficient
 relational query access to diverse publication open data sets. Specifically,
-the dataset that was used is a subset of the Crossref-2024 and Crossref-2023
-datasets, where the whole Crossref-2024 contain publication metadata from about
+the dataset that was used is a subset of the Crossref-2024 dataset along with the subjects of
+journals (from the 2024 subset) from the Crossref-2023 dataset, where the whole 
+Crossref-2024 contains publication metadata from about
 156 million publications from all major international publishers with full
 citation data for around 60 million of them. Using our subsets we are checking
 around 1.5 million publications. In addition to that, for the subject of the
@@ -41,46 +42,25 @@ publications, the Scopus ASJC (All Science Journal Classification) subject
 codes were used.
 
 To be more specific, the ASJC codes were used to categorize the publications
-into more general subject areas than the original subject areas provided by the
+into more general subject areas than the original areas provided by the
 Crossref-2023 dataset. The ASJC codes are a standard classification system used
 to categorize publications into subject areas and are widely used in the
 scientific community. The ASJC codes are hierarchical and are organized into
 four levels, with the first level being the broadest and the fourth level being
 the most specific. For the purpose of this study, the first level of the ASJC
-codes was used to categorize the publications into subject areas. Crucial to
-note is that the ASJC codes are not available for all publications in the
+codes was used to categorize the publications into subject areas, for the differentiation 
+of subject areas to be differentiable. Crucial to
+note is that the ASJC codes are not available for publications in the
 Crossref-2024 dataset \cite{crossrefSubjectCodes2024}, so only journals with
 subjects from the Crossref-2023 dataset or with subjects retrievable using the
 Scopus API were considered for this study, since for those journals the ASJC
 codes were able to be retrieved.
 
 \section{Implementation of the Proposed Methods}
-%
-%The proposed method was implemented in SQL using the Sqlite database management
-%system. The implementation consists of two main parts: the calculation of the
-%Adjusted h-index and the calculation of the JIF-adjusted h-index based on the
-%last 3 years. The implementation of the Adjusted h-index is done in these
-%steps: (1) Create tables to store and index works and authors (2) Create a
-%common table for journals by issn along with their general subject area (3)
-%Count citations for Each Work (4) Calculate the h3 index of the journals (5)
-%Identify the top 20\% of journals by subject based on H3 index (6) Create
-%filtered works tables from the top Journals by Subject (7) Calculate the
-%average h3 index for each subject area (8) Calculate the Adjusted h-index for
-%each author
-%
-%Similarly, the implementation of the JIF-adjusted h-index is done in these
-%steps: (1) Calculate Work Citations (2) Filter Citable Works (3) Calculate
-%Number of Publications in the Impact Factor Period (4) Calculate the Journal
-%Impact Factor (JIF) (5) Identify the top 20\% of journals by subject based on
-%H3 index (6) Create filtered works tables from the top Journals by Subject (7)
-%Calculate Average h-index by Subject (8) Calculate Adjusted h-index
-%
-%\section{Implementation of the Proposed Method}
-%
 
 The proposed method was implemented in SQL using the SQLite database management
 system. The implementation consists of three main parts: the calculation of the
-Adjusted h-index and the Eigenfactor-adjusted h-index based on the last 5
+Adjusted h-index and the EigenFactor-adjusted h-index based on the last 5
 years, along with the calculation of the JIF-adjusted h-index based on the last
 3 years. All methods share the same structure and similar preparation steps,
 with the main difference being the metrics (H5, IF3 and EigenFactor) used to
@@ -95,30 +75,20 @@ works and authors, as well as a common table for journals by ISSN and subject.
 
 Important to note is that, for the consideration of the 'lower quality'
 journals for the Adjusted h-index and the JIF-adjusted h-index, the bottom 50\%
-of journals were considered 'lower quality' for the H5 and JIF adjusted
+of journals were considered for the H5 and JIF adjusted
 h-indexes, while the bottom 20\% of journals were considered 'lower quality'
 for the EigenFactor adjusted h-index, due to the different distribution of the
 EigenFactor scores compared to the H5 and JIF indexes. Specifically, the
 EigenFactor allows a broader range of journals to be considered lower-tier,
 being potentially more sensitive and able to capture differences in journal
-quality more effectively than previous indexes, which led to the decision to
+quality more effectively than the previous indexes, which led to the decision to
 consider only the bottom 20\% for the EigenFactor adjusted h-index, in order to
 be comparable with our criteria for the H5 and JIF adjusted h-indexes for
-what we consider as 'lower quality' journals.
+what was considered to be lo quality journals.
 % TODO: CHECK!
 
 \subsection{Calculation of the Adjusted h-index}
 
-%\begin{itemize}
-%    \item \textbf{Preparation of the Database}
-%          \begin{enumerate}
-%              \item \textbf{Create Tables for Works and Authors}: Establish tables to store and index works
-%                    and their associated authors using ORCID identifiers. This ensures that each work is linked to its respective authors.
-%
-%              \item \textbf{Create Common Table for Journals by ISSN and Subject}: Create a table that consolidates journal
-%                    entries by their ISSN along with their general subject area, ensuring that each work is correctly categorized.
-%          \end{enumerate}
-%\end{itemize}
 \begin{enumerate}
       \item \textbf{Count Citations for Each Work}: Calculate the number of citations for each work to determine its impact.
 
@@ -130,9 +100,6 @@ what we consider as 'lower quality' journals.
 
       \item \textbf{Create Filtered Works Tables from the Top Journals by Subject}: Generate tables that include works from the
             top journals for each subject area, ensuring that only high-impact works are considered.
-
-            %\item \textbf{Calculate the Average h5 Index for Each Subject Area}: Compute the average h3 index for each subject area
-            %      to provide a benchmark for comparison.
 
       \item \textbf{Calculate the Adjusted h-index for Each Author}: Determine the adjusted h-index for each author,
             taking into account the subject area of the author.
@@ -156,9 +123,6 @@ what we consider as 'lower quality' journals.
       \item \textbf{Create Filtered Works Tables from the Top Journals by Subject}: Generate tables that include works from
             the top journals for each subject area, ensuring that only high-impact works are considered.
 
-            %\item \textbf{Calculate the Average h-index for Each Subject Area}: Compute the average h-index for each subject area to
-            %      provide a benchmark for comparison.
-
       \item \textbf{Calculate the Adjusted h-index for Each Author}: Determine the adjusted h-index for each author.
 \end{enumerate}
 
@@ -178,9 +142,6 @@ what we consider as 'lower quality' journals.
       \item \textbf{Create Filtered Works Tables from the Top Journals by Subject}: Generate tables that include works from
             the top journals for each subject area, ensuring that only high-impact works are considered.
 
-            %\item \textbf{Calculate the Average h-index for Each Subject Area}: Compute the average h-index for each subject area to
-            %      provide a benchmark for comparison.
-
       \item \textbf{Calculate the Adjusted h-index for Each Author}: Determine the adjusted h-index for each author.
 \end{enumerate}
 
@@ -191,14 +152,14 @@ Processing (ROLAP) approach. ROLAP is a database management system that enables
 users to analyze multidimensional data stored in a relational database
 \cite{codd1993providing}. The implementation of the proposed method in ROLAP
 allows for efficient querying and analysis of the publication data to calculate
-the adjusted h-index and JIF-adjusted h-index. For the ROLAP implementation,
-the tool Simple-Rolap \cite{simple-rolap} was used, which provides a simple
-framework for maintainable and time-efficient relational online analytical
-processing (ROLAP) by enabling the specification of small, modular SQL queries.
+the adjusted h-indexes. For the ROLAP implementation,
+the tool simple-rolap \cite{simple-rolap} was used, which provides a simple
+framework for maintainable and time-efficient ROLAP 
+by enabling the specification of small, modular SQL queries.
 It is designed for querying rarely modified data sets and is particularly
 useful in scenarios where materialized views are unsupported or unusable.
 
-The primary function of Simple-ROLAP is to save the result of each SQL query in
+The primary function of simple-rolap is to save the result of each SQL query in
 corresponding tables, which can then be used by subsequent queries. This
 modular approach allows for the independent development and testing of each
 query. Automatic dependency analysis ensures that new queries can utilize
@@ -207,7 +168,7 @@ tables are automatically repopulated.
 
 \section{Testing of the Proposed Method}
 For the testing of the proposed methods, the RDBUnit \cite{rdbunit} tool was
-used to create and execute unit tests for the SQL queries. RDBUnit is a
+used to create and execute unit tests. RDBUnit is a
 database unit testing framework that allows for the creation of test cases for
 SQL queries and stored procedures. The tool provides a simple and efficient way
 to express the setup prior to a query, the query itself, and the expected
@@ -242,7 +203,7 @@ follows:
 \noindent\textbf{1: Data Preparation}
 \begin{itemize}
       \item \textbf{works\_orcid}: Contains the works with their respective authors.
-      \item \textbf{works\_issn\_subject}: Contains the journals with their respective subject areas.
+      \item \textbf{works\_issn\_subject}: Contains the journals with their respective subject areas, in AJSC codes.
       \item \textbf{work\_citations}: Contains the works with their respective citations.
 \end{itemize}
 
@@ -272,7 +233,7 @@ follows:
 
 \noindent\textbf{2iii: Calculation of Journal EigenFactor}
 \begin{itemize}
-      \item \textbf{eigenfactor\_scores}: Contains the EigenFactor for each journal, calculated using Python.
+      \item \textbf{eigenfactor\_scores}: Contains the EigenFactor for each journal, calculated using Python and then inserted into the ROLAP database.
 \end{itemize}
 
 \noindent\textbf{3: Getting Top and Bottom Percentile of Journals}
@@ -289,7 +250,7 @@ follows:
 
 \noindent\textbf{5: Calculation of the Adjusted h-index}
 \begin{itemize}
-      \item \textbf{orcid\_h5\_filtered}: Calculates the h5 index for each author.
+      \item \textbf{orcid\_h5\_filtered}: Calculates the h5 index for each author regarding their discipline (subject area).
       \item \textbf{orcid\_h5\_bottom}: Calculates the h5 index for each author from the 'lower quality' journals.
 \end{itemize}
 

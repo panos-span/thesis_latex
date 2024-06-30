@@ -2,7 +2,7 @@
 \label{ch:problem}
 
 \section{Definition of H-Index Inflation}
-The phenomenon of inflation of the h-index is a significant concern in
+The phenomenon of inflation of the h-index is a concern of high importance in
 contemporary scientific metrics, particularly driven by the rise of
 hyperauthorship. It refers to the artificial boosting of a scholar's h-index
 through various practices such as self-citation, extensive co-authorship, and
@@ -11,7 +11,7 @@ scientific publications and citations over time. The primary reason behind this
 is that more recent publications have access to a larger pool of potential
 citations, thereby increasing their citation counts more rapidly
 \cite{norris2010h, koltun2021h, bi2023four}. Database choice also plays a
-significant role in h-index inflation due to varying coverage of publications
+role in h-index inflation due to varying coverage of publications
 and citations. Jacso highlighted the variability in h-index scores depending on
 the database used (Google Scholar, Scopus, Web of Science), noting that
 databases like Google Scholar tend to have higher citation counts due to their
@@ -36,7 +36,7 @@ practices like gift authorship, where individuals add each other’s names to
 publications with minimal or no contribution to artificially boost their
 h-index \cite{bi2023four}. Finally, the failure to convert nominal citation
 values into real citation values, which are adjusted for the growth of
-scientific output, results in significant mismeasurement of scientific impact
+scientific output, results in mismeasurement of scientific impact
 which particularly affects the evaluation of the career impact of researchers
 who started their careers at different times since researchers from earlier
 generations are likely to have their scientific impact underestimated if their
@@ -44,7 +44,7 @@ citation counts are not adjusted for inflation \cite{petersen2019methods}.
 
 \section{Impact of Journal Quality on H-Index Calculation}
 Considering the quality of journals in which an author's works are published
-can significantly enhance the accuracy and reliability of assessing their
+can notably assist in enhancing the accuracy and reliability of assessing their
 scientific impact. Journal quality, often gauged by metrics such as the Journal
 Impact Factor (JIF), which measures the importance of a journal by calculating
 the number of times selected articles are cited within a particular year and
@@ -63,21 +63,21 @@ Similarly, journals with higher h-index values tend to have a higher proportion
 of highly cited papers, which indicates that the journal is publishing
 high-quality research that is widely recognized and respected by the scientific
 community. For example, a journal with a high h-index may have published a
-significant number of papers that have been cited many times, indicating that
+numerous papers that have been cited many times, indicating that
 the research is highly influential and widely accepted. On the other hand, a
 journal with a low h-index may have published fewer highly cited papers,
 suggesting that the research is less influential or less well-received by the
 scientific community.
 
-More recently, the Eigenfactor metric has emerged as an alternative measure of
+More recently, the EigenFactor metric has emerged as an alternative measure of
 journal quality, which evaluates the influence of a journal based on the number
 of incoming citations, with citations from highly influential journals weighted
 more heavily than those from less influential journals. It was designed to
-adress the limitations of traditional citation metrics like the Impact Factor
+address the limitations of traditional citation metrics like the Impact Factor
 (JiF), which can be skewed by a few highly cited papers, by leveraging the
 structure of citation networks.
 
-In detail, the Eigenfactor is calculated by analyzing the network of academic
+In detail, the EigenFactor is calculated by analyzing the network of academic
 citations among journals. It employs an algorithm similar to Google's PageRank
 to measure the importance of journals based on their citations and the process
 involves creating a matrix that records how often each journal cites every
@@ -85,7 +85,7 @@ other journal. Using this matrix, the algorithm simulates a random walk through
 the citation network, where a hypothetical researcher selects articles and
 follows their citations to other journals repeatedly. This random walk model
 helps determine the frequency with which a researcher would visit each journal,
-reflecting its overall influence. Finally, the Eigenfactor Score is derived
+reflecting its overall influence. Finally, the EigenFactor Score is derived
 from these visitation frequencies, giving more weight to citations from
 prestigious journals, and adjusting for differences in citation practices
 across various fields \cite{Bergstrom11433, Alan2009}.
@@ -101,7 +101,7 @@ recognition of the author's contributions to their field.
 \section{Research Questions and Hypotheses}
 This thesis, by introducing a new metric that incorporates journal quality into
 the calculation of the H-Index, with different ways of ranking journals based
-on their quality, aims to address the limitations of the traditional H-Index
+on their quality, aims to address the limitations of the H-Index
 and provide a more accurate and meaningful assessment of a researcher's
 scholarly impact. As such, the following research questions are posed: First,
 what is the correlation between traditional H-Index values and the proposed
