@@ -20,6 +20,9 @@ jobs:
       - name: Build PDF
         run: make all
 
+      - name: Build PDF Again (for citations to work)
+        run: make all
+
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
