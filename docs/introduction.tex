@@ -45,6 +45,65 @@ reflect journal quality and subject specificity. Addressing these limitations
 could enhance the accuracy and fairness of academic evaluations, ensuring that
 the metric truly reflects the scholarly impact of researchers.
 
+\section{Problem Statement}
+The phenomenon of inflation of the h-index is a concern of high importance in
+contemporary scientific metrics, particularly driven by the rise of
+hyperauthorship. It refers to the artificial boosting of a scholar's h-index
+through various practices such as self-citation, extensive co-authorship, and
+the use of certain databases, which arises from the consistent growth of
+scientific publications and citations over time. The primary reason behind this
+is that more recent publications have access to a larger pool of potential
+citations, thereby increasing their citation counts more rapidly
+\cite{norris2010h, koltun2021h, bi2023four}. Database choice also plays a role
+in h-index inflation due to varying coverage of publications and citations.
+Jacso highlighted the variability in h-index scores depending on the database
+used (Google Scholar, Scopus, Web of Science), noting that databases like
+Google Scholar tend to have higher citation counts due to their broader and
+less selective indexing practices and Meho and Yang found that combining
+citation counts from multiple databases (Scopus and Web of Science) resulted in
+a higher overall citation count, which could inflate h-index scores
+\cite{norris2010h}.
+
+Moreover, the lack of subject specificity in the calculation of the H-Index
+could significantly contribute to its inflation. Without taking into account
+the prestige and quality of the journals in which the publications are
+published, the H-Index can be artificially boosted by publications in
+lower-quality journals, that may not have rigorous peer-review processes.
+Specifically, researchers might target journals with lower standards, which can
+increase the number of published papers and citations without corresponding
+increases in the quality of research. This inflation can distort the assessment
+of academic influence and undermine the credibility of bibliometric
+evaluations.
+
+Important to note is that the h-index inflation can also drive unethical
+practices like gift authorship, where individuals add each other’s names to
+publications with minimal or no contribution to artificially boost their
+h-index \cite{bi2023four}. Finally, the failure to convert nominal citation
+values into real citation values, which are adjusted for the growth of
+scientific output, results in mismeasurement of scientific impact which
+particularly affects the evaluation of the career impact of researchers who
+started their careers at different times since researchers from earlier
+generations are likely to have their scientific impact underestimated if their
+citation counts are not adjusted for inflation \cite{petersen2019methods}.
+
+\section{Research Questions and Hypotheses}
+This thesis, by introducing a new metric that incorporates journal quality into
+the calculation of the H-Index, with different ways of ranking journals based
+on their quality, aims to address the limitations of the H-Index and provide a
+more accurate and meaningful assessment of a researcher's scholarly impact. As
+such, the following research questions are posed: First, what is the
+correlation between traditional H-Index values and the proposed H-Index metrics
+that account for journal quality? Second, how do citation practices differ
+between top authors publishing in low-quality journals and authors publishing
+in high-quality journals? Third, how do citation patterns differ between
+hyperprolific and regular researchers across different subject
+areas? By addressing these research questions, this thesis seeks not only to
+develop and validate improved H-Index calculations that incorporate journal
+quality, but to also provide insights into the citation practices and patterns
+of researchers across different subjects, thus contributing to a more complete
+understanding of scholarly impact.
+
+
 %\section{Problem Statement}
 %The traditional H-Index has notable limitations affecting its reliability and
 %accuracy as a measure of scholarly impact. Primarily, as mentioned, it fails to
@@ -82,7 +141,7 @@ the metric truly reflects the scholarly impact of researchers.
 %subject area, the goal is to create a more accurate and meaningful metric that
 %reflects both the productivity and the quality of an author's research
 %contributions.
-%
+
 %\section{Objectives of the Thesis}
 %The primary objective of this thesis is to develop and validate H-Index
 %calculations that incorporate journal quality through subject-specific
