@@ -4,25 +4,24 @@
 \section{Statistical Analysis of the Adjusted H-indexes}
 
 To evaluate the relationship of the adjusted h-indexes with the traditional
-h-index, we calculated the rank order correlation between the h-index and the
-adjusted h-indexes from the publications that were included in the top 20\% of
-the journals by rank. The Pearson, Spearman, and Kendall tau rank order
-correlations were calculated for the h-index and the adjusted h-indexes using
-the \emph{scipy.stats} package using Python 3.11.9. The results are shown in
-Table \ref{tab:correlations}.
+h-index, we calculated the rank order correlation between them from the
+publications that were included in the top 20\% of the journals by rank. The
+Pearson, Spearman, and Kendall $\tau$ rank order correlations were calculated
+for the h-index and the adjusted h-indexes using the \emph{scipy.stats} package
+with Python 3.11.9. The results are shown in Table \ref{tab:correlations}.
 
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|>{\centering\arraybackslash}m{5cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|>{\centering\arraybackslash}m{3cm}|}
         \hline
-        \textbf{Correlation}                                    & \textbf{Pearson} & \textbf{Spearman} & \textbf{Kendall tau} \\
+        \textbf{Correlation}                                    & \textbf{Pearson} & \textbf{Spearman} & \textbf{Kendall $\tau$} \\
         \hline
-        \textbf{h-index vs. Adjusted h-index using H5}          & 0.686            & 0.693             & 0.637                \\
+        \textbf{h-index vs. Adjusted h-index using H5}          & 0.686            & 0.693             & 0.637                   \\
         \hline
-        \textbf{h-index vs. Adjusted h-index using JIF}         & 0.667            & 0.678             & 0.616                \\
+        \textbf{h-index vs. Adjusted h-index using JIF}         & 0.667            & 0.678             & 0.616                   \\
         \hline
-        \textbf{h-index vs. Adjusted h-index using EigenFactor} & 0.680            & 0.688             & 0.629                \\
+        \textbf{h-index vs. Adjusted h-index using EigenFactor} & 0.680            & 0.688             & 0.629                   \\
         \hline
     \end{tabular}
     \caption{Correlation between h-index and adjusted h-indexes}
@@ -37,27 +36,26 @@ H-Indexes, suggesting that researchers who rank highly according to the
 traditional H-Index also tend to rank highly according to the adjusted
 H-Indexes. More specifically, the Pearson correlation coefficients indicate a
 strong linear relationship, while the Spearman correlation coefficients suggest
-a strong monotonic relationship. Lastly, the Kendall tau correlation indicates
-a strong ordinal relationship between the traditional H-Index and the adjusted
-H-Indexes.
+a strong monotonic relationship. Lastly, the Kendall $\tau$ correlation
+indicates a strong ordinal relationship between the traditional H-Index and the
+adjusted H-Indexes.
 
 Compared to other H-Index variants, as reviewed in the literature, the
 correlation is not perfect. This imperfection highlights the distinctiveness of
-the adjusted H-Indexes. While the strong correlation signifies that the
-adjusted H-Indexes retain the fundamental characteristics of the traditional
-H-Index, the differences suggest that the adjustments made for journal quality
-and subject specificity introduce meaningful variations. These variations
-likely reflect the impact of publishing in higher-quality journals and the
-influence of subject-specific citation practices, which are not captured by the
-traditional H-Index.
+the adjusted H-Indexes. While the strong correlation signifies that they retain
+the fundamental characteristics of the traditional H-Index, the differences
+suggest that the adjustments made for journal quality and subject specificity
+introduce meaningful variations. These variations likely reflect the impact of
+publishing in higher-quality journals and the influence of subject-specific
+citation practices, which are not captured by the traditional H-Index.
 
 To further investigate the relationship between the traditional H-Index and the
 adjusted H-Indexes, we calculated the number of authors with adjusted H-indexes
 and H-index above certain thresholds, along with their maximum values. The
 results are shown in Table \ref{tab:thresholds}, where it can be seen that the
 adjusted H-Indexes reduce the number of authors with high H-indexes compared to
-the traditional H-Index, leading to disinflation of the H-index values and
-potentially to a more accurate representation of the authors' scholarly impact.
+the traditional one, leading to disinflation of the H-index values and
+potentially to a more accurate representation of the authors' impact.
 
 \begin{table}[H]
     \centering
@@ -91,7 +89,7 @@ the quality and influence of their scholarly work.
 
 Specifically, we selected the top 50 authors per subject publishing in the
 bottom 50\% of journals by rank for the H5 and IF journal rankings, where as
-for the EigenFactor journal ranking we selected the same authors publishing in
+for the EigenFactor journal ranking, we selected the same authors publishing in
 the bottom 20\% of journals, and matched them with random authors publishing in
 the top 20\% of journals, with matching h-indexes, where the H5 calculations
 are stored in the tables \emph{orcid\_h5\_bottom} and
@@ -99,7 +97,7 @@ are stored in the tables \emph{orcid\_h5\_bottom} and
 based on the row number and calculated the average h-index of the cited
 journals for each author in both groups.
 
-Being done with the above extraction we proceeded to obtain the Mann-Whitney U
+Being done with the above extraction, we proceeded to obtain the Mann-Whitney U
 statistic and p-value for the comparison of the average h-index of the cited
 journals between the two groups per subject area. The results are shown in
 tables \ref{tab:citation_practices_jif}, \ref{tab:citation_practices_h5} and
@@ -118,9 +116,6 @@ the number of authors with $h5 >= 10$, which is 3502 for the EigenFactor
 journal ranking, 7 for the JIF ranking, and 3 for the H5 journal ranking,
 proving even further the notable differences in the distribution of the journal
 rankings.
-
-% TODO: Explain why this can also be seen be the number of authors with h5 >=10
-%% EF: 3502 , JIF: 7 , H5: 3
 
 \begin{table}[H]
     \centering
@@ -242,11 +237,10 @@ The lower average h-index of cited journals among top authors from lower-tier
 journals reflects a preference for citing less influential or lower-quality
 research, potentially affecting the overall impact and credibility of their
 work. In contrast, random authors from top-tier journals tend to cite more
-influential and higher-quality research, which enhances the impact and
-reputation of their scholarly contributions. These results underscore the
-importance of considering citation practices when evaluating the scholarly
-impact of authors and highlight the potential impact of journal quality on
-citation patterns.
+influential and higher-quality research, which enhances the influence and
+reputation of their contributions. These results underscore the importance of
+considering citation practices when evaluating the scholarly impact of authors
+and highlight the potential effects of journal quality on citation patterns.
 
 It is important to acknowledge that, the observed differences in the stringency
 of the journal ranking methods play a crucial role in our analysis. The
@@ -269,12 +263,12 @@ achievements appear to be even more difficult to explain than earlier
 observations of hyperprolific authors. It was found in 2022 that works by
 authors with a high h5-index (greater than 50) are more likely to be part of
 tightly-knit citation clusters compared to other works with the same number of
-citations, which was proven by the fact that the clustering coefficients
-of a random sample of 50 works from authors with an h5-index larger than 50
-appear to be significantly different from a random sample of other works of the
-same size with the same number of citations for each one (median 0.03). This
+citations, which was proven by the fact that the clustering coefficients of a
+random sample of 50 works from authors with an h5-index larger than 50 appear
+to be significantly different from a random sample of other works of the same
+size with the same number of citations for each one (median 0.03). This
 highlights the interconnected nature of highly cited authors' research within
-their respective fields \cite{Spi23g}.% TODO: CHECK!
+their respective fields \cite{Spi23g}.
 
 Similarly, we explored the phenomenal productivity and impact exhibited by the
 authors at the top of the distribution by examining the clustering coefficient
@@ -314,8 +308,8 @@ authors have generally a significantly higher clustering coefficient compared
 others. This suggests that the top authors are more likely to be part of
 tightly-knit citation clusters, indicating a higher level of interconnectedness
 between their works. This observation is consistent across all five subject
-areas, with the differences being statistically significant in all cases,
-with the differences being more pronounced in some subject areas than others.
+areas, with the differences being statistically significant in all cases, with
+the differences being more pronounced in some subject areas than others.
 
 In the Health Sciences, the median clustering coefficient of top authors works
 (0.036) compared to other authors works (0.031) with a p-value of 0.045, shows
@@ -323,13 +317,13 @@ a statistically significant but modest difference. This suggests that while
 there is a higher degree of interconnectedness, it is not as pronounced as in
 other fields. Life Sciences show a more pronounced difference, with top authors
 works having a median clustering coefficient of 0.045 versus 0.027 for other
-authors works and a highly significant p-value of 0.004, which indicates a
+authors' works and a highly significant p-value of 0.004, which indicates a
 strong interconnectedness in this field, likely due to the collaborative nature
 of life sciences research.
 
 The Multidisciplinary field exhibits the highest difference with a median
 clustering coefficient of 0.062 for top authors works compared to 0.031 for
-others works, and a p-value of less than 0.001. This noticeable disparity
+other works, and a p-value of less than 0.001. This noticeable disparity
 underscores the broad and influential impact of top authors in
 multidisciplinary research, where diverse collaboration and citation networks
 are more prevalent. Similarly, in Physical Sciences, the median clustering
