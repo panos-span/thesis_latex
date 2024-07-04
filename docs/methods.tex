@@ -15,7 +15,7 @@ articles published one or two years ago have been cited one time, while a JIF
 of 2.5 means that articles have been cited 2.5 times on average. A higher
 impact factor for a journal indicates that more of the journal's publications
 have been highly cited, which suggests a higher quality of research being
-published in the journal that can be explained by the fact that high-impact
+published in the journal. This can be explained by the fact that high-impact
 journals generate more citations due to their wide readership, rigorous
 peer-review process, and the prestigious nature of the publications they
 attract \cite{garfield2006history}.
@@ -34,7 +34,7 @@ journal quality, which evaluates the influence of a journal based on the number
 of incoming citations, with citations from highly influential journals being
 weighted more heavily than those from less influential ones. It was designed to
 address the limitations of traditional citation metrics like the Impact Factor
-(JIF), which can be skewed by a few highly cited papers, leveraging the
+(JIF), which can be skewed by a few highly cited papers, by leveraging the
 structure of citation networks \cite{bergstrom2007eigenfactor}.
 
 In detail, the EigenFactor is calculated by analyzing the network of academic
@@ -75,12 +75,12 @@ with only the EigenFactor calculation being done in \emph{Python}.
 For the purpose of this study, the Alexandria3k \cite{Spi23g} package was used
 to collect publication data from the Crossref dataset \cite{Crossref2020} and
 prepare it for processing. The Crossref dataset is known for its comprehensive
-and standardized approach to indexing scholarly publications across a wide
-range of disciplines, which is helpful for reducing discrepancies that might
-arise from varying data formats used by different databases (Scopus, Web of
-Science, etc.). Crossref collaborates with a large number of publishers to
-ensure that a wide range of academic content is covered, including journal
-articles, conference proceedings, and other scholarly works.
+and standardized approach to indexing publications across a wide range of
+disciplines, which is helpful for reducing discrepancies that might arise from
+varying data formats used by different databases (Scopus, Web of Science,
+etc.). Crossref collaborates with a large number of publishers to ensure that a
+wide range of academic content is covered, including journal articles,
+conference proceedings, and other scholarly works.
 
 Alexandria3k supplies a library and a command-line tool providing efficient
 relational query access to diverse publication open data sets. Specifically,
@@ -88,7 +88,7 @@ the dataset that was used is a subset of the Crossref-2024 dataset along with
 the subjects of journals (from the 2024 subset) from the Crossref-2023 dataset,
 where the whole Crossref-2024 contains publication metadata from about 156
 million publications from all major international publishers with full citation
-data for around 60 million of them. Using our subsets we are checking around
+data for around 60 million of them. Using our subsets, we are checking around
 1.5 million publications, which are the publications in the period 2019--2023.
 In addition to that, for the subject of the publications, the Scopus ASJC (All
 Science Journal Classification) subject codes were used.
@@ -102,10 +102,10 @@ levels, with the first level being the broadest and the fourth level being the
 most specific. For the purpose of this study, the first level of the ASJC codes
 was used to categorize the publications into broad subject areas, so the
 analysis could be generalized across different disciplines, without getting
-lost in the details of specific subfields. Crucial to note is that the codes
-are not available for publications in the Crossref-2024 dataset
-\cite{crossrefSubjectCodes2024}, so only journals with subjects from the
-Crossref-2023 dataset or with subjects retrievable using the Scopus API
+lost in the details of subfields. Crucial to note is that the codes are not
+available for publications in the Crossref-2024 dataset
+\cite{crossrefSubjectCodes2024}, so only journals with subjects from the 2023
+dataset or with subjects retrievable using the Scopus API
 \cite{elsevier_dev_portal} were considered for this study, since for those
 journals the codes were retrievable.
 
@@ -120,11 +120,11 @@ preparation steps, with the main difference being the metrics (H5, IF3 and
 EigenFactor) used to rank the journals. In order to use the subject codes from
 the Scopus ASJC classification, since they are not available in the
 Crossref-2024 dataset, the journals (ISSN) along with their subject codes were
-extracted from the Crossref-2023 dataset and stored in a separate table (called
+extracted from the 2023 version and stored in a separate table (called
 journal\_data). Additionally, if the ASJC codes were not available for a
-journal, even from the Crossref-2023 dataset, the Scopus API was used to
-retrieve the subject codes, if possible. After that, the preparation of the
-database involved creating tables to store and index works and authors.
+journal, even from the 2023 dataset, the Scopus API was used to retrieve the
+subject codes, if possible. After that, the preparation of the database
+involved creating tables to store and index works and authors.
 
 Important to note is that, for the consideration of the 'lower quality'
 journals for the Adjusted h-index and the JIF-adjusted h-index, the bottom 50\%
@@ -132,12 +132,11 @@ of journals were considered, while the bottom 20\% of journals were considered
 for the EigenFactor adjusted h-index, due to the different distribution of the
 EigenFactor scores compared to rest of the indexes. Specifically, the
 EigenFactor allows a broader range of journals to be considered lower-tier,
-being potentially more sensitive and, thus, able to capture differences in
-journal quality more effectively than the previous indexes. This led to the
+being potentially more sensitive to journal quality and, thus, able to capture
+differences in it more effectively than the previous indexes. This led to the
 decision to consider only the bottom 20\% for the EigenFactor adjusted h-index,
 in order to be comparable with our criteria for the H5 and JIF adjusted
 h-indexes for what was considered to be journals of lesser quality.
-% TODO: CHECK!
 
 \subsection{Calculation of the Adjusted h-index}
 
@@ -183,9 +182,9 @@ h-indexes for what was considered to be journals of lesser quality.
       \item \textbf{Derive the Citation Network of Journals}: Create a citation network of journals based on the
             incoming citations to each journal from the past 5 years.
       \item \textbf{Calculate the EigenFactor of Journals}: Calculate the EigenFactor of each journal based on the
-            citation network, which reflects the journal's influence in the academic community, based on the steps
+            citation network, based on the steps
             described from the official EigenFactor pseudo-code \cite{west2008pseudocode}. The calculations were done  in Python
-            3.11.9, using the libraries \emph{NumPy} for the matrix operations and the
+            3.11.9, using the \emph{NumPy} library for the matrix operations and the
             calculation of the leading eigenvector, along with the \emph{Pandas} library
             for data manipulation.
       \item \textbf{Identify the Top 20\% of Journals by Subject Based on EigenFactor}: Select the top 20\% of journals within
@@ -214,18 +213,19 @@ views are unsupported or unusable.
 The primary function of \emph{simple-rolap} is to save the result of each SQL
 query in corresponding tables, which can then be used by subsequent queries.
 This modular approach allows for the independent development and testing of
-each query. Automatic dependency analysis ensures that new queries can utilize
-already calculated results and that when a query is changed, only the dependent
-tables are automatically repopulated.
+each query. Additionally, its automatic dependency analysis feature, ensures
+that new queries can utilize already calculated results and that when a query
+is changed, only the dependent tables are automatically repopulated.
 
 \section{Testing of the Proposed Method}
 For the testing of the proposed methods, the \emph{RDBUnit} \cite{rdbunit}
 library was used to create and execute unit tests. \emph{RDBUnit} is a database
 unit testing framework that allows for the creation of test cases for SQL
-queries and stored procedures. The tool provides a simple and efficient way to
-express the setup prior to a query, the query itself, and the expected results.
-This framework can test \texttt{SELECT} queries as well as queries used for
-creating tables and views, offering flexibility in how tests are structured.
+queries and stored procedures. It provides a simple and efficient way
+to express the setup prior to a query, the query itself, and the expected
+results. This framework can test \texttt{SELECT} queries as well as queries
+used for creating tables and views, offering flexibility in how tests are
+structured.
 
 \emph{RDBUnit} enables the embedding of all types of queries directly into the test
 script or the inclusion of queries from external files. It streamlines the
@@ -233,7 +233,7 @@ creation of input and expected result tables by automatically inferring the
 types of the tables' fields, thus reducing the overhead typically associated
 with setting up test environments. This makes it an ideal choice for
 ensuring the accuracy and reliability of SQL queries used in the proposed
-methods, enhancing the overall robustness of the data analysis process.
+methods, enhancing the overall robustness of the calculations.
 
 \section{Detailed Calculation of the Adjusted h-indexes}
 
@@ -244,7 +244,7 @@ follows:
 \begin{itemize}
       \item \textbf{Works}: Contains the works with their respective DOIs and the number of citations.
       \item \textbf{Authors}: Contains the authors with their respective ORCID identifiers.
-      \item \textbf{Journals}: Contains the journals with their respective ISSNs and subject areas.
+      \item \textbf{Journals (journal\_data)}: Contains the journals with their respective ISSNs and subject areas.
       \item \textbf{ASJC}: Contains the ASJC codes for the subject areas that were extracted from the Crossref-2023 dataset.
       \item \textbf{Work References}: Contains the references of the works.
 \end{itemize}
@@ -269,7 +269,7 @@ follows:
 \vspace{0.5em} % Add space to separate the comment
 \noindent\emph{For EigenFactor calculation only:}
 \begin{itemize}
-      \item \textbf{Citation\_Network}: Contains the citation network of journals based on the incoming citations to each journal.
+      \item \textbf{Citation\_Network}: Contains the citation network of journals based on the incoming citations to each journal of the past 5 years.
 \end{itemize}
 
 \noindent\textbf{2i: Calculation of Journal h5 Index}
@@ -279,7 +279,7 @@ follows:
 
 \noindent\textbf{2ii: Calculation of Journal Impact Factor (JIF)}
 \begin{itemize}
-      \item \textbf{impact\_factor}: Calculates the Journal Impact Factor (JIF) for each journal.
+      \item \textbf{impact\_factor}: Calculates the Journal Impact Factor (JIF).
 \end{itemize}
 
 \noindent\textbf{2iii: Calculation of Journal EigenFactor}
@@ -289,8 +289,9 @@ follows:
 
 \noindent\textbf{3: Getting Top and Bottom Percentile of Journals}
 \begin{itemize}
-      \item \textbf{top\_issn\_by\_subject}: Contains the top 20\% of journals by subject based on the h5 index or JIF.
-      \item \textbf{bottom\_issn\_by\_subject}: Contains the bottom 50\% of journals by subject based on the h5 index or JIF, or the bottom 20\% of journals by subject based on the EigenFactor.
+      \item \textbf{top\_issn\_by\_subject}: Contains the top 20\% of journals by subject based on the h5 index or the JIF.
+      \item \textbf{bottom\_issn\_by\_subject}: Contains the bottom 50\% of journals by subject based on the h5 index or the JIF, or 
+            the bottom 20\% of journals by subject based on the EigenFactor.
 \end{itemize}
 
 \noindent\textbf{4: Filtered Works Tables}

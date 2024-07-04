@@ -5,31 +5,30 @@
 
 The results of the study show that the adjusted H-Indexes are significantly
 correlated with the traditional H-Index, with correlation coefficients in the
-range of 0.6 to 0.7. This indicates a strong positive relationship between the
-traditional H-Index and the adjusted H-Indexes, suggesting that researchers who
-rank highly according to the traditional H-Index also tend to rank highly
-according to the adjusted H-Indexes.
+range of 0.6 to 0.7. This indicates a strong positive relationship between
+them, suggesting that researchers who rank highly according to the traditional
+H-Index also tend to rank highly according to the adjusted H-Indexes.
 
 However, compared to other H-Index variants, as reviewed in the literature, the
 correlation is not perfect. This imperfection highlights the distinctiveness of
-the adjusted H-Indexes. While the strong correlation signifies that the
-adjusted H-Indexes retain the fundamental characteristics of the traditional
-H-Index, the differences suggest that the adjustments made for journal quality
-and subject specificity introduce meaningful variations. These variations
-likely reflect the impact of publishing in higher-quality journals and the
-influence of subject-specific citation practices, which are not captured by the
-traditional H-Index. In addition to that, the adjusted H-Indexes reduce the
-number of authors with high H-Indexes compared to the traditional H-Index,
-leading to disinflation of H-Index values and potentially providing a more
-accurate representation of the authors' scholarly impact, which is evident from
-the reduction in the number of authors with H-Indexes above certain thresholds,
-as shown in Table \ref{tab:thresholds}. % TODO: Check again
+the adjusted H-Indexes. While the strong correlation signifies that they retain
+the fundamental characteristics of the traditional H-Index, the differences
+suggest that the adjustments made for journal quality and subject specificity
+introduce meaningful variations. These variations likely reflect the impact of
+publishing in higher-quality journals and the influence of subject-specific
+citation practices, which are not captured by the normal H-Index. In addition
+to that, the adjusted H-Indexes decrease the number of authors with high
+H-Indexes compared to the traditional metric, resulting in a deflation of
+H-Index values. This adjustment potentially offers a more accurate
+representation of the authors' impact, which is evident from the reduction in
+the number of authors with H-Indexes above certain thresholds, as shown in
+Table \ref{tab:thresholds}.
 
 The analysis of citation practices reveals substantial differences between
 authors publishing in lower-tier journals and those publishing in top-tier
-ones. Authors from lower-tier journals have a lower average h-index of cited
-journals compared to random authors from top-tier journals, suggesting that
-they cite less influential or lower-quality research. This pattern is
+ones. Authors from lower-tier journals have a lower median average h-index of
+cited journals compared to random authors from top-tier journals, suggesting
+that they cite less influential or lower-quality research. This pattern is
 consistent across almost all subject areas, emphasizing the importance of
 journal quality in citation practices and the impact on the overall scholarly
 contribution of authors.
@@ -48,51 +47,49 @@ bibliometric evaluations. By doing so, we can achieve a more accurate and
 comprehensive assessment of a researcher's true impact, beyond what the
 traditional H-Index alone can offer. This approach helps to mitigate issues
 such as H-Index inflation and not accounting for the quality of the journals in
-which researchers publish along with the subject-specific citation practices,
-and thus provides a clearer picture of scholarly contributions regardless of
-the field of research.
+which researchers publish, thus providing a clearer picture of academic
+contributions overall.
 
 \section{Implications for Researchers and Practitioners}
 
 The findings of this study have several implications for researchers and
 practitioners in the field of bibliometrics and research evaluation. First,
-researchers should be aware of the limitations of traditional H-Index metrics
-and consider the impact of journal quality on such metrics. By focusing on
-publishing in reputable journals with high impact factor, eigenfactor and
-h-index values, researchers can enhance the visibility and recognition of their
-work, leading to a more accurate assessment of their scholarly impact.
+researchers should be aware of the limitations of H-Index metrics and consider
+the impact of journal quality on such metrics. By focusing on publishing in
+reputable journals with high impact factor, eigenfactor and h-index values,
+researchers can enhance the visibility and recognition of their work, leading
+to a more accurate assessment of their impact.
 
 Practitioners involved in research evaluation and funding decisions should also
 take into account the quality of the journals in which researchers publish when
-assessing their impact. Researchers could modify the threshold of the journal
-quality metrics, such as the top 10\% or top 30\% of journals, to further
-refine the adjusted H-Indexes and tailor them to their specific research field,
-based on how strict they want to be in considering the journal quality. By
+assessing their achievements. Researchers can adjust the threshold of the
+journal quality metrics, such as modifying the percentile of the rankings that
+is considered for top journals (10\% or 30\%), to further refine the adjusted
+H-Indexes. This allows them to tailor the metrics to their specific research
+field, based on the desired strictness in evaluating journal quality. By
 incorporating metrics that consider the journal quality of publications into
-evaluation criteria, practitioners can ensure a more comprehensive and
-meaningful evaluation of researchers' contributions to their field.
+evaluation criteria, practitioners can ensure a more meaningful evaluation of
+researchers' contributions to their field.
 
 Additionally, the study highlights the need for further research into more
 advanced H-Index variants that address issues such as self-citation and
-hyperauthorship. By developing more sophisticated, but not too complex to
-calculate, H-Index metrics that provide a more sophisticated measure of
-scholarly impact, practitioners can improve the accuracy and fairness of
-bibliometric evaluations.
+hyperauthorship. By developing more sophisticated yet straightforward H-Index
+metrics, practitioners can enhance the accuracy and fairness of bibliometric
+evaluations.
 
-Lastly, the study showcases a methodological approach for evaluating scholarly
-impact metrics that incorporate journal quality and subject specificity into
-the calculation of H-Indexes. Specifically, by using the Alexandria3k package to
-extract and analyze publication data from Crossref-2024, along with the
+Lastly, the study showcases a methodological approach for evaluating metrics
+that incorporate journal quality and subject specificity into the calculation
+of H-Indexes. Specifically, by using the Alexandria3k package to extract and
+analyze publication data from the Crossref-2024 dataset, along with the
 effective use of ROLAP analysis and unit testing, the study demonstrates a
-robust and reliable method for calculating and analyzing efficiently and
-accurately adjusted H-Indexes. By adopting similar methodologies, researchers
-can enhance the reliability and validity of bibliometric evaluations.
+reliable method for calculating and analyzing efficiently and accurately
+adjusted H-Indexes. By adopting similar methodologies, researchers can enhance
+the robustness and validity of their evaluations.
 
 Overall, the study contributes to the ongoing discussion on the limitations of
 traditional H-Index metrics and provides a more nuanced and accurate assessment
-of scholarly impact by incorporating journal quality and subject specificity
-into the evaluation criteria. By addressing these limitations and providing
-insights into citation practices and patterns across different subject areas,
-the study contributes to a more comprehensive understanding of scholarly impact
-and research evaluation, ultimately benefiting researchers, practitioners, and
-policymakers involved in academic assessments and funding decisions. %TODO: Check
+of scholarly impact. By addressing these limitations and providing insights
+into citation practices and patterns across different subject areas, the study
+contributes to a more comprehensive understanding of research evaluation,
+ultimately benefiting researchers, practitioners, and policymakers involved in
+academic assessments and funding decisions.

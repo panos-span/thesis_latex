@@ -31,14 +31,15 @@ or numerous low-impact papers, providing a more stable and representative
 measure of a researcher's overall effect and remains relevant throughout a
 researcher's career, reflecting ongoing contributions
 \cite{hirsch2005index,costas2007h,waltman2012inconsistency,egghe2010hirsch}.
-This longevity of relevance is particularly beneficial in maintaining a
-consistent evaluation metric over time.
+This longevity of relevance is beneficial in maintaining a consistent
+evaluation metric over time.
 
 The H-index is also useful for evaluating researchers for grants and funding
 opportunities. Granting agencies and funding bodies often need to assess the
-potential influence and productivity of applicants and the H-index helps in making
-these evaluations more consistent and transparent, ensuring that decisions are
-based on a quantifiable measure of a researcher's cumulative contributions
+potential influence and productivity of applicants and the H-index helps in
+making these evaluations more consistent and transparent, ensuring that
+decisions are based on a quantifiable measure of a researcher's cumulative
+contributions
 \cite{hirsch2005index,bornmann2007what,costas2007h,waltman2012inconsistency,hirsch2014meaning,koltun2021h}.
 
 In addition to individual evaluations, it can be applied to groups of
@@ -55,11 +56,11 @@ such as achieving tenure, full professorship, or election to the National
 Academy of Sciences
 \cite{hirsch2005index,bornmann2007what,costas2007h,waltman2012inconsistency,egghe2010hirsch,hirsch2014meaning}.
 
-Lastly, the h-index's application extends to the evaluation of journals. It has
-been used to compare the standing of different scientific journals, providing a
-complementary metric to traditional impact factors. This has proven useful in
-fields where they may not fully represent a journal's significance
-or relevance \cite{norris2010h}.
+Lastly, the h-index's application also extends to the evaluation of journals.
+It has been used to compare the standing of different scientific journals,
+providing a complementary metric to traditional impact factors. This has proven
+useful in fields where they may not fully represent a journal's significance or
+relevance \cite{norris2010h}.
 
 Despite its advantages and widespread use, the h-index has several notable
 limitations and drawbacks that must be considered. One significant issue is its
@@ -98,9 +99,9 @@ paper do not affect it, and it also fails to reflect any subsequent reduction
 in scholarly influence after the h-index is reached
 \cite{hirsch2005index,bornmann2007what,waltman2012inconsistency,norris2010h,egghe2010hirsch,hirsch2014meaning}.
 Thus, the h-index also disadvantages researchers with a few significant recent
-contributions that have notably shaped their field but may not have a high
-overall publication count. These researchers cannot achieve a high h-index if
-their other publications are less cited, leading to an underestimation of their
+contributions that have shaped their field but may not have a high overall
+publication count. These researchers cannot achieve a high h-index if their
+other publications are less cited, leading to an underestimation of their
 overall scholarly contributions. This can particularly affect early-career
 researchers or those who have made groundbreaking contributions in a limited
 number of publications, but are too early in their career for the h-index to
@@ -149,7 +150,8 @@ $1/m$ to the rank, rather than a full rank
 
 Mathematically, the fractional h-index, denoted as $hf$, is defined as the
 largest rank $r$ such that the fractional citation count $y_r/\phi(r)$ is at
-least $r$ \cite{egghe2008mathematical}. The fractional h-index provides upper
+least $r$, where $\phi(r)$ is the number of authors of the $r$-th paper in the
+ranked list \cite{egghe2008mathematical}. The fractional h-index provides upper
 and lower bounds in relation to the traditional h-index. Specifically, $hf$ is
 always less than or equal to the traditional h-index ($hf \leq h$), and greater
 than or equal to the floor value of the traditional h-index divided by the
@@ -197,9 +199,8 @@ counts does not fully address these inherent biases in citation-based metrics
 \cite{egghe2008mathematical}. Furthermore, the reliance on the h-frac index
 could potentially discourage collaboration. Researchers might feel incentivized
 to limit their co-authorship to ensure a higher individual score, which could
-negatively affect the collaborative nature of scientific research, potentially
-undermining the collaborative efforts that are often crucial for significant
-advancements \cite{singhal2023analysis}.
+negatively affect the collaborative nature of scientific research that is often
+crucial for scientific advancements \cite{singhal2023analysis}.
 
 The theoretical nature of the fractional bounds can also pose a limitation.
 Although the h-frac index provides mathematical bounds, these are based on the
@@ -248,7 +249,7 @@ incorporating the quality and sustained impact of their publications. Unlike
 the traditional h-index, which can be disproportionately influenced by a few
 highly cited papers, the hp-index takes into account the consistent citation
 performance of each paper, thereby providing a more comprehensive assessment of
-an author’s scholarly contributions and identifying researchers whose work
+an author’s contributions and identifying researchers whose publications
 consistently achieves a high level of recognition across their body of work
 \cite{singhal2023hp,singhal2023analysis}.
 
@@ -259,29 +260,27 @@ contributions \cite{singhal2023hp,singhal2023analysis}. Additionally, the
 hp-index offers a unique ranking order for authors, distinguishing it from
 other metrics by incorporating an additional layer of citation data, allowing
 it to reflect the depth of a researcher's publications. By focusing on the
-h-index of individual papers, the hp-index ensures that the evaluation of a
-researcher’s contributions is comprehensive and considers the long-term
-significance of their work. This enables it to highlight researchers who
+h-index of individual papers, the hp-index is able to highlight researchers who
 maintain a steady impact across their publications, rather than those who may
 have a few exceptionally cited papers \cite{singhal2023hp,singhal2023analysis}.
 
 While the hp-index offers several advantages, it also has some drawbacks that
 need to be considered. One of the primary negatives is the complexity involved
-in its calculation. Unlike the traditional h-index, the hp-index requires an
+in its calculation. Unlike the traditional h-index, the it requires an
 additional layer of data collection and processing. This added complexity can
-make the hp-index more difficult to implement and understand, especially for
-those who are not well-versed in bibliometric analysis \cite{singhal2023hp}.
+make the it more difficult to implement and understand, especially for those
+who are not well-versed in bibliometric analysis \cite{singhal2023hp}.
 
-Another potential drawback of the hp-index is its dependence on the
-availability of detailed citation data. Accurate calculation of the hp-index
-requires comprehensive data on the citations of each paper, which may not
-always be readily available or up-to-date in all databases. Additionally, the
-hp-index might not fully address the issue of citation distribution across a
-researcher's publications. While it considers the h-index of individual papers,
-it does not account for variations in citation practices across different
-fields or the varying significance of citations. The above restrictions can
-result in disparities when comparing researchers from different disciplines or
-those whose work spans multiple fields with differing citation norms
+Another potential drawback of the it is its dependence on the availability of
+detailed citation data. Accurate calculation of the hp-index requires
+comprehensive data on the citations of each paper, which may not always be
+readily available or up-to-date in all databases. Additionally, the it might
+not fully address the issue of citation distribution across a researcher's
+publications. While it considers the h-index of individual papers, it does not
+account for variations in citation practices across different fields or the
+varying significance of citations. The above restrictions can result in
+disparities when comparing researchers from different disciplines or those
+whose work spans multiple fields with differing citation norms
 \cite{singhal2023hp,singhal2023analysis}.
 
 \subsection{Hp-Frac Index}
@@ -297,29 +296,27 @@ authored by a researcher. Then, these h-indexes are divided by the number of
 authors for each corresponding paper, resulting in fractional h-indexes. The
 hp-frac index of the author is then determined by calculating the h-index of
 these fractional h-indexes. This method provides a more balanced measure of a
-researcher's achievements by ensuring that credit is proportionally allocated among
-all contributors \cite{singhal2023hp}.
+researcher's achievements by ensuring that credit is proportionally allocated
+among all contributors \cite{singhal2023hp}.
 
 The hp and the hp-frac index have the same strengths and weaknesses, however,
 the primary advantage of the hp-frac index that the hp-index does not offer is
 that it provides a more equitable evaluation of individual contributions in
 collaborative research by assigning fractional credit, mitigating the inflation
-of impact metrics, although it is more complex to calculate and interpret
-\cite{singhal2023hp}.
+of impact metrics \cite{singhal2023hp}.
 
 \subsection{G Index}
 The g-index is an alternative to the h-index, developed to provide a more
 comprehensive measure of an author's or journal's scientific impact by
 considering the citation distribution among top-cited papers. The g-index is
 defined as the highest number $g$ of papers that collectively have received at
-least $g^2$ citations. This ensures that the g-index considers the overall
-citation performance of the most highly cited papers, making it more sensitive
-to their citation counts. As a result, the g-index will always be equal to or
-greater than the h-index, reflecting a more detailed distribution of citations
-among top papers, because the requirement for the g-index ($\sum_{i=1}^{g} y_i
-    \geq g^2$, where $y_i$ is the number of citations of the $i$-th paper) is less
-stringent than that of the h-index \cite{egghe2008mathematical,
-    egghe2006improvement}.
+least $g^2$ citations. This ensures that it considers the overall citation
+performance of the most highly cited papers, making it more sensitive to their
+citation counts. As a result, the g-index will always be equal to or greater
+than the h-index, reflecting a more detailed distribution of citations among
+top papers, because the requirement for the it ($\sum_{i=1}^{g} y_i \geq g^2$,
+where $y_i$ is the number of citations of the $i$-th paper) is less stringent
+\cite{egghe2008mathematical, egghe2006improvement}.
 
 Additionally, the g-index is easy to calculate from the same data used for the
 h-index and offers higher variance among authors in the same field, making
@@ -331,30 +328,30 @@ identifying those with truly exceptional contributions
 \cite{egghe2008mathematical, egghe2006theory, egghe2006improvement}.
 
 However, one of the primary concerns with the g-index is that it might
-overemphasize the importance of highly cited papers and that is because, by
+overemphasize the importance of highly cited papers. This is because, by
 focusing on the total number of citations across top papers, it can
-disproportionately reflect the influence of a few extremely well-cited works which
-could skew the perception of a researcher's overall contribution, especially if
-their citation profile is characterized by a small number of highly cited
-papers rather than a more consistent citation pattern across many publications
-\cite{egghe2008mathematical}.
+disproportionately reflect the influence of a few extremely well-cited works
+which could skew the perception of a researcher's overall contribution,
+especially if their citation profile is characterized by a small number of
+highly cited papers rather than a more consistent citation pattern across many
+publications \cite{egghe2008mathematical}.
 
 In addition to that, the g-index does not entirely solve the issue of
 sensitivity to variations in citation practices across different fields. Like
-the h-index, the g-index can be influenced by the varying citation behaviors
-making cross-disciplinary comparisons challenging without additional context or
+the h-index, it can be influenced by the varying citation behaviors making
+cross-disciplinary comparisons challenging without additional context or
 normalization \cite{egghe2008mathematical, egghe2006theory,
     egghe2006improvement}. Even in the case of the g-frac index, which is very
 similar to the h-frac index but for the case of the g index, this issue is
 unaddressed \cite{egghe2008mathematical}.
 
-Another potential issue with the g-index is that it may be more complex to
-interpret compared to the h-index. While both indexes are straightforward to
-calculate, the g-index's reliance on cumulative citation counts for the top
-papers may not be as intuitively understood by those unfamiliar with the
-concept and can make it harder for funding bodies or academic committees to
-readily grasp the implications of a given g-index score
-\cite{egghe2008mathematical, egghe2006improvement}.
+Another potential issue with it is that it may be more complex to interpret
+compared to the h-index. While both indexes are straightforward to calculate,
+the g-index's reliance on cumulative citation counts for the top papers may not
+be as intuitively understood by those unfamiliar with the concept and can make
+it harder for funding bodies or academic committees to readily grasp the
+implications of a given g-index score \cite{egghe2008mathematical,
+    egghe2006improvement}.
 
 \subsection{O Index}
 The o-index is a metric designed to address some of the limitations inherent in
@@ -387,31 +384,30 @@ drawbacks as well. One potential negative aspect is that it still incorporates
 the h-index, which means it partially inherits the limitations associated with
 it. For instance, the h-index does not account for the highly skewed nature of
 citation distributions, thus, by including it, the o-index may still not fully
-capture the breadth of a researcher's contributions \cite{dorogovtsev2015ranking}.
-Moreover, although it is resistant to manipulation, it is still possible to
-artificially inflate it. Researchers might focus on strategies to boost the
-citation count of their most cited paper, potentially through citation circles
-or self-citations, thus gaming the system to some extent
-\cite{dorogovtsev2015ranking}.
+capture the breadth of a researcher's contributions
+\cite{dorogovtsev2015ranking}. Moreover, although it is resistant to
+manipulation, it is still possible for it to be artificially inflated.
+Researchers might focus on strategies to boost the citation count of their most
+cited paper, potentially through citation circles or self-citations, thus
+gaming the system to some extent \cite{dorogovtsev2015ranking}.
 
 \subsection{J Index}
 The j-index is a scientometric indicator introduced to address the limitations
-of existing indexes such as the h and the g-index. The j-index aims to combine
-the advantages of both indexes, providing a more balanced measure of a
-researcher's scientific impact and is defined as the maximum value $j$ for
-which $j$ of the most frequently cited works by an author are cited at least
-$j^{3/2}$ times. The j-index is calculated by rounding down $j^{3/2}$ to the
-nearest integer, for example, an author has a j-index of 2 if they have at
-least two articles cited two or more times each, a j-index of 4 if they have at
-least four articles cited eight or more times each, and a j-index of 7 if they
-have at least seven articles cited 18 or more times each
-\cite{mikhailov2014new}.
+of existing indexes such as the h and g-index. The j-index aims to combine the
+advantages of both indexes, providing a more balanced measure of a researcher's
+scientific impact and is defined as the maximum value $j$ for which $j$ of the
+most frequently cited works by an author are cited at least $j^{3/2}$ times.
+The j-index is calculated by rounding down $j^{3/2}$ to the nearest integer,
+for example, an author has a j-index of 2 if they have at least two articles
+cited two or more times each, a j-index of 4 if they have at least four
+articles cited eight or more times each, and a j-index of 7 if they have at
+least seven articles cited 18 or more times each \cite{mikhailov2014new}.
 
 The j-index offers a middle ground between the h and g-index in terms of
 strictness and sensitivity, which allows it to account for both moderately and
-highly cited papers, providing a more balanced measure of a researcher's contributions
-\cite{mikhailov2014new}. It is also relatively easy to calculate and
-understand, making it accessible for broad use in the scientific community
+highly cited papers, providing a more balanced measure of a researcher's
+contributions \cite{mikhailov2014new}. It is also relatively easy to calculate
+and understand, making it accessible for broad use in the scientific community
 while it does not sacrifice depth, as it still manages to capture the nuances
 of citation patterns across different publications. Moreover, the j-index
 provides a clearer differentiation among researchers. For instance, it can
@@ -434,53 +430,53 @@ researcher’s achievement \cite{mikhailov2014new}.
 
 \section{Comparative Analysis of the H-Index Variants}
 As we have seen, in the pursuit of a comprehensive and equitable assessment of
-academic contributions and achievements, several variants of the H-index have been proposed, each
-addressing specific limitations of the original metric. While these variants
-strive to differentiate themselves from the traditional H-index, empirical
-studies have demonstrated high correlation coefficients among the various
-indexes, suggesting a degree of redundancy in their ability to measure
+academic contributions and achievements, several variants of the H-index have
+been proposed, each addressing specific limitations of the original metric.
+While these variants strive to differentiate themselves from the traditional
+H-index, empirical studies have demonstrated high correlation coefficients
+among them, suggesting a degree of redundancy in their ability to measure
 scientific achievement. Specifically, Bornmann et al. identified that the
 indexes essentially fall into two categories: those that describe the most
 productive core of a scientist’s output and those that depict the impact of the
 papers within that core \cite{bornmann2008are, bornmann2011multilevel}.
 
-Additionally, Bornmann et al.'s 2011 meta-analysis of 135 correlation
-coefficients revealed that most h-index variants exhibit high correlations with
-the original h-index, typically ranging between 0.8 and 0.9 suggesting that
-many variants do not provide noteworthy information beyond what is captured by
-the h-index itself. However, studies have also identified that some variants,
-such as the m index (which represents the median number of citations received
-by papers in the Hirsch core), have lower correlations with the h-index,
-indicating that they might offer non-redundant contributions and could
-complement the h-index in evaluating scientific performance
-\cite{bornmann2011multilevel, bornmann2008are}.
+Additionally, Bornmann et al.'s 2011 meta-analysis revealed that most h-index
+variants exhibit high correlations with the original h-index, typically ranging
+between 0.8 and 0.9, suggesting that many variants do not provide noteworthy
+information beyond what is captured by the h-index itself. However, studies
+have also identified that some variants, such as the m index (which represents
+the median number of citations received by papers in the Hirsch core), have
+lower correlations with the h-index, indicating that they might offer
+non-redundant contributions and could complement the h-index in evaluating
+scientific performance \cite{bornmann2011multilevel, bornmann2008are}.
 
 More recently, it was found that the effectiveness of the h-index as a
-correlate of scientific reputation has significantly declined over time. For
-example, in the field of physics, the correlation between the h-index and
-scientific awards dropped from 0.34 in 2010 to 0.00 in 2019. This decline is
-associated with changes in authorship patterns, particularly the rise of
-hyperauthorship \cite{koltun2021h}. The superiority of fractional allocation
-measures over traditional ones was demonstrated and these measures, especially
-the fractional analogue of the h-index known as h-frac, show a higher
-correlation with scientific awards. In 2019, h-frac had an average Kendall’s
-$\tau$ of 0.32, compared to 0.16 for the h-index. Furthermore, fractional
-measures maintain stable predictive power over time. For example, h-frac's
-average $\tau$ was 0.34 in 1994, 0.36 in 2004, and 0.33 in 2014, whereas the
-h-index's predictive power has declined, with an average $\tau$ dropping from
-0.32 in 2004 to 0.24 in 2014 \cite{koltun2021h}. The robustness of these
-findings is confirmed across multiple scientific fields (Biology, Computer
-Science, Economics, and Physics) and two bibliographic platforms (Scopus and
-Google Scholar). Additionally, resilience tests using different correlation
-statistics (e.g., Kendall’s $\tau$, AUC, Somers’ D, Goodman and Kruskal’s
-$\gamma$, and Spearman’s $\rho$) consistently showed the superior performance
-of fractional measures. It was also observed that the correlation between
-traditional measures and their fractional counterparts has decreased over time,
-particularly after 2010. This decline correlates with the increase in the
-average number of authors per paper. Detailed case studies highlight that
-hyperauthors (those with many coauthors) tend to have high h-indexes but low
-h-frac values, indicating that h-frac more accurately reflects individual
-contributions by accounting for the number of coauthors \cite{koltun2021h}.
+correlate of reputation has significantly declined over time. For example, in
+the field of physics, the correlation between the h-index and scientific awards
+dropped from 0.34 in 2010 to 0.00 in 2019. This decline is associated with
+changes in authorship patterns, particularly the rise of hyperauthorship
+\cite{koltun2021h}. The superiority of fractional allocation measures over
+traditional ones was demonstrated and these measures, especially the fractional
+analogue of the h-index known as h-frac, show a higher correlation with
+scientific awards. In 2019, the h-frac had an average Kendall’s $\tau$ of 0.32,
+compared to 0.16 for the h-index. Furthermore, fractional measures maintain
+stable predictive power over time. For example, h-frac's average $\tau$ was
+0.34 in 1994, 0.36 in 2004, and 0.33 in 2014, whereas the h-index's predictive
+power has declined, with an average $\tau$ dropping from 0.32 in 2004 to 0.24
+in 2014 \cite{koltun2021h}.
+
+The robustness of these findings is confirmed across multiple scientific fields
+(Biology, Computer Science, Economics, and Physics) and two bibliographic
+platforms (Scopus and Google Scholar). Additionally, resilience tests using
+different correlation statistics (e.g., Kendall’s $\tau$, AUC, Somers’ D,
+Goodman and Kruskal’s $\gamma$, and Spearman’s $\rho$) consistently showed the
+superior performance of fractional measures. It was also observed that the
+correlation between traditional measures and their fractional counterparts has
+decreased over time, particularly after 2010. This decline correlates with the
+increase in the average number of authors per paper. Detailed case studies
+highlight that hyperauthors (those with many coauthors) tend to have high
+h-indexes but low h-frac values, indicating that h-frac more accurately
+reflects individual contributions \cite{koltun2021h}.
 
 Lastly, a study in 2023 that introduced the hp-frac index, in order to compare
 the similarity of the rankings produced by different indexes (h-index,
@@ -491,32 +487,30 @@ revealed that the hp-frac-index had the lowest overlap with the traditional
 h-index, indicating that it produced a distinct ranking order. Conversely, the
 h-index and h-frac-index showed a high degree of overlap, suggesting that
 fractional allocation of citations did not significantly alter the rankings
-produced by the traditional h-index. Further analysis focused on the ranking of
-awarded researchers where it was found that the hp-frac-index consistently
-ranked a higher percentage of awarded researchers in the top 5\% compared to
-the h-index and h-frac-index. For instance, in Biology, 61.5\% of the awarded
-researchers were ranked in the top 5\% by the hp-frac-index, whereas the
-h-index only ranked 23.08\% of them in the top 5\% \cite{singhal2023hp}.
+produced by the traditional h-index.
 
-Additionally, the overall ranking distribution of awarded researchers was
-examined. The hp-frac-index again outperformed the other indexes by placing a
-higher proportion of awardees in the top 20\% of the ranked lists. In
-conclusion, the latest experimental analysis demonstrated that the
-hp-frac-index provides a more robust and balanced evaluation of research impact
-compared to the traditional h-index and its direct variants such as the h-frac
-index. By considering both the h-index of individual papers and fractional
-authorship, it offers a more accurate reflection of a researcher’s influence
-and contribution to their field \cite{singhal2023hp}.
+Further analysis focused on the ranking of awarded researchers, where it was
+found that the hp-frac-index consistently ranked a higher percentage of awarded
+researchers in the top 5\% compared to the h-index and h-frac-index. For
+instance, in Biology, 61.5\% of the awarded researchers were ranked in the top
+5\% by the hp-frac-index, whereas the h-index only ranked 23.08\% of them in
+the top 5\% \cite{singhal2023hp}. Additionally, the overall ranking
+distribution of awarded researchers was examined. The hp-frac-index again
+outperformed the other indexes by placing a higher proportion of awardees in
+the top 20\% of the ranked lists. In conclusion, the latest experimental
+analysis demonstrated that the hp-frac-index provides a more robust and
+balanced evaluation of research impact compared to the traditional h-index and
+its direct variants \cite{singhal2023hp}.
 
-Nevertheless, noteworthy to mention is that many variants of the h-index
-have been explored and proposed across time. Despite these developments, the
-h-index remains the predominant measure of a scientist’s output. The
-persistence of it can be attributed to several factors. Firstly, it provides a
-concise summary of a scientist’s output in a single number, facilitating
-comparison and ranking. Secondly, it does not necessitate a minimum number of
-publications or a specific career length, making it applicable to scientists at
-any career stage. Thirdly, it does not require the adjustment of thresholds or
-parameters, being a simple and easy to compute metric. Fourthly, it is
-straightforward to interpret for non-experts, making it accessible to a broad
-audience. Lastly, criticism notwithstanding, the h-index is still regarded as a
-reliable measure of an individual scientist’s influence \cite{koltun2021h}.
+Nevertheless, noteworthy to mention is that many variants of the h-index have
+been explored and proposed across time. Despite these developments, the h-index
+remains the predominant measure of scientific performance. The persistence of it
+can be attributed to several factors. Firstly, it provides a concise summary of
+a scientist’s output in a single number, facilitating comparison and ranking.
+Secondly, it does not necessitate a minimum number of publications or a
+specific career length, making it applicable to scientists at any career stage.
+Thirdly, it does not require the adjustment of thresholds or parameters, being
+a simple and easy to compute metric. Fourthly, it is straightforward to
+interpret for non-experts, making it accessible to a broad audience. Lastly,
+criticism notwithstanding, the h-index is still regarded as a reliable measure
+of an individual scientist’s influence \cite{koltun2021h}.

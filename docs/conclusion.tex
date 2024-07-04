@@ -8,114 +8,102 @@ noteworthy limitations in the traditional H-Index through the development and
 evaluation of adjusted H-Indexes that incorporate journal quality and subject
 specificity. The primary contributions of this study are summarized as follows:
 
-The study introduces three new variants of the H-Index: the H5-adjusted
-H-Index, the EigenFactor adjusted H-Index, and the JIF-adjusted H-Index. These
-metrics incorporate the quality of journals in which a researcher’s works are
-published, using the H5-Index, EigenFactor (EF), and Journal Impact Factor
-(JIF) to select the top 20\% of journals by rank within specific subjects. By
-doing so, the adjusted H-Indexes provide a more accurate and meaningful measure
-of a researcher’s scholarly impact.
+The study introduces three new variants of the H-Index: the H5-adjusted, the
+EigenFactor adjusted, and the JIF-adjusted H-Index. These metrics incorporate
+the quality of journals in which a researcher’s works are published, using the
+H5-Index, EigenFactor (EF), and Journal Impact Factor (JIF) to select the top
+20\% of journals by rank for each subject area separately.
 
 To achieve this, the study showcases a robust methodological approach to
 bibliometric calculation and analysis, leveraging the Alexandria3k Python
 library to extract and analyze publication data from the Crossref-2024 dataset.
 The use of ROLAP (Relational Online Analytical Processing) analysis utilizing
-simple-rolap and rigorous SQL unit testing with RDBUint ensured the reliability
-and accuracy of the adjusted H-Index calculations. This methodology can serve
-as a framework for future research in bibliometrics and research evaluation.
+\emph{simple-rolap} and rigorous SQL unit testing with \emph{RDBUnit} ensured
+the reliability and accuracy of the adjusted H-Index calculations. This
+methodology can serve as a framework for future research in bibliometrics and
+research evaluation.
 
-Through statistical analysis, including Pearson, Spearman, and Kendall tau rank
-order correlations, the study demonstrates that the adjusted H-Indexes are
+Through statistical analysis, including Pearson, Spearman, and Kendall $\tau$
+rank order correlations, the study demonstrates that the adjusted H-Indexes are
 significantly correlated with the traditional H-Index. This strong positive
 relationship suggests that researchers who rank highly according to the
-traditional H-Index also tend to rank highly according to the adjusted
+conventional H-Index also tend to rank highly according to the adjusted
 H-Indexes. However, the distinctiveness of the indexes, indicated by the
 imperfect correlation, highlights the meaningful variations introduced by
 incorporating journal quality and subject specificity.
 
-The study also compares the citation practices of top authors publishing in
+This study also compares the citation practices of top authors publishing in
 low-quality journals with regular authors publishing in high-quality journals.
-The analysis reveals measurable differences in citation patterns, with top
-authors from low-quality journals citing lower-impact journals, while those
-from high-quality journals cite higher-impact journals.
+The analysis reveals measurable differences in citation patterns: top authors
+from low-quality journals tend to cite lower-impact journals, whereas those
+publishing in high-quality journals predominantly cite higher-impact journals.
 
 Furthermore, the research examines the citation patterns of hyperprolific
-researchers compared to regular researchers across different subject areas. The
+researchers compared to regular ones across different subject areas. The
 analysis shows marked differences, with hyperprolific ones exhibiting more
 interconnected citation networks. This indicates that, in terms of publication
-volume, they tend to cite each other more frequently, creating a more tightly
-knit citation network, thus potentially inflating their h-index values.
+volume, they tend to cite each other more frequently, creating a more cohesive
+citation network, which potentially could be a factor of H-Index inflation.
 
 The findings of this study have important implications for researchers,
 practitioners, and policymakers involved in research evaluation and funding
 decisions. By incorporating journal quality metrics into evaluation criteria,
 the adjusted H-Indexes provide a more comprehensive and fair assessment of a
-researcher’s impact. With that said, this study advocates for the adoption of
-refined bibliometric tools that address the limitations of traditional metrics,
-ultimately contributing to more accurate and equitable academic evaluations.
-
-Lastly, the study underlines the need for further research into more refined
-H-Index metrics, as well as the need for subject-specific analysis of authors
-through their citation patterns and networks. Future work could explore the
-development of metrics that balance complexity with usability, enhancing the
-precision and fairness of bibliometric evaluations and further explore
-subject-specific citation patterns and their implications for scholarly impact.
-% TODO: CHECK AGAIN
+researcher’s impact. Lastly, the study underlines the need for further research
+into more refined H-Index metrics, as well as the need for subject-specific
+analysis of authors through their citation patterns and networks, ultimately
+contributing to more accurate and equitable academic evaluation. Future work
+could explore the development of metrics that balance complexity with
+usability, further enhancing the precision and fairness of evaluations.
 
 In summary, the study addresses all the research questions and hypotheses. The
 results show a strong correlation between the traditional H-Index and the
-proposed H-Index metrics that account for journal quality, indicating a
-positive relationship. Additionally, citation practices differ significantly
-between top authors publishing in low-quality journals and those publishing in
-high-quality journals, reflecting differences in the quality and influence of
-their work. Finally, the citation patterns of hyperprolific researchers differ
-notably from those of regular researchers across different subject areas,
-showcasing that top researchers in terms of publication volume tend to cite
-each other more frequently, creating a more interconnected citation network.
-All these findings contribute to a more complete understanding of scholarly
-impact and provides valuable insights to the field of bibliometrics.
-
-% In summary, this research advances the understanding and application of
-% bibliometric metrics by demonstrating the value of incorporating journal
-% quality and subject specificity into the calculation of H-Indexes. The adjusted
-% H-Indexes developed in this study offer a more accurate and meaningful measure
-% of scholarly impact, providing valuable insights and practical recommendations
-% for improving research evaluation practices.
+proposed H-Index metrics that account for journal quality, which underlines the
+meaningful variations introduced by them. Additionally, citation practices
+differ significantly between top authors publishing in low-quality journals and
+those publishing in high-quality journals, reflecting differences in the
+quality and influence of their work. Finally, the citation patterns of
+hyperprolific researchers differ notably from those of regular researchers
+across different subject areas, showcasing that top researchers in terms of
+publication volume tend to cite each other more frequently, creating a more
+interconnected citation network. All these findings contribute to a more
+complete understanding of scholarly impact and provides valuable insights to
+the field of bibliometrics.
 
 \section{Limitations of the Study}
 
 This study, while providing valuable insights into the effectiveness of
 adjusted H-Indexes, has several limitations that must be acknowledged.
 
-One significant limitation is the reliance on Crossref-2024 dataset, which does
-not include subject classifications for the journals. To address this, we used
-the subject classifications from the previous year’s dataset for the journals.
-This approach assumes that the subject classifications of journals do not
-change significantly from year to year, which may not always be the case.
-Additionally, we supplemented missing subject data using the Scopus API, which
-introduces another layer of dependency and potential inconsistencies. The
-reliance on historical data and external APIs for subject classification could
-lead to inaccuracies in the analysis, as some journals might have updated their
-scope or focus areas, and new journals may not have been appropriately
-classified. Moreover, since the subject classification is based on the journal
-level, it may not capture the full range of topics covered by individual
-articles within a journal, potentially leading to inaccuracies in the
-subject-specific rankings, which was the reason why the subjects of works were
-removed from the Crossref-2024 dataset in the first place.
+One notable limitation is the reliance on Crossref-2024 dataset, which does not
+include subject classifications for the journals. To address this, we used the
+subject classifications from the previous year’s dataset for the journals. This
+approach assumes that the subject classifications of journals do not change
+from year to year, which may not always be the case. Additionally, we
+supplemented missing subject data using the Scopus API, which introduces
+another layer of dependency and potential inconsistencies. The reliance on
+historical data and external APIs for subject classification could lead to
+inaccuracies in the analysis, as some journals might have updated their scope
+or focus areas, and new journals may not have been appropriately classified.
+Moreover, since the subject classification is based on the journal level, it
+might not capture the full range of topics covered by individual articles within
+a journal, potentially leading to inaccuracies in the subject-specific
+rankings, which was the reason why the subjects of works were removed from the
+Crossref-2024 dataset in the first place.
 
-Although Crossref aims for comprehensive coverage, it is still dependent on the
-participation of publishers. Not all publishers might contribute to Crossref,
-leading to potential gaps in coverage, especially for publications from less
-prominent or niche publishers. As we have seen, different academic disciplines
-have varying citation practices and publication norms. While Crossref attempts
-to standardize data, the inherent differences in how disciplines publish and
-cite work can still lead to discrepancies when comparing H-Index values across
-fields.
+Although, Crossref aims for comprehensive coverage, it is still dependent on
+the participation of publishers. Not all publishers might contribute to
+Crossref, leading to potential gaps in coverage, especially for publications
+from less prominent or niche publishers. As we have seen, different academic
+disciplines have varying citation practices and publication norms. While
+Crossref attempts to standardize data, the inherent differences in how
+disciplines publish and cite work, can still lead to discrepancies when
+comparing H-Index values across fields.
 
 Moreover, our study filtered the publications to include only those in the top
-20\% of journals by subject rank. While this method ensures a focus on higher
+20\% of journals by rank. While this method ensures a focus on higher
 quality publications, it may exclude significant contributions from journals
-that do not rank in the top 20\% but are still reputable and impactful within
+that do not rank in the top 20\%, but are still reputable and impactful within
 their respective fields. This filtering criterion might bias the results
 towards researchers who publish predominantly in highly ranked journals,
 potentially overlooking the contributions of those whose work is more niche or
@@ -124,8 +112,8 @@ Similarly, the consideration of the bottom 50\% of journals by rank as of
 lesser quality, where we ranked the journals based on the H5-Index and Impact
 Factor, while for the ranking being made based on the EigenFactor, we
 considered those at the bottom 20\%, might not be entirely accurate, since
-these thresholds were chosen based on the distribution of the data and not on a
-more specific quality criterion. % TODO: CHECK THIS AGAIN!!
+these thresholds were chosen based on the distribution of the data and not on
+more specific quality criteria.
 
 Another limitation is the scope of H-Index variants considered. While we
 developed and evaluated adjusted H-Indexes incorporating journal quality
@@ -134,13 +122,11 @@ self-citation and hyperauthorship, which are known to cause H-Index inflation.
 Variants like the fractional H-Index, which distributes citation credit more
 equitably among co-authors, or metrics that specifically account for
 self-citations, with the journal quality adjustment, could provide an even more
-refined measure of scholarly impact. Our study did not implement these more
-sophisticated variants, which might offer even better adjustments for the
-limitations of the traditional H-Index.
+refined measure of scholarly impact, which this study did not explore.
 
-To sum up, while our study makes significant strides in refining the H-Index to
-account for journal quality and subject specificity, it is constrained by data
-limitations, the selection of H-Index variants considered, and the criteria
-applied for what is considered high and low-quality journals. These limitations
-should be taken into account when interpreting the results and considering the
-implications for research evaluation and funding decisions.
+To sum up, while this study makes significant strides in refining the H-Index
+to account for journal quality and subject specificity, it is constrained by
+data limitations, the selection of H-Index variants considered, and the
+criteria applied for what is considered high and low-quality journals. These
+limitations should be taken into account when interpreting the results and
+considering the implications for research evaluation and funding decisions.
