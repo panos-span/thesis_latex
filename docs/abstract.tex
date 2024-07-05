@@ -1,30 +1,29 @@
 \chapter*{\centering Abstract}
 Evaluating scholarly impact accurately is crucial for academic advancement, but traditional metrics
 like the H-Index have limitations, particularly their susceptibility to inflation through
-lower-quality publications.  This thesis proposes three novel H-Index variants—H5-Adjusted H-Index,
-JIF-Adjusted H-Index, and EigenFactor-Adjusted H-Index—that incorporate journal quality metrics
-and subject-specificity to provide a more accurate measure of scholarly impact.
+lower-quality publications.  This thesis proposes three novel H-Index variants—H5-Adjusted,
+JIF-Adjusted, and EigenFactor-Adjusted H-Index—that incorporate journal quality metrics
+and subject-specificity to provide a more accurate measure of academic impact.
 
 Data was collected from the Crossref-2024 dataset, and subject classifications
 were assigned using Scopus ASJC codes. The adjusted H-Indexes were calculated
 by considering only publications in the top 20\% of journals within specific
 subjects, based on their H5, JIF, and EigenFactor rankings. The implementation
 involved SQL and ROLAP analysis, with additional calculations performed in
-Python, and unit testing that ensured the accuracy and reliability of these
-calculations.
+Python, and unit testing that ensured the accuracy and reliability of it.
 
 The study found strong correlations between the traditional H-Index and the
 adjusted H-Indexes, indicating that researchers who rank highly by traditional
 metrics also rank highly when journal quality is considered. The analysis
 revealed that authors publishing in lower-tier journals tend to cite less
 influential research compared to those publishing in top-tier journals.
-Additionally, citation network analysis showed that top authors, in general, are
-part of more interconnected and influential research networks.
+Additionally, citation network analysis showed that top authors, in general,
+are part of more interconnected and influential research networks.
 
 These findings suggest that incorporating journal quality into H-Index
 calculations mitigates issues such as H-Index inflation and provides a more
-nuanced assessment of scholarly impact. This approach benefits researchers,
-practitioners, and policymakers by offering more equitable and accurate
-academic evaluations. Finally, the study highlights the need for further
-research into advanced H-Index variants and subject-specific citation patterns
-to enhance bibliometric evaluations.
+nuanced assessment of scholarly contributions. This approach benefits
+researchers, practitioners, and policymakers by offering more equitable and
+accurate representation of academic achievements. Finally, the study highlights
+the need for further research into advanced H-Index variants and
+subject-specific citation patterns to enhance bibliometric evaluations.
